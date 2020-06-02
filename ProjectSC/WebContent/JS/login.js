@@ -70,6 +70,21 @@ signUpButton.addEventListener('click', function() {
     },
 });
 
+$("#formstore").validate({ // joinForm에 validate를 적용
+    rules: {
+       
+        StoreName: {
+            required: true
+        },
+        StoreNumber: {
+            required: true,
+            number: true,
+            rangelength: [10, 15]
+        }
+
+}
+});
+
 
 
 
