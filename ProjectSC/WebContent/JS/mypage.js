@@ -1,17 +1,17 @@
 //화면 넘어가는거-----------------------------------------------------------------------------
-const signUpButton = document.getElementById('signUp');
-// const signInButton = document.getElementById('signIn');
-const container = document.getElementById('container');
-const signInContainer = document.getElementsByClassName('sign-in-container')[0];
-const signInBtn = document.getElementById('signInBtn');
-const signUpBtn = document.getElementById('signUpBtn');
+// const signUpButton = document.getElementById('signUp');
+// // const signInButton = document.getElementById('signIn');
+// const container = document.getElementById('container');
+// const signInContainer = document.getElementsByClassName('sign-in-container')[0];
+// const signInBtn = document.getElementById('signInBtn');
+// const signUpBtn = document.getElementById('signUpBtn');
 
 
-signUpButton.addEventListener('click', function() {
-    container.classList.add("right-panel-active");
-    signInContainer.style.display = "none";
+// signUpButton.addEventListener('click', function() {
+//     container.classList.add("right-panel-active");
+//     signInContainer.style.display = "none";
     
-});
+// });
 
 // signInButton.addEventListener('click', function() {
 //     container.classList.remove("right-panel-active");
@@ -28,16 +28,18 @@ signUpButton.addEventListener('click', function() {
         },
         // required는 필수, rangelength는 글자 개수(5~10개 사이)
         Password: {
+            required: true,
             rangelength: [8, 15]
         },
         ConfirmPw: {
-            equalTo: "#Password"
+            required: true,
+            equalTo: "#pwd"
         },
         // equalTo : id가 pwd인 값과 같아야함
+        
         PhoneNumber: {
             required: true,
-            number: true,
-            rangelength: [10, 15]
+            rangelength: [12, 13]
         },
 
         Email: {
@@ -45,18 +47,10 @@ signUpButton.addEventListener('click', function() {
             email: true
         },
         // email 형식 검증
-        StoreName: {
-            required: true
-        },
-        StoreNumber: {
-            required: true,
-            number: true,
-            rangelength: [10, 15]
-        }
 
     },
     messages: {
-        Id: "아이디를 다시 입력해주세요",
+        Id: "아이디를 입력해주세요",
         PhoneNumber: {
             required: "전화번호는 필수 입니다",
             minlength: "전화번호는 12자리 이상입니다."
@@ -68,21 +62,6 @@ signUpButton.addEventListener('click', function() {
         ConfirmPw: "똑같은 비밀번호를 입력해주세요",
         Email: "유효한 이메일을 입력해주세요"
     },
-});
-
-$("#formstore").validate({ // joinForm에 validate를 적용
-    rules: {
-       
-        StoreName: {
-            required: true
-        },
-        StoreNumber: {
-            required: true,
-            number: true,
-            rangelength: [10, 15]
-        }
-
-}
 });
 
 
