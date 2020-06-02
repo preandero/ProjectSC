@@ -25,6 +25,13 @@ form{
 	width: 100%;
 }
 
+label{
+    font-size: 11px;
+    cursor: default;
+}
+
+
+
 .container {
 	
     margin-top: 100px;
@@ -97,7 +104,7 @@ button {
 }
 
 button:hover {
-    transition: ease-in-out 0.7s;
+    transition: ease-in-out 0.7s;	
     transform: scale(1.2);
     opacity: 1;
     color: rgb(187, 226, 245);
@@ -119,3 +126,4 @@ h1 {
     font-weight: bold;
     margin: 30px 0px 10px 10px;
 }
+
