@@ -50,7 +50,7 @@ signUpButton.addEventListener('click', function() {
 
     },
     messages: {
-        Id: "아이디를 입력해주세요",
+        Id: "아이디를 다시 입력해주세요",
         PhoneNumber: {
             required: "전화번호는 필수 입니다",
             minlength: "전화번호는 12자리 이상입니다."
