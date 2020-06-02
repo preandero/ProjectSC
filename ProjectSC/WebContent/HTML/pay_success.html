@@ -1,62 +1,71 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="../CSS/pay_success.css" rel="stylesheet" type="text/css">
-<meta charset="UTF-8">
-<title>Insert title here</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../CSS/pay_success.css" rel="stylesheet" type="text/css">
+  <meta charset="UTF-8">
+  <title>pay INFO</title>
 </head>
+
 <body>
-	<p class="tip"></p>
-	<div class="cont">
-		<div class="form sign-in">
-			<h2>PAY INFO</h2>
-			<label> <span>이용권</span>
-				<div class="controls">
-					<i class="fa fa-sort"></i> <select class="floatLabel">
-						<option value="select">이용권을 선택해 주세요</option>
-						<option value="30days">30 days 19.99$</option>
-						<option value="6month">6 month 69.99$</option>
-						<option value="1year">1 year 119.99$</option>
-						<option value="FREE">30days FREE</option>
+  <div class="container" id="container">
+    <div class="form-container sign-in-container">
+      <form action="#" id="formsignup">
+        <h1>PAY INFO</h1>
+        <span>Please fill in this registration form</span>
+        <label class="label" for="name">이용권</label>
 
-					</select>
+        <div class="controls">
+          <i class="fa fa-sort"></i>
+          <select class="floatLabel">
+            <option value="select">Select option</option>
+            <option value="30days">30 days 19.99$</option>
+            <option value="6month">6 month 69.99$</option>
+            <option value="1year">1 year 119.99$</option>
+            <option value="FREE">30days FREE</option>
 
-				</div>
-			</label> <label> <span>가격</span> <input type="text" />
-			</label> <label> <span>결제방식</span>
-				<div class="controls">
-					<i class="fa fa-sort"></i> <select class="floatLabel">
-						<option value="select">결제방식을 선택해 주세요</option>
-						<option value="kakao">Kakao pay</option>
-						<option value=""></option>
-						<option value=""></option>
-						<option value=""></option>
+          </select>
 
-					</select>
+        </div>
+        <label class="label" for="name">가격</label>
+        <input type="text" placeholder="" id="Price" name="Price" />
+        <label class="label" for="name">결제방식</label>
 
-				</div>
-			</label> <label> <span>결제확인 이메일</span> <input type="email" />
-			</label>
+        <div class="controls">
+          <i class="fa fa-sort"></i>
+          <select class="floatLabel">
+            <option value="select">Payment method</option>
+            <option value="kakao">Kakao pay</option>
+            <option value=""> </option>
+            <option value=""> </option>
+            <option value=""> </option>
 
-			<button type="button" class="submit">Sign In</button>
+          </select>
 
-		</div>
-		<div class="sub-cont">
-			<div class="img">
-				<div class="img__text m--up">
-					<h2>New here?</h2>
-					<p>Sign up and discover great amount of new opportunities!</p>
-				</div>
-
-				<span class="m--in">Sign In</span>
-			</div>
-		</div>
-
-	</div>
-	</div>
+        </div>
+        <label class="label" for="name">결제확인 이메일</label>
+        <input type="email" placeholder="E-mail" id="Email" name="Email" />
+        <br>
+        <button id="signUpBtn">결제하기</button>
 
 
-	<script src="./script.js"></script>
+      </form>
+    </div>
+
+    <div class="overlay-container">
+      <div class="sub-cont">
+        <div class="img">
+          <div class="img__text m--up">
+            <h2>New here?</h2>
+            <p>Sign up and discover great amount of new opportunities!</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <script src="./script.js"></script>
 </body>
+
 </html>
