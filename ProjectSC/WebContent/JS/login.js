@@ -28,18 +28,16 @@ signUpButton.addEventListener('click', function() {
         },
         // required는 필수, rangelength는 글자 개수(5~10개 사이)
         Password: {
-            required: true,
             rangelength: [8, 15]
         },
         ConfirmPw: {
-            required: true,
-            equalTo: "#pwd"
+            equalTo: "#Password"
         },
         // equalTo : id가 pwd인 값과 같아야함
-        
         PhoneNumber: {
             required: true,
-            rangelength: [12, 13]
+            number: true,
+            rangelength: [10, 15]
         },
 
         Email: {
@@ -47,6 +45,14 @@ signUpButton.addEventListener('click', function() {
             email: true
         },
         // email 형식 검증
+        StoreName: {
+            required: true
+        },
+        StoreNumber: {
+            required: true,
+            number: true,
+            rangelength: [10, 15]
+        }
 
     },
     messages: {
