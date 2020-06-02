@@ -7,6 +7,10 @@ public class DataBase_query {
 	public static final String USERPW = "tiger0316";
 	
 	// subscribe_tb database
-	public static final String SUB_INSERT = 
-			"INSERT INTO sub_tb ";
+	public static final String SQL_SUBSCRIBE_INSERT = 
+			"INSERT INTO subcribe_tb "
+			+ "(sub_uid, sub_regdate, sub_period, sub_payment, sub_method, sub_email, mem_uid) "
+			+ "VALUES "
+			+ "(SEQ_subscribe_uid.nextval, SYSDATE, ?, ?, ?, ?, 1)"
+			;
 }

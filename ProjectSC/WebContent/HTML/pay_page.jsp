@@ -13,10 +13,10 @@
 	<input type="text" name="phone" value="000-222-5555">
 	<input type="text" name="address" value="aaaaa-aaaa">
 	<input type="number" name="totalPrice" value="20000">
-	<select>
-		<option value="30일">
-		<option value="60일">
-		<option value="90일">
+	<select name="period">
+		<option value="30">30</option>
+		<option value="60">60</option>
+		<option value="90">90</option>
 	</select>
 	<input type="submit" value="send">
 </form>

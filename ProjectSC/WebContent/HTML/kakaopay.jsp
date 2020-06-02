@@ -5,8 +5,8 @@
     String email = (String)request.getParameter("email");
     String phone = (String)request.getParameter("phone");
     String address = (String)request.getParameter("address");
-    int totalPrice = Integer.parseInt(request.getParameter("totalPrice"));    
-	
+    int price = Integer.parseInt(request.getParameter("totalPrice"));    
+	String period = (String)request.getParameter("period");
 %>
 <!DOCTYPE html>
 <html>
@@ -30,7 +30,7 @@
             pay_method : 'card',
             merchant_uid : 'merchant_' + new Date().getTime(),
             name : 'KH Books 도서 결제',
-            amount : <%=totalPrice%>,
+            amount : <%=price%>,
             buyer_email : '<%=email%>',
             buyer_name : '<%=name%>',
             buyer_tel : '<%=phone%>',
@@ -64,7 +64,7 @@
                     }
                 });
                 //성공시 이동할 페이지
-                request.setAttribute('totalPrice', <%=totalPrice%>);
+                location.href="paySuccess.do?period=<%=period%>&price=<%=price%>&method=kakao&email=<%=email%>";
             } else {
                 msg = '결제에 실패하였습니다.';
                 msg += '에러내용 : ' + rsp.error_msg;
