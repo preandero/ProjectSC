@@ -37,7 +37,7 @@ signUpButton.addEventListener('click', function() {
         PhoneNumber: {
             required: true,
             number: true,
-            rangelength: [10, 15]
+            rangelength: [10, 11]
         },
 
         Email: {
@@ -51,7 +51,7 @@ signUpButton.addEventListener('click', function() {
         StoreNumber: {
             required: true,
             number: true,
-            rangelength: [10, 15]
+            rangelength: [10, 11]
         }
 
     },
@@ -59,7 +59,7 @@ signUpButton.addEventListener('click', function() {
         Id: "아이디를 다시 입력해주세요",
         PhoneNumber: {
             required: "전화번호는 필수 입니다",
-            minlength: "전화번호는 12자리 이상입니다."
+            minlength: "전화번호는 10자리 이상입니다."
         },
         Password: {
             required: "비밀번호는 필수 입니다",
@@ -67,7 +67,12 @@ signUpButton.addEventListener('click', function() {
         },
         ConfirmPw: "똑같은 비밀번호를 입력해주세요",
         Email: "유효한 이메일을 입력해주세요"
-    },
+    	},
+    	StoreNumber: {
+            required: "매장번호는 필수 입니다",
+            minlength: "매장번호는 10자리 이상입니다."
+        },
+    	
 });
 
 $("#formstore").validate({ // joinForm에 validate를 적용
