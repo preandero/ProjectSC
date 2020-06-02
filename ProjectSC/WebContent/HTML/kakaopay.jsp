@@ -1,12 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-    String name = (String)request.getParameter("name");
     String email = (String)request.getParameter("email");
-    String phone = (String)request.getParameter("phone");
-    String address = (String)request.getParameter("address");
-    int price = Integer.parseInt(request.getParameter("totalPrice"));    
+    int price = Integer.parseInt(request.getParameter("price"));    
 	String period = (String)request.getParameter("period");
+	String method = request.getParameter("method");
 %>
 <!DOCTYPE html>
 <html>
@@ -32,9 +30,9 @@
             name : 'KH Books 도서 결제',
             amount : <%=price%>,
             buyer_email : '<%=email%>',
-            buyer_name : '<%=name%>',
-            buyer_tel : '<%=phone%>',
-            buyer_addr : '<%=address%>',
+            buyer_name : '홍성용',
+            buyer_tel : '01065285654',
+            buyer_addr : '경기도 고양시',
             buyer_postcode : '123-456',
             //m_redirect_url : 'http://www.naver.com'
         }, function(rsp) {
@@ -64,7 +62,7 @@
                     }
                 });
                 //성공시 이동할 페이지
-                location.href="paySuccess.do?period=<%=period%>&price=<%=price%>&method=kakao&email=<%=email%>";
+                location.href="paySuccess.do?period=<%=period%>&price=<%=price%>&method=<%=method%>&email=<%=email%>";
             } else {
                 msg = '결제에 실패하였습니다.';
                 msg += '에러내용 : ' + rsp.error_msg;
