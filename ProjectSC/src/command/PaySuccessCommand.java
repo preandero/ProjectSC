@@ -18,7 +18,6 @@ public class PaySuccessCommand implements Command {
 		int period = Integer.parseInt(request.getParameter("period"));
 		int price = Integer.parseInt(request.getParameter("price"));
 		String method = request.getParameter("method");
-		System.out.println("method : " + method);
 		String email = request.getParameter("email");
 		
 		if(period != 0 && price != 0 && method != null && email != null) {

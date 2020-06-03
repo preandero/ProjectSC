@@ -17,7 +17,7 @@ DROP TABLE menu_tb CASCADE CONSTRAINTS;
 DROP TABLE orderlist CASCADE CONSTRAINTS;
 DROP TABLE order_tb CASCADE CONSTRAINTS;
 DROP TABLE storeinfo_tb CASCADE CONSTRAINTS;
-DROP TABLE subcribe_tb CASCADE CONSTRAINTS;
+DROP TABLE subscribe_tb CASCADE CONSTRAINTS;
 DROP TABLE member_tb CASCADE CONSTRAINTS;
 
 
@@ -30,6 +30,7 @@ DROP SEQUENCE SEQ_menu_tb_menu_uid;
 DROP SEQUENCE SEQ_order_tb_order_uid;
 DROP SEQUENCE SEQ_sales_tb_sales_uid;
 DROP SEQUENCE SEQ_storeinfo_tb_store_uid;
+DROP SEQUENCE SEQ_subscribe_uid;
 
 
 
@@ -110,7 +111,7 @@ CREATE TABLE storeinfo_tb
 );
 
 
-CREATE TABLE subcribe_tb
+CREATE TABLE subscribe_tb
 (
 	sub_uid number NOT NULL,
 	sub_regdate date,
@@ -232,7 +233,7 @@ END;
 
 /
 
-SELECT * FROM SUBCRIBE_TB;
+SELECT * FROM SUBSCRIBE_TB;
 SELECT * FROM MEMBER_TB;
 INSERT INTO MEMBER_TB VALUES (SEQ_mem_uid.nextval, 'skuley', '1234', 'sung', 'skuleyandpotato@gmail.com');
 
