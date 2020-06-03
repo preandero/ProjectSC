@@ -13,11 +13,17 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
   <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
-  <title>My page</title>
+  <title>pay_success</title>
 
 </head>
 
 <body>
+   <header>
+        <div class="logo">
+            <img src="../images/logo.png" id="logoimg">
+            <span id="slogo"><b>Asangbinsi</b></span>
+        </div>
+    </header>
   <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <div class="container" id="container">
     <div class="form-container sign-in-container">
