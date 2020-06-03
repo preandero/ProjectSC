@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="../CSS/my_page.css" rel="stylesheet" type="text/css">
+  <link href="../CSS/pay_success.css" rel="stylesheet" type="text/css">
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
