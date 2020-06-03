@@ -5,7 +5,7 @@
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="../CSS/pay_success.css" rel="stylesheet" type="text/css">
+  <link href="../CSS/pay_info.css" rel="stylesheet" type="text/css">
   <meta charset="UTF-8">
   <title>pay info</title>
 </head>
