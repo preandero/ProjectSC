@@ -10,13 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.Command;
+import command.JoinCommand;
 import command.PaySuccessCommand;
 
 @WebServlet("*.do")
-public class PayController extends HttpServlet {
+public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public PayController() {
+	public MemberController() {
 		super();
 	}
 
@@ -52,8 +53,9 @@ public class PayController extends HttpServlet {
 			viewPage = "pay_success.jsp";
 			break;
 
-		case "payFail.do":
-			System.out.println("실패");
+		case "/HTML/joinUs.do":
+			System.out.println("joinUs 성공");
+			command = new JoinCommand();
 			break;
 		}
 		

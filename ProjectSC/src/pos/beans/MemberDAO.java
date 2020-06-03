@@ -9,14 +9,14 @@ import java.sql.Statement;
 
 import common.DataBase_query;
 
-public class PaySuccessDAO {
+public class MemberDAO {
 	Connection conn = null;
 	Statement stmt = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	
 	// DAO 객체가 생성될때 Connection 도 생성된다.
-		public PaySuccessDAO() {
+		public MemberDAO() {
 			
 			try {
 				Class.forName(DataBase_query.DRIVER);
