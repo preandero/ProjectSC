@@ -27,6 +27,3 @@ public class DataBase_query {
 			"UPDATE member_tb SET mem_sub_regdate=?, mem_sub_period=?, mem_sub_payment=?, mem_sub_method=? WHERE mem_uid=?";
 
 }
-
-
-
