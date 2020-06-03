@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 * {
 	box-sizing: border-box;
 }
@@ -138,7 +138,7 @@ h1 {
     display: block;
     margin: 60px auto;
     font-size: 20px;
-=======
+
 * {
    box-sizing: border-box;
 }
@@ -309,5 +309,5 @@ b{
 	margin: 6px 10px;
 	font-weight: bold;
 	letter-spacing: 1px;
->>>>>>> refs/heads/master
+
 }
