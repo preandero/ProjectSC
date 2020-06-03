@@ -22,7 +22,7 @@
   <div class="container" id="container">
     <div class="form-container sign-in-container">
       <form action="#" id="formsignup">
-        <h1>Welcome</h1>
+        <h1>결제 완료</h1>
         <hr>
         <i class="far fa-check-circle"></i>
         <span>이제 AHSANGBINSSI 의 POS 최고의 서비스를 경험해보세요</span>      

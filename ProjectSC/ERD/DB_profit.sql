@@ -1,49 +1,55 @@
 
 /* Drop Triggers */
 
+DROP TRIGGER TRI_cs_tb_cs_uid;
 DROP TRIGGER TRI_inventory_tb_inv_uid;
 DROP TRIGGER TRI_member_tb_mem_uid;
 DROP TRIGGER TRI_menu_tb_menu_uid;
+DROP TRIGGER TRI_orderlist_orderlist_uid;
 DROP TRIGGER TRI_order_tb_order_uid;
 DROP TRIGGER TRI_sales_tb_sales_uid;
 DROP TRIGGER TRI_storeinfo_tb_store_uid;
+DROP TRIGGER TRI_subcribe_tb_sub_uid;
 
 
 
 /* Drop Tables */
 
 DROP TABLE cs_tb CASCADE CONSTRAINTS;
+DROP TABLE order_detail CASCADE CONSTRAINTS;
 DROP TABLE menu_tb CASCADE CONSTRAINTS;
-DROP TABLE orderlist CASCADE CONSTRAINTS;
 DROP TABLE order_tb CASCADE CONSTRAINTS;
 DROP TABLE storeinfo_tb CASCADE CONSTRAINTS;
-DROP TABLE subscribe_tb CASCADE CONSTRAINTS;
 DROP TABLE member_tb CASCADE CONSTRAINTS;
 
 
 
 /* Drop Sequences */
 
+DROP SEQUENCE SEQ_cs_tb_cs_uid;
 DROP SEQUENCE SEQ_inventory_tb_inv_uid;
-DROP SEQUENCE SEQ_mem_uid;
+DROP SEQUENCE SEQ_member_tb_mem_uid;
 DROP SEQUENCE SEQ_menu_tb_menu_uid;
+DROP SEQUENCE SEQ_orderlist_orderlist_uid;
 DROP SEQUENCE SEQ_order_tb_order_uid;
 DROP SEQUENCE SEQ_sales_tb_sales_uid;
 DROP SEQUENCE SEQ_storeinfo_tb_store_uid;
-DROP SEQUENCE SEQ_subscribe_uid;
+DROP SEQUENCE SEQ_subcribe_tb_sub_uid;
 
 
 
 
 /* Create Sequences */
 
-CREATE SEQUENCE SEQ_inv_uid;
-CREATE SEQUENCE SEQ_mem_uid;
-CREATE SEQUENCE SEQ_menu_uid;
-CREATE SEQUENCE SEQ_order_uid;
-CREATE SEQUENCE SEQ_sales_uid;
-CREATE SEQUENCE SEQ_store_uid;
-CREATE SEQUENCE SEQ_subscribe_uid;
+CREATE SEQUENCE SEQ_cs_uid INCREMENT BY 1 START WITH 1;
+CREATE SEQUENCE SEQ_inv_uid INCREMENT BY 1 START WITH 1;
+CREATE SEQUENCE SEQ_mem_uid INCREMENT BY 1 START WITH 1;
+CREATE SEQUENCE SEQ_menu_uid INCREMENT BY 1 START WITH 1;
+CREATE SEQUENCE SEQ_orderlist_uid INCREMENT BY 1 START WITH 1;
+CREATE SEQUENCE SEQ_order_uid INCREMENT BY 1 START WITH 1;
+CREATE SEQUENCE SEQ_sales_uid INCREMENT BY 1 START WITH 1;
+CREATE SEQUENCE SEQ_store_uid INCREMENT BY 1 START WITH 1;
+CREATE SEQUENCE SEQ_sub_uid INCREMENT BY 1 START WITH 1;
 
 
 
@@ -68,37 +74,28 @@ CREATE TABLE member_tb
 	mem_pw varchar2(50) NOT NULL,
 	mem_name varchar2(50) NOT NULL,
 	mem_email varchar2(50) NOT NULL,
+	mem_phonenum number NOT NULL,
+	mem_sub_regdate date DEFAULT SYSDATE,
+	mem_sub_period number,
+	mem_sub_payment number,
+	mem_sub_method varchar2(50),
 	PRIMARY KEY (mem_uid)
 );
 
-
-CREATE TABLE menu_tb
-(
-	menu_uid number NOT NULL,
-	menu_name varchar2(50) NOT NULL,
-	menu_price number NOT NULL,
-	store_uid number NOT NULL,
-	PRIMARY KEY (menu_uid)
+INSERT INTO MEMBER_TB VALUES (
+SEQ_mem_uid.nextval
+, 'BKLove'
+, '1234'
+, '김보겸'
+, 'sss@ss.com'
+, 111
+, sysdate
+, 60
+, 70000
+, 'kakaoPay'
 );
 
-
-CREATE TABLE orderlist
-(
-	order_uid number NOT NULL,
-	orderlist_uid number NOT NULL,
-	store_uid number NOT NULL
-);
-
-
-CREATE TABLE order_tb
-(
-	order_uid number NOT NULL,
-	store_uid number NOT NULL,
-	order_regdate date,
-	order_totalprice number,
-	PRIMARY KEY (order_uid)
-);
-
+SELECT * FROM MEMBER_TB;
 
 CREATE TABLE storeinfo_tb
 (
@@ -110,18 +107,61 @@ CREATE TABLE storeinfo_tb
 	PRIMARY KEY (store_uid)
 );
 
-
-CREATE TABLE subscribe_tb
-(
-	sub_uid number NOT NULL,
-	sub_regdate date,
-	sub_period number,
-	sub_payment number,
-	sub_method varchar2(10),
-	sub_email varchar2(50),
-	mem_uid number NOT NULL,
-	PRIMARY KEY (sub_uid)
+INSERT INTO storeinfo_tb VALUES (
+	SEQ_store_uid.nextval
+	, 'BK cafe2'
+	, '김보겸 집'
+	, 070555555
+	, 3
 );
+
+SELECT * FROM storeinfo_tb;
+
+CREATE TABLE menu_tb
+(
+	menu_uid number NOT NULL,
+	menu_name varchar2(50) NOT NULL,
+	menu_price number NOT NULL,
+	store_uid number NOT NULL,
+	PRIMARY KEY (menu_uid)
+);
+
+INSERT INTO menu_tb VALUES(
+	SEQ_menu_uid.nextval
+	, '카라멜 마키아또'
+	, 4300
+	, 2
+);
+
+SELECT * FROM MENU_TB;
+
+CREATE TABLE order_detail
+(
+	orderlist_uid number NOT NULL,
+	orderlist_price number NOT NULL,
+	orderlist_menuname varchar2(40) NOT NULL,
+	orderlist_cnt number NOT NULL,
+	menu_uid number NOT NULL,
+	order_uid number NOT NULL,
+	PRIMARY KEY (orderlist_uid)
+);
+
+INSERT INTO ORDER_DETAIL VALUES (
+	SEQ_orderlist_uid.nextval
+	, 
+);
+
+
+CREATE TABLE order_tb
+(
+	order_uid number NOT NULL,
+	order_regdate date,
+	order_totalprice number,
+	store_uid number NOT NULL,
+	PRIMARY KEY (order_uid)
+);
+
+
 
 
 
@@ -140,25 +180,19 @@ ALTER TABLE storeinfo_tb
 ;
 
 
-ALTER TABLE subcribe_tb
-	ADD FOREIGN KEY (mem_uid)
-	REFERENCES member_tb (mem_uid)
+ALTER TABLE order_detail
+	ADD FOREIGN KEY (menu_uid)
+	REFERENCES menu_tb (menu_uid)
 ;
 
 
-ALTER TABLE orderlist
+ALTER TABLE order_detail
 	ADD FOREIGN KEY (order_uid)
 	REFERENCES order_tb (order_uid)
 ;
 
 
 ALTER TABLE menu_tb
-	ADD FOREIGN KEY (store_uid)
-	REFERENCES storeinfo_tb (store_uid)
-;
-
-
-ALTER TABLE orderlist
 	ADD FOREIGN KEY (store_uid)
 	REFERENCES storeinfo_tb (store_uid)
 ;
@@ -172,6 +206,16 @@ ALTER TABLE order_tb
 
 
 /* Create Triggers */
+
+CREATE OR REPLACE TRIGGER TRI_cs_tb_cs_uid BEFORE INSERT ON cs_tb
+FOR EACH ROW
+BEGIN
+	SELECT SEQ_cs_tb_cs_uid.nextval
+	INTO :new.cs_uid
+	FROM dual;
+END;
+
+/
 
 CREATE OR REPLACE TRIGGER TRI_inventory_tb_inv_uid BEFORE INSERT ON inventory_tb
 FOR EACH ROW
@@ -198,6 +242,16 @@ FOR EACH ROW
 BEGIN
 	SELECT SEQ_menu_tb_menu_uid.nextval
 	INTO :new.menu_uid
+	FROM dual;
+END;
+
+/
+
+CREATE OR REPLACE TRIGGER TRI_orderlist_orderlist_uid BEFORE INSERT ON orderlist
+FOR EACH ROW
+BEGIN
+	SELECT SEQ_orderlist_orderlist_uid.nextval
+	INTO :new.orderlist_uid
 	FROM dual;
 END;
 
@@ -233,9 +287,16 @@ END;
 
 /
 
-SELECT * FROM SUBSCRIBE_TB;
-SELECT * FROM MEMBER_TB;
-INSERT INTO MEMBER_TB VALUES (SEQ_mem_uid.nextval, 'skuley', '1234', 'sung', 'skuleyandpotato@gmail.com');
+CREATE OR REPLACE TRIGGER TRI_subcribe_tb_sub_uid BEFORE INSERT ON subcribe_tb
+FOR EACH ROW
+BEGIN
+	SELECT SEQ_subcribe_tb_sub_uid.nextval
+	INTO :new.sub_uid
+	FROM dual;
+END;
+
+/
+
 
 
 
