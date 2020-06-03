@@ -14,7 +14,7 @@ public class DataBase_query {
 	
 	// 회원가입후 이용권 결제완료 됬을때 정보가 DB에 UPDATE 상황
 	public static final String SQL_MEM_SUB_UPDATE = 
-			"UPDATE mem_tb SET wr_viewcnt = wr_viewcnt + 1 WHERE wr_uid = ?";
+			"";
 			;
 }
 
