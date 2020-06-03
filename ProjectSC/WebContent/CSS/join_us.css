@@ -87,7 +87,7 @@ button.ghost {
 	background-color: transparent;
 	border-color: #FFFFFF;
 	color: white;
-	
+    margin-top: 40px;	
 }
 
 button:hover{
@@ -283,5 +283,4 @@ input {
 	border: 1px solid rgb(121, 119, 119);
 	border-radius: 5px;
 }
-
 
