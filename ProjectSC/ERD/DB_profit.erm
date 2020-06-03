@@ -11,7 +11,7 @@
 	</page_setting>
 	<category_index>0</category_index>
 	<zoom>1.0</zoom>
-	<x>0</x>
+	<x>315</x>
 	<y>0</y>
 	<default_color>
 		<r>128</r>
@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2020-05-26 20:23:41</creation_date>
-			<updated_date>2020-06-03 14:35:16</updated_date>
+			<updated_date>2020-06-03 17:18:54</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -469,7 +469,7 @@
 			<char_semantics>false</char_semantics>
 			<description></description>
 			<logical_name>메뉴이름</logical_name>
-			<physical_name>orderlist_menuname</physical_name>
+			<physical_name>orderdetail_menuname</physical_name>
 			<type>varchar(n)</type>
 		</word>
 		<word>
@@ -485,7 +485,7 @@
 			<char_semantics>false</char_semantics>
 			<description></description>
 			<logical_name>가격</logical_name>
-			<physical_name>orderlist_price</physical_name>
+			<physical_name>orderdetail_price</physical_name>
 			<type>decimal</type>
 		</word>
 		<word>
@@ -501,7 +501,7 @@
 			<char_semantics>false</char_semantics>
 			<description></description>
 			<logical_name>수량</logical_name>
-			<physical_name>orderlist_quantity</physical_name>
+			<physical_name>orderdetail_quantity</physical_name>
 			<type>decimal</type>
 		</word>
 		<word>
@@ -517,7 +517,7 @@
 			<char_semantics>false</char_semantics>
 			<description></description>
 			<logical_name>주문리스트번호</logical_name>
-			<physical_name>orderlist_uid</physical_name>
+			<physical_name>orderdetail_uid</physical_name>
 			<type>decimal</type>
 		</word>
 		<word>
@@ -1887,7 +1887,7 @@
 					<default_value></default_value>
 					<auto_increment>false</auto_increment>
 					<foreign_key>false</foreign_key>
-					<not_null>true</not_null>
+					<not_null>false</not_null>
 					<primary_key>false</primary_key>
 					<unique_key>false</unique_key>
 					<character_set></character_set>
@@ -1909,13 +1909,13 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>5</word_id>
+					<word_id>8</word_id>
 					<id>29</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
 					<physical_name></physical_name>
-					<type>varchar(n)</type>
+					<type>decimal</type>
 					<constraint></constraint>
 					<default_value></default_value>
 					<auto_increment>false</auto_increment>
@@ -1942,13 +1942,13 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>8</word_id>
+					<word_id>5</word_id>
 					<id>30</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
 					<physical_name></physical_name>
-					<type>decimal</type>
+					<type>varchar(n)</type>
 					<constraint></constraint>
 					<default_value></default_value>
 					<auto_increment>false</auto_increment>
