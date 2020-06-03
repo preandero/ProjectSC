@@ -1,6 +1,6 @@
 //화면 넘어가는거-----------------------------------------------------------------------------
 const signUpButton = document.getElementById('signUp');
-// const signInButton = document.getElementById('signIn');
+const signInButton = document.getElementById('signIn');
 const container = document.getElementById('container');
 const signInContainer = document.getElementsByClassName('sign-in-container')[0];
 const signInBtn = document.getElementById('signInBtn');
@@ -13,10 +13,10 @@ signUpButton.addEventListener('click', function() {
     
 });
 
-// signInButton.addEventListener('click', function() {
-//     container.classList.remove("right-panel-active");
-//     signInContainer.style.display = "block";
-// });
+ signInButton.addEventListener('click', function() {
+     container.classList.remove("right-panel-active");
+     signInContainer.style.display = "block";
+ });
 
 
 // 유효성 검사---------------------------------------------------------------------------------
