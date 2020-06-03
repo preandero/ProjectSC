@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -11,22 +13,15 @@
         <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 
-        <title>join_us</title>
+        <title>Join Us</title>
     </head>
 
 <body>
-    <header>
-        <div class="logo">
-            <img src="../images/logo.png" id="logoimg">
-            <span id="slogo"><b>Asangbinsi</b></span>
-        </div>
-    </header>
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<div class="container" id="container">
-        
 	<div class="form-container sign-up-container">
 		
-		<form action="#" id="formstore">
+		<form action="joinUs.do" id="formstore">
 			<!-- <h1>Your Store Information</h1> -->
 
             <!-- <span>Please fill in this registration form</span> -->
@@ -39,11 +34,11 @@
             <input type="text" id="sample4_post" placeholder="우편번호" disabled>
             <input type="button" onclick="juso()" value="우편번호 찾기" id="sample4_btn">
             </div>
-            <input type="text" id="sample4_roadAddress" placeholder="도로명주소" disabled>
-            <input type="text" id="sample4_jibunAddress" placeholder="지번주소" disabled>
+            <input type="text" id="sample4_roadAddress" placeholder="도로명주소" name="StreetAddr" disabled>
+            <input type="text" id="sample4_jibunAddress" placeholder="지번주소" name="ZipCode" disabled>
             <!-- <span id="guide" style="color:#999;display:none"></span> -->
-            <input type="text" id="sample4_detailAddress" placeholder="상세주소">
-            <input type="text" id="sample4_extraAddress" placeholder="참고항목" disabled>
+            <input type="text" id="sample4_detailAddress" placeholder="상세주소" name="DetailAddr">
+            <input type="text" id="sample4_extraAddress" placeholder="참고항목" name="ExtraAddr" disabled>
 
 
             <label class="label" for="name">StoreNumber</label>
@@ -55,7 +50,7 @@
     </div>
     
 	<div class="form-container sign-in-container">
-		<form action="#" id="formsignup">
+		<form action="joinUs.do" id="formsignup">
 			<h1>JOIN US</h1>
             <span>Please fill in this registration form</span>
             <label class="label" for="name">ID</label>

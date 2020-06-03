@@ -46,6 +46,13 @@ public class MemberController extends HttpServlet {
 		System.out.println("com : " + com);
 
 		switch (com) {
+		case "/HTML/joinUs.do":
+			System.out.println("joinUs 성공");
+			command = new JoinCommand();
+			command.execute(request, response);
+			viewPage = "joinOk.jsp";
+			break;
+			
 		case "/HTML/paySuccess.do":
 			System.out.println("성공");
 			command = new PaySuccessCommand();
@@ -53,10 +60,6 @@ public class MemberController extends HttpServlet {
 			viewPage = "pay_success.jsp";
 			break;
 
-		case "/HTML/joinUs.do":
-			System.out.println("joinUs 성공");
-			command = new JoinCommand();
-			break;
 		}
 		
 		// request 를 위에서 결정된 view 에 forward 해줌.
