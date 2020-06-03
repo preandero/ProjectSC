@@ -8,7 +8,7 @@ public class DataBase_query {
 	
 	// subscribe_tb database
 	public static final String SQL_SUBSCRIBE_INSERT = 
-			"INSERT INTO subcribe_tb "
+			"INSERT INTO subscribe_tb "
 			+ "(sub_uid, sub_regdate, sub_period, sub_payment, sub_method, sub_email, mem_uid) "
 			+ "VALUES "
 			+ "(SEQ_subscribe_uid.nextval, SYSDATE, ?, ?, ?, ?, 1)"

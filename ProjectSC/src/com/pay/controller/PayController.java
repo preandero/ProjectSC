@@ -49,7 +49,7 @@ public class PayController extends HttpServlet {
 			System.out.println("성공");
 			command = new PaySuccessCommand();
 			command.execute(request, response);
-			viewPage = "pos_index.html";
+			viewPage = "pay_success.jsp";
 			break;
 
 		case "payFail.do":
