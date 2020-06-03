@@ -6,7 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import common.DataBase_query;
 
@@ -39,16 +41,18 @@ public class MemberDAO {
 		
 		
 		// 회원가입해서 DB 에 INSERT
-		public int insert(String id, String pw, String name, String email, int phonenum) throws SQLException{
+		public int insert(int uid, String id, String pw, String name, String email, int phonenum) throws SQLException{
 			int cnt = 0;
 			
 			try {
 				pstmt = conn.prepareStatement(DataBase_query.SQL_MEM_INSERT);
-				pstmt.setString(1, id);
-				pstmt.setString(2, pw);
-				pstmt.setString(3, name);
-				pstmt.setString(4, email);
-				pstmt.setInt(5,phonenum);
+				pstmt.setInt(1, uid);
+				pstmt.setString(2, id);
+				pstmt.setString(3, pw);
+				pstmt.setString(4, name);
+				pstmt.setString(5, email);
+				pstmt.setInt(6,phonenum);
+				
 				cnt = pstmt.executeUpdate();
 				
 			} catch(Exception e) {
@@ -61,54 +65,38 @@ public class MemberDAO {
 		
 		
 		// 로그인 했을때 DB에서 mem_uid를 SELECT
-//		public MemberDTO [] createArray (ResultSet rs) throws SQLException{
-//			MemberDTO [] arr = null;  // DTO 배열
-//			
-//			ArrayList<MemberDTO> list = new ArrayList<MemberDTO>();
+		public MemberDTO [] createArray (ResultSet rs) throws SQLException{
+			MemberDTO [] arr = null;  // DTO 배열
 			
-//			while(rs.next()) {
-//				int uid = rs.getInt("mem_uid");
-//				String id = rs.getString("mem_id");
-//				String pw = rs.getString("mem_pw");
-//				String name = rs.getString("mem_name");
-//				String email = rs.getInt("mem_email");
-//				int phonenum = rs.getDate("mem_phonenum");
-//				Date d = rs.getTime("mem_sub_regdate");
-//				
+			ArrayList<MemberDTO> list = new ArrayList<MemberDTO>();
+			
+			while(rs.next()) {
+				int uid = rs.getInt("mem_uid");
+				String id = rs.getString("mem_id");
+				String pw = rs.getString("mem_pw");
+				String name = rs.getString("mem_name");
+				String email = rs.getString("mem_email");
+				int phonenum = rs.getInt("mem_phonenum");
+				Date d = rs.getDate("mem_sub_regdate");
+				int period = rs.getInt("mem_sub_period");
+				int payment = rs.getInt("mem_sub_payment");
+				String method = rs.getString("mem_sub_method");
+				
 //				String regDate = "";
 //				if(d != null){
-//					regDate = new SimpleDateFormat("yyyy-MM-dd").format(d) + " "
-//							+ new SimpleDateFormat("hh:mm:ss").format(t);
+//					regDate = new SimpleDateFormat("yyyy-MM-dd").format(d);
 //				}
-//				
-//				WriteDTO dto = new WriteDTO(uid, subject, content, name, viewCnt);
-//				dto.setRegDate(regDate);
-//				list.add(dto);
-//				
+				
+				MemberDTO dto = new MemberDTO(uid, id, pw, name, email, phonenum, d, period, payment, method);
+//				dto.setRegdate(regDate);
+				list.add(dto);
 
-//		}
+
+		}
 		
 		// 회원가입후 이용권 결제완료 됬을때 정보가 DB에 UPDATE 상황
-//		public int insert(String id, String pw, String name, String email, int phonenum) throws SQLException{
-//			int cnt = 0;
-//			
-//			try {
-//				pstmt = conn.prepareStatement(DataBase_query.SQL_MEM_INSERT);
-//				pstmt.setString(1, id);
-//				pstmt.setString(2, pw);
-//				pstmt.setString(3, name);
-//				pstmt.setString(4, email);
-//				pstmt.setInt(5,phonenum);
-//				cnt = pstmt.executeUpdate();
-//				
-//			} catch(Exception e) {
-//				e.printStackTrace();
-//			} finally {
-//				close();
-//			}
-//			return cnt;
-//		}
+
 		
-		
+		}
 	
 } // PaySuccessDAO{}
