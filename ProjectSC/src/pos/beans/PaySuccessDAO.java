@@ -41,7 +41,7 @@ public class PaySuccessDAO {
 			int cnt = 0;
 			
 			try {
-				pstmt = conn.prepareStatement(DataBase_query.SQL_SUBSCRIBE_INSERT);
+				pstmt = conn.prepareStatement(DataBase_query.SQL_MEM_SUB_UPDATE);
 				pstmt.setInt(1, period);
 				pstmt.setInt(2, price);
 				pstmt.setString(3, pay_method);
