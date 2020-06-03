@@ -7,7 +7,7 @@ public class DataBase_query {
 	public static final String USERPW = "tiger0316";
 	
 	// 회원가입해서 DB 에 INSERT
-<<<<<<< HEAD
+
 	public static final String SQL_MEM_INSERT =
 			"INSERT INTO member_tb "
 			+ "(mem_uid, mem_id, mem_pw, mem_email, mem_phonenum) "
@@ -20,19 +20,6 @@ public class DataBase_query {
 			+ "(store_uid, store_name, store_loca, store_phonenum) "
 			+ "VALUES "
 			+ "(SEQ_store_uid.nextval, ?, ?, ?)";
-	
-	
-=======
-	public static final String SQL_MEM_INSERT = 
-			"INSERT INTO member_tb "+"(mem_uid, mem_id, mem_pw, mem_email, mem_phonenum) "+"VALUES(SEQ_mem_uid.nextval, ?, ?, ?, ?)";
-			
->>>>>>> refs/heads/master
-	
-	// 로그인 했을때 DB에서 mem_uid를 SELECT
-	public static final String SQL_MEM_SELECT_UID = 
-			"SELECT * FROM member_tb WHERE mem_uid=?";
-			
-	
 	
 	
 	// 회원가입후 이용권 결제완료 됬을때 정보가 DB에 UPDATE 상황
