@@ -11,6 +11,12 @@
 </head>
 
 <body>
+<header>
+        <div class="logo">
+            <img src="../images/logo.png" id="logoimg">
+            <span id="slogo"><b>Asangbinsi</b></span>
+        </div>
+    </header>
   <div class="container" id="container">
     <div class="form-container sign-in-container">
       <form action="kakaopay.jsp" method="post">
