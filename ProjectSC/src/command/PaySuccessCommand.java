@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import pos.beans.PaySuccessDAO;
+import pos.beans.MemberDAO;
 
 public class PaySuccessCommand implements Command {
 
@@ -13,7 +13,7 @@ public class PaySuccessCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
 		int cnt = 0;
-		PaySuccessDAO psDAO = new PaySuccessDAO();
+		MemberDAO psDAO = new MemberDAO();
 		
 		int period = Integer.parseInt(request.getParameter("period"));
 		int price = Integer.parseInt(request.getParameter("price"));

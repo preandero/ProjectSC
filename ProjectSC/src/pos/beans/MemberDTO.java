@@ -2,18 +2,18 @@ package pos.beans;
 
 import java.sql.Date;
 
-public class PaySuccessDTO {
+public class MemberDTO {
 	private int period;
 	private int price;
 	private String pay_method;
 	private String email;
 
 
-	public PaySuccessDTO() {
+	public MemberDTO() {
 		super();
 	}
 
-	public PaySuccessDTO(int period, int price, String pay_method, String email) {
+	public MemberDTO(int period, int price, String pay_method, String email) {
 		super();
 		this.period = period;
 		this.price = price;
