@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import command.Command;
 import command.JoinCommand;
+import command.LoginCommand;
 import command.PaySuccessCommand;
 
 @WebServlet("*.do")
@@ -24,6 +25,7 @@ public class MemberController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doPost(request, response);
+		System.out.println("doGet 방식으로 호출됨");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -53,6 +55,13 @@ public class MemberController extends HttpServlet {
 			viewPage = "joinOk.jsp";
 			break;
 			
+		case "/HTML/loginOk.do":
+			System.out.println("loginOk.do 성공");
+			command = new LoginCommand();
+			command.execute(request, response);
+			viewPage = "pay_info.jsp";
+			break;
+			
 		case "/HTML/paySuccess.do":
 			System.out.println("성공");
 			command = new PaySuccessCommand();
@@ -60,7 +69,7 @@ public class MemberController extends HttpServlet {
 			viewPage = "pay_success.jsp";
 			break;
 
-		}
+		} // switch
 		
 		// request 를 위에서 결정된 view 에 forward 해줌.
 				if(viewPage != null) {

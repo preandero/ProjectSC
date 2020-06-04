@@ -20,19 +20,9 @@
 </head>
 
 <body>
-	<script
-		src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script type="text/javascript">
-			alert("roadAddress" + roadAddr);
-			var roadAddr = document.getElementById("sample4_roadAddress").value.trim();
-			document.getElementById("roadAddress").value = roadAddr;
-			var zipcode = document.getElementById("sample4_jibunAddress").value.trim();
-			document.getElementById("ZipCode").value = zipcode;
-			var extraAddr = document.getElementById("sample4_extraAddress").value.trim();
-			document.getElementById("extraAddress").value = extraAddr;
-	</script>
+	<script	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<div class="container" id="container">
-		<form action="joinUs.do" id="formstore">
+		<form action="joinUs.do" id="formstore" method="POST">
 			<div class="form-container sign-up-container">
 
 				<!-- <h1>Your Store Information</h1> -->
@@ -45,16 +35,13 @@
 					<input type="text" id="sample4_post" placeholder="우편번호" disabled>
 					<input type="button" onclick="juso()" value="우편번호 찾기"	id="sample4_btn">
 				</div>
-				<input type="text" id="sample4_roadAddress" placeholder="도로명주소" disabled> 
-				<input type="hidden" id="roadAddress" name="StreetAddr" value="avc">	
-				<input type="text" id="sample4_jibunAddress" placeholder="지번주소" disabled>
-				<input type="hidden" id="jibunAddress" name="ZipCode" value="">
-				<input type="text" id="sample4_detailAddress" placeholder="상세주소"> 
-				<input type="text" id="sample4_extraAddress" placeholder="참고항목" disabled> 
-				<input type="hidden" id="extraAddress" name="ExtraAddr" value="">
+				<input type="text" id="sample4_roadAddress" placeholder="도로명주소" name="StreetAddr" readonly> 
+				<input type="text" id="sample4_jibunAddress" placeholder="지번주소" name="ZipCode" readonly>
+				<input type="text" id="sample4_detailAddress" placeholder="상세주소" name="DetailAddr"> 
+				<input type="text" id="sample4_extraAddress" placeholder="참고항목" name="ExtraAddr" readonly> 
 				<label class="label" for="name">StoreNumber</label>
 				<input type="tel" placeholder="StoreNumber" id="StoreNumber" name="StoreNumber" /> <br>
-				<button id="signUpBtn">POS 이용하러 가기</button>
+				<button type="submit" id="signUpBtn">POS 이용하러 가기</button>
 			</div>
 			
 			<div class="form-container sign-in-container">
