@@ -40,15 +40,14 @@ DROP SEQUENCE SEQ_store_uid;
 
 /* Create Sequences */
 
-CREATE SEQUENCE SEQ_cs_tb_cs_uid INCREMENT BY 1 START WITH 1;
-CREATE SEQUENCE SEQ_inventory_tb_inv_uid INCREMENT BY 1 START WITH 1;
+CREATE SEQUENCE SEQ_cs_uid INCREMENT BY 1 START WITH 1;
+CREATE SEQUENCE SEQ_inv_uid INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_mem_uid INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_menu_tb_menu_uid INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_orderlist_orderlist_uid INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_order_tb_order_uid INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_sales_tb_sales_uid INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_store_uid INCREMENT BY 1 START WITH 1;
-CREATE SEQUENCE SEQ_subcribe_tb_sub_uid INCREMENT BY 1 START WITH 1;
 
 
 
@@ -58,7 +57,6 @@ CREATE TABLE cs_tb
 (
 	cs_uid number NOT NULL,
 	cs_subject varchar2(50) NOT NULL,
-	cs_name varchar2(50) NOT NULL,
 	cs_content clob NOT NULL,
 	cs_regdate date DEFAULT SYSDATE,
 	mem_uid number NOT NULL,
@@ -72,7 +70,7 @@ CREATE TABLE member_tb
 	mem_id varchar2(50) NOT NULL,
 	mem_pw varchar2(50) NOT NULL,
 	mem_name varchar2(50),
-	mem_phonenum number NOT NULL,
+	mem_phonenum varchar2(20) NOT NULL,
 	mem_email varchar2(50) NOT NULL,
 	mem_sub_regdate date,
 	mem_sub_period number,
@@ -88,8 +86,8 @@ CREATE TABLE storeinfo_tb
 (
 	store_uid number NOT NULL,
 	store_name varchar2(50) NOT NULL,
-	store_loca varchar2(100) NOT NULL,
-	store_phonenum number NOT NULL,
+	store_loca varchar2(300) NOT NULL,
+	store_phonenum varchar2(50) NOT NULL,
 	mem_uid number NOT NULL,
 	PRIMARY KEY (store_uid)
 );

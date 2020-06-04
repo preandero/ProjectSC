@@ -65,21 +65,29 @@ public class MemberDAO {
 
 
 	// 회원 가입 INSERT
-	public int insertJoin(String id, String pw, String email, int phoneNum,
-			String storeName, String location, int storePhone ) throws SQLException {
+	public int insertJoin(String id, String pw, String email, String phoneNum,
+			String storeName, String location, String storePhone ) throws SQLException {
 		int cnt = 0;
 		int mem_uid = 0;
 		try {
 			
-			// 회원가입 성공 이후 DB에 저장
-			pstmt = conn.prepareStatement(DataBase_query.SQL_MEM_INSERT);
+			// 자동 생성된 컬럼의 이름(들)이 담긴 배열 준비(auto-generated keys) 받아오기
+			String[] generatedCols = {"mem_uid"};
+			
+			// 회원가입 성공 이후 DB에 저장 member_tb
+			pstmt = conn.prepareStatement(DataBase_query.SQL_MEM_INSERT, generatedCols);
 			pstmt.setString(1, id);
 			pstmt.setString(2, pw);
 			pstmt.setString(3, email);
-			pstmt.setInt(4, phoneNum);
+			pstmt.setString(4, phoneNum);
 			
 			cnt = pstmt.executeUpdate();
 			
+			// auto-generated Keys 값 뽑아오기
+			rs = pstmt.getGeneratedKeys();
+			if(rs.next()) {
+				mem_uid = rs.getInt(1); // 첫번째 컬럼
+			}
 			pstmt.close();
 			cnt = 0;
 
@@ -87,7 +95,8 @@ public class MemberDAO {
 			pstmt = conn.prepareStatement(DataBase_query.SQL_STORE_INFO_INSERT);
 			pstmt.setString(1, storeName);
 			pstmt.setString(2, location);
-			pstmt.setInt(3, storePhone);
+			pstmt.setString(3, storePhone);
+			pstmt.setInt(4, mem_uid);
 			cnt = pstmt.executeUpdate();
 			
 			
@@ -101,6 +110,22 @@ public class MemberDAO {
 
 
 	// 로그인 했을때 DB에서 mem_uid를 SELECT
+	public MemberDTO[] selectByIdPw(String id, String pw) throws SQLException{
+		MemberDTO[] arr = null;
+		
+		try {
+		pstmt = conn.prepareStatement(DataBase_query.SQL_MEM_CHK);
+		pstmt.setString(1, id);
+		pstmt.setString(2, pw);
+		rs = pstmt.executeQuery();
+		arr = createArray(rs);
+		}finally {
+			close();
+		}
+		return arr;
+	}
+	
+	
 	public MemberDTO[] createArray(ResultSet rs) throws SQLException {
 		MemberDTO[] arr = null; // DTO 배열
 
@@ -111,14 +136,14 @@ public class MemberDAO {
 			String id = rs.getString("mem_id");
 			String pw = rs.getString("mem_pw");
 			String name = rs.getString("mem_name");
+			String phonenum = rs.getString("mem_phonenum");
 			String email = rs.getString("mem_email");
-			int phonenum = rs.getInt("mem_phonenum");
-			Date d = rs.getDate("mem_sub_regdate");
+			Date regdate = rs.getDate("mem_sub_regdate");
 			int period = rs.getInt("mem_sub_period");
 			int payment = rs.getInt("mem_sub_payment");
 			String method = rs.getString("mem_sub_method");
 
-			MemberDTO dto = new MemberDTO(uid, id, pw, name, email, phonenum, d, period, payment, method);
+			MemberDTO dto = new MemberDTO(uid, id, pw, name, email, phonenum, regdate, period, payment, method);
 			list.add(dto);
 
 		} // while
