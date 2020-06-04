@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"/>
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <script src="https://code.jquery.com/jquery-3.5.1.js"
@@ -12,6 +12,23 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"
         integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous">
     </script>
+
+    <!-- Google Fonts -->
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"> -->
+    <!-- Bootstrap core CSS -->
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- Material Design Bootstrap -->
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/css/mdb.min.css" rel="stylesheet"> -->
+    <!-- Bootstrap tooltips -->
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js">
+    </script> -->
+    <!-- Bootstrap core JavaScript -->
+    <!-- <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script> -->
+    <!-- MDB core JavaScript -->
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/js/mdb.min.js">
+    </script> -->
+
     <link href="../CSS/pos_sales.css" rel="stylesheet" type="text/css">
     <meta charset="UTF-8">
     <title>POS_SALES</title>
@@ -70,14 +87,13 @@
                             <td>Item</td>
                             <td>Quantity</td>
                             <td>Price</td>
-                            <td></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            
+
             <div class="order-total">
-                <pre>Total  <span id="totalprice"></span>₩ </pre>
+                <pre>Total  <span id="totalprice">0</span>₩ </pre>
             </div>
             <!-- <div class="buttons">
       
@@ -124,78 +140,96 @@
             <div class="menu-items">
                 <ul>
                     <li>
-                        <!-- <i class="fas fa-beer fa-2x  fa-fw" data-fa-transform="up-3"></i> -->
                         <span class="item">Water</span>
                         <span class="price">2000</span>
                     </li>
                     <li>
-                        <!-- <i class="fas fa-beer fa-2x  fa-fw" data-fa-transform="up-3"></i> -->
                         <span class="item">Americano</span>
+                        <span class="price">5000</span>
+                    </li>
+                    <li>
+                        <!-- <i class="fas fa-beer fa-2x  fa-fw" data-fa-transform="up-3"></i> -->
+                        <span class="item">Latte</span>
                         <span class="price">5000</span>
                     </li>
                 </ul>
             </div>
             <div class="payment-keys">
-                <ul>
-                    <li>
-                        <i class="fas fa-check-square fa-2x fa-fw" data-fa-transform="up-2"></i> Check
-                    </li>
-                    <li>
-                        <i class="fas fa-credit-card fa-2x fa-fw" data-fa-transform="up-2"></i> Credit / Debit
-                    </li>
-                </ul>
+                
+                        <i class="fas fa-check-square fa-2x fa-fw" data-fa-transform="up-2"></i> 
+                        <a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#elegantModalForm">
+                            OrderList
+                        </a>
+                
+                        <i class="fas fa-credit-card fa-2x fa-fw" data-fa-transform="up-2"></i> 
+                        <a> PayMent</a>
             </div>
         </div>
     </div>
 
+     <!-- Modal -->
+     <div class="modal fade" id="elegantModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+     <div class="modal-dialog" role="document">
+         <!--Content-->
+         <div class="modal-content form-elegant">
+             <!--Header-->
+             <div class="modal-header text-center">
+                 <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel">
+                     <strong>ORDER</strong></h3>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                 </button>
+             </div>
+             <!--Body-->
+             <div class="modal-body mx-4">
+                 <!--Body-->
+                 <div class="md-form mb-5">
+                     <table class="table">
+                         <thead>
+                             <tr>
+                                 <th scope="col">#</th>
+                                 <th scope="col">메뉴</th>
+                                 <th scope="col">가격</th>
+                             </tr>
+                         </thead>
+                         <tbody>
+                             <tr>
+                                 <th scope="row">1</th>
+                                 <td>Mark</td>
+                                 <td>Otto</td>
+                             </tr>
+                             <tr>
+                                 <th scope="row">2</th>
+                                 <td>Jacob</td>
+                                 <td>Thornton</td>
+                             </tr>
+                             <tr>
+                                 <th scope="row">3</th>
+                                 <td>Larry</td>
+                                 <td>the Bird</td>
+                             </tr>
+                         </tbody>
+                     </table>
+                 </div>
+
+                 
+                 <div >
+                     <button type="button" class="btn   btn-rounded z-depth-1a">back</button>
+                     <button style="margin-left: 180px;"type="button" class="btn blue-gradient  btn-rounded z-depth-1a">Delete</button>
+                 </div>
+                
+                
+             </div>
+         </div>
+     </div>
+ </div>
+ <!-- Modal -->
+
 
 
 </body>
-<script>
-     
-
-     var cnt = 1;
-     var total = 0;
-    $(".menu-items li").click(function () {
-        var html = '';
-        var cntdft = 1;
-        var span1 = $(this).children('.item').text();
-        var span2 = parseInt($(this).children('.price').text());
-        var Quantity = parseInt($('.' + span1).html());
-        var addquan = $('.' + span1).html(Quantity + 1);
-        var price = parseInt($('.' + span1 + "p").html( (Quantity +1) * span2));
-
-        
-        
-        if(span1 == ($('#' + span1).html())){
-                addquan;
-                price;
-                total += span2;
-                $('#totalprice').text(total);
-        } else {
-                html += '<tr>';
-                html += '<td>' + cnt + '</td>';
-                html += '<td id="'+ span1 + '">' + span1 + '</td>';
-                html += '<td class="'+ span1 + '">' + cntdft + '</td>';
-                html += '<td class="'+ span1 + "p" + '">' + span2 + '</td>';
-                html += '<td> <i class="fas fa-times" id="deleteok"></i> </td>';
-                html += '</tr>';
-
-                $("#addable").append(html);
-                total += span2;
-                $('#totalprice').text(total);
-                cnt++;
-        }
-        $('.fas').click(function(){
-            $(this).closest('tr').remove();
-            cnt = 1;
-            total -= span2;
-            $('#totalprice').text(total);
-        })
-    })
-
-    
-
+<script src="../JS/pos_sales.js" type="text/javascript">
 </script>
 
 </html>
