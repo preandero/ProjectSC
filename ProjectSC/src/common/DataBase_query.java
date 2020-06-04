@@ -19,15 +19,14 @@ public class DataBase_query {
 			"INSERT INTO storeinfo_tb "
 			+ "(store_uid, store_name, store_loca, store_phonenum, mem_uid) "
 			+ "VALUES "
-			+ "(SEQ_store_uid.nextval, ?, ?, ?, SEQ_store_uid.currval)"
+			+ "(SEQ_store_uid.nextval, ?, ?, ?, ?)"
 			;
 	
 	public static final String SQL_MEM_SELECT = 
 			"SELECT * FROM member_tb";
 	
+	// 로그인시 확인할 id & pw 확인하기
+	public static final String SQL_MEM_CHK = 
+			"SELECT mem_uid FROM member_tb WHERE mem_id = ? AND mem_pw = ?";
 	
-	// 회원가입후 이용권 결제완료 됬을때 정보가 DB에 UPDATE 상황
-	public static final String SQL_MEM_SUB_UPDATE = 
-			"UPDATE member_tb SET mem_sub_regdate=?, mem_sub_period=?, mem_sub_payment=?, mem_sub_method=? WHERE mem_uid=?";
-
 }
