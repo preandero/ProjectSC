@@ -17,9 +17,13 @@ public class DataBase_query {
 	// 회원가입 직후, store info 저장해줄 query
 	public static final String SQL_STORE_INFO_INSERT = 
 			"INSERT INTO storeinfo_tb "
-			+ "(store_uid, store_name, store_loca, store_phonenum) "
+			+ "(store_uid, store_name, store_loca, store_phonenum, mem_uid) "
 			+ "VALUES "
-			+ "(SEQ_store_uid.nextval, ?, ?, ?)";
+			+ "(SEQ_store_uid.nextval, ?, ?, ?, SEQ_store_uid.currval)"
+			;
+	
+	public static final String SQL_MEM_SELECT = 
+			"SELECT * FROM member_tb";
 	
 	
 	// 회원가입후 이용권 결제완료 됬을때 정보가 DB에 UPDATE 상황
