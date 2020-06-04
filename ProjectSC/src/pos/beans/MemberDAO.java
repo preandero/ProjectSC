@@ -68,7 +68,7 @@ public class MemberDAO {
 	public int insertJoin(String id, String pw, String email, int phoneNum,
 			String storeName, String location, int storePhone ) throws SQLException {
 		int cnt = 0;
-		
+		int mem_uid = 0;
 		try {
 			
 			// 회원가입 성공 이후 DB에 저장
@@ -81,14 +81,16 @@ public class MemberDAO {
 			cnt = pstmt.executeUpdate();
 			
 			pstmt.close();
-			
+			cnt = 0;
+
 			// 회원가입이 성공적으로 들어갔을 경우, store info 저장
 			pstmt = conn.prepareStatement(DataBase_query.SQL_STORE_INFO_INSERT);
 			pstmt.setString(1, storeName);
 			pstmt.setString(2, location);
 			pstmt.setInt(3, storePhone);
-			
 			cnt = pstmt.executeUpdate();
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -129,6 +131,14 @@ public class MemberDAO {
 		list.toArray(arr); // List -> 배열
 		return arr;
 
+	}
+	
+	public MemberDTO[] select() throws SQLException{
+		MemberDTO[] arr = null;
+		pstmt = conn.prepareStatement(DataBase_query.SQL_MEM_SELECT);
+		rs = pstmt.executeQuery();
+		arr = createArray(rs);
+		return arr;
 	}
 
 
