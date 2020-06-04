@@ -25,10 +25,10 @@ body {
 }
 .register .left .order-window {
     background: rgba(0, 0, 0, 0.1);
-    
+    border: solid 1px black;
     height: 80vh;
     overflow-y: scroll;
-    border: 0;
+    
     padding: 0;
     margin: 0;
 }
@@ -39,7 +39,7 @@ body {
 .register .left .order-window table tr {
     display: grid;
     width: 100%;
-    grid-template-columns: 1fr 4fr 1fr 2fr;
+    grid-template-columns: 1fr 2fr 1fr 2fr 1fr;
     overflow-x: hidden;
 }
 .register .left .order-window table tr td {
@@ -48,9 +48,10 @@ body {
     /* border: black 1px solid;
     margin-right: 1px; */
 }
+
 .register .left .order-window table tr td:nth-child(3) {
     display: grid;
-    justify-content: end;
+    justify-content: center;
 }
 .register .left .order-window table tr td:nth-child(4) {
     display: grid;
@@ -74,25 +75,17 @@ pre {
     color: white;
     font-family: "Roboto", sans-serif;
 }
-.register .left .order-discount {
-    background: darkgray;
-    height: 6vh;
-    font-size: 3vh;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 0 10px;
-}
+
 .register .left .order-total {
     background: burlywood;
-    height: 8vh;
+    height: 15vh;
     font-size: 3vh;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     padding: 0 10px;
     font-family: "Roboto", sans-serif;
+    border: solid 1px black;
 }
 .register .left .buttons {
     display: grid;

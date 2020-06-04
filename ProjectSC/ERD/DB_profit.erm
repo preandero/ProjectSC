@@ -11,7 +11,7 @@
 	</page_setting>
 	<category_index>0</category_index>
 	<zoom>1.0</zoom>
-	<x>315</x>
+	<x>260</x>
 	<y>0</y>
 	<default_color>
 		<r>128</r>
@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2020-05-26 20:23:41</creation_date>
-			<updated_date>2020-06-03 17:18:54</updated_date>
+			<updated_date>2020-06-03 21:47:42</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -915,7 +915,7 @@
 							<g>0</g>
 							<b>0</b>
 						</color>
-					<child_cardinality>1..n</child_cardinality>
+					<child_cardinality>1</child_cardinality>
 					<parent_cardinality>1</parent_cardinality>
 					<reference_for_pk>true</reference_for_pk>
 					<name></name>

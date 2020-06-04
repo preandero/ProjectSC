@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <script src="https://code.jquery.com/jquery-3.5.1.js"
@@ -31,13 +31,13 @@
                     <a class="nav-link h3 px-4" href="#"><i class="fas fa-arrow-circle-left icon-2x"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link bg-white text-dark h3 px-4" href="#">주문</a>
+                    <a class="nav-link bg-white text-dark h3 px-4" href="#">ORDER</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link h3 px-4" href="#">매출</a>
+                    <a class="nav-link h3 px-4" href="#">SALES</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link h3 px-2" href="#">메뉴관리</a>
+                    <a class="nav-link h3 px-2" href="#">MENU CUSTOM</a>
                 </li>
             </ul>
 
@@ -58,6 +58,8 @@
         </div>
     </nav>
 
+    <!-- bootstrap  ------------------------------------------------------------------------------------------------------------ -->
+
     <div class="register">
         <div class="left">
             <div class="order-window">
@@ -68,15 +70,14 @@
                             <td>Item</td>
                             <td>Quantity</td>
                             <td>Price</td>
+                            <td></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div class="order-discount">
-                <pre>Discount Amount  0 ₩</pre>
-            </div>
+            
             <div class="order-total">
-                <pre>Total  0 ₩</pre>
+                <pre>Total  <span id="totalprice"></span>₩ </pre>
             </div>
             <!-- <div class="buttons">
       
@@ -125,7 +126,12 @@
                     <li>
                         <!-- <i class="fas fa-beer fa-2x  fa-fw" data-fa-transform="up-3"></i> -->
                         <span class="item">Water</span>
-                        <span class="price">7000</span>
+                        <span class="price">2000</span>
+                    </li>
+                    <li>
+                        <!-- <i class="fas fa-beer fa-2x  fa-fw" data-fa-transform="up-3"></i> -->
+                        <span class="item">Americano</span>
+                        <span class="price">5000</span>
                     </li>
                 </ul>
             </div>
@@ -146,45 +152,50 @@
 
 </body>
 <script>
+     
 
      var cnt = 1;
-
+     var total = 0;
     $(".menu-items li").click(function () {
         var html = '';
-       
         var cntdft = 1;
         var span1 = $(this).children('.item').text();
         var span2 = parseInt($(this).children('.price').text());
         var Quantity = parseInt($('.' + span1).html());
-        
+        var addquan = $('.' + span1).html(Quantity + 1);
+        var price = parseInt($('.' + span1 + "p").html( (Quantity +1) * span2));
 
+        
+        
         if(span1 == ($('#' + span1).html())){
-                $('.' + span1).html(Quantity + 1);
-                $('.' + span1 + "p").html( (Quantity +1) * span2)
+                addquan;
+                price;
+                total += span2;
+                $('#totalprice').text(total);
         } else {
                 html += '<tr>';
                 html += '<td>' + cnt + '</td>';
-                html += '<td id="'+ span1 + '">' + span1 + '</td>'
+                html += '<td id="'+ span1 + '">' + span1 + '</td>';
                 html += '<td class="'+ span1 + '">' + cntdft + '</td>';
                 html += '<td class="'+ span1 + "p" + '">' + span2 + '</td>';
+                html += '<td> <i class="fas fa-times" id="deleteok"></i> </td>';
                 html += '</tr>';
+
                 $("#addable").append(html);
+                total += span2;
+                $('#totalprice').text(total);
+                cnt++;
         }
-        cnt++;
-        
-
+        $('.fas').click(function(){
+            $(this).closest('tr').remove();
+            cnt = 1;
+            total -= span2;
+            $('#totalprice').text(total);
+        })
     })
-    // function tableCreate(e) {
-    //     var html = '';
-    //     var span1 = $(e).children('.item').text();
-    //     var span2 = $(e).children('.category').text();
-    //     html += '<tr>';
-    //     html += '<td>' + span1 + '</td>';
-    //     html += '<td>' + span2 + '</td>';
-    //     html += '</tr>';
-    //     $("#addable").append(html);
 
-    // }
+    
+
 </script>
 
 </html>
