@@ -1,0 +1,22 @@
+table {width: 100%;}
+table, th, td {
+	border: 1px solid lightgray;
+    border-collapse: collapse;
+    
+}
+#list{
+    width: 70%;
+    
+    position: fixed;
+    left: 15%;
+    top: 7%;
+    
+}
+td, th{
+    text-align: left;
+    font-size: 8px;
+    padding: 10px;
+}
+#gray{
+    background-color: rgba(238, 238, 238, 0.651);
+}
