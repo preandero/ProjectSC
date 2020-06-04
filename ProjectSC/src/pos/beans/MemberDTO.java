@@ -8,7 +8,7 @@ public class MemberDTO {
    private String pw;
    private String name;
    private String email;
-   private int phonenum;
+   private String phonenum;
    private Date regdate;
    private int period;
    private int payment;
@@ -21,7 +21,7 @@ public class MemberDTO {
    }
 
 
-   public MemberDTO(int uid, String id, String pw, String name, String email, int phonenum, Date regdate, int period,
+   public MemberDTO(int uid, String id, String pw, String name, String email, String phonenum, Date regdate, int period,
          int payment, String method) {
       super();
       this.uid = uid;
@@ -35,12 +35,16 @@ public class MemberDTO {
       this.payment = payment;
       this.method = method;
    }
+   
+   public MemberDTO(int uid, String id, String pw) {
+	super();
+	this.uid = uid;
+	this.id = id;
+	this.pw = pw;
+}
 
 
-
-
-
-   public int getUid() {
+public int getUid() {
       return uid;
    }
 
@@ -100,13 +104,13 @@ public class MemberDTO {
 
 
 
-   public int getPhonenum() {
+   public String getPhonenum() {
       return phonenum;
    }
 
 
 
-   public void setPhonenum(int phonenum) {
+   public void setPhonenum(String phonenum) {
       this.phonenum = phonenum;
    }
 
