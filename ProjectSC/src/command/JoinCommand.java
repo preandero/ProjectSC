@@ -29,6 +29,8 @@ public class JoinCommand implements Command {
 		location += " " + request.getParameter("ZipCode");
 		location += " " + request.getParameter("DetailAddr");
 		location += " " + request.getParameter("ExtraAddr");
+		System.out.println("location : " + location);
+		
 		int storePhone = Integer.parseInt(request.getParameter("StoreNumber"));
 		
 		try {
