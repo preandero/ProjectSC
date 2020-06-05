@@ -7,41 +7,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="../CSS/join_us.css" rel="stylesheet" type="text/css">
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-<script src="../JS/join_us.js" type="text/javascript"></script>
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
-<script
-	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
-<!-- <script type="text/javascript">
-	function formChk(){
-		frm = document.forms["frm"];
-		var id = frm["Id"].value.trim();
-		var pw = frm["Password"].value.trim();
-		var pwconfrm = frm["ConfirmPw"].value.trim();
-		
-		if(id == null || id == ""){
-			alert("Id format is incorrect");
-			id.focus();
-			return false;
-		}
-		
-		if(pw == null || pw == ""){
-			alert("Password format is incorrect");
-		} else if(pw.trim().length < 8 || pw.trim().length > 12){
-			alert("Password's length should be more than 8 and less than 12 digits");
-			return false;
-		} else if(pw != pwconfrm){
-			alert("Password doesn't match with Password Confirmation");
-			return false;
-		}
-		
-		
-	}
-</script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+
 
 <title>Join Us</title>
 </head>
@@ -66,9 +38,8 @@
 				<label class="label" for="name">StoreNumber</label>
 				<input type="tel" placeholder="StoreNumber" id="StoreNumber" name="StoreNumber" /> <br>
 				<button type="submit" id="signUpBtn" onclick="formChk();">LET'S GET STARTED!</button>
+				</div>
 			</div>
-			</div>
-			
 			<div class="form-container sign-in-container">
 				<h1>JOIN US</h1>
 				<span>Please fill in this registration form</span> 
