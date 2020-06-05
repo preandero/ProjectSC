@@ -20,7 +20,7 @@ signUpButton.addEventListener('click', function() {
 
 
 // 유효성 검사---------------------------------------------------------------------------------
-  $("#formsignup").validate({ // joinForm에 validate를 적용
+  $("#formstore").validate({ // joinForm에 validate를 적용
     rules: {
         Id: {
             required: true,
@@ -46,6 +46,15 @@ signUpButton.addEventListener('click', function() {
             required: true,
             email: true
         },
+        
+        StoreName: {
+            required: true
+        },
+        StoreNumber: {
+            required: true,
+            number: true,
+            rangelength: [10, 15]
+        },
        
 
     },
@@ -63,10 +72,16 @@ signUpButton.addEventListener('click', function() {
         ConfirmPw: "똑같은 비밀번호를 입력해주세요",
         Email: "유효한 이메일을 입력해주세요"
     	},
+    	
+    	StoreNumber: {
+            required: "매장번호는 필수 입니다",
+            number:"숫자만 입력해주세요",
+            rangelength: "매장번호는 10자리 이상입니다."
+        },
 
 });
 
-$("#formstore").validate({ // joinForm에 validate를 적용
+/*$("#formstore").validate({ // joinForm에 validate를 적용
     rules: {
        
         StoreName: {
@@ -88,7 +103,7 @@ $("#formstore").validate({ // joinForm에 validate를 적용
             },
  
 }
-});
+});*/
 
 
 
