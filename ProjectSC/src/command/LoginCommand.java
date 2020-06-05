@@ -19,12 +19,22 @@ public class LoginCommand implements Command {
 		String pw = request.getParameter("Password");
 		System.out.println("id + pw " + id + pw);
 		
-		
-		try {
-			arr = mdao.selectByIdPw(id, pw);
-		} catch(SQLException e) {
-			e.printStackTrace();
+		if(id != null && id.trim().length() != 0) {
+			
+			try {
+				arr = mdao.selectByIdPw(id, pw);
+				
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} // try
+			
+		} else {
+			// 로그인 실패!!
+			return;
 		}
+		
+		
+		
 		
 		request.setAttribute("list", arr);
 		
