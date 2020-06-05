@@ -15,20 +15,30 @@ public class PaySuccessCommand implements Command {
 		int cnt = 0;
 		MemberDAO mem_dao = new MemberDAO();
 		
+		
+		
+		
 		int period = Integer.parseInt(request.getParameter("period"));
 		int price = Integer.parseInt(request.getParameter("price"));
 		String method = request.getParameter("method");
-		String email = request.getParameter("email");
+		int mem_uid = Integer.parseInt(request.getParameter("uid"));
+		//String email = request.getParameter("email");
 		
-		if(period != 0 && price != 0 && method != null && email != null) {
+//		if(period != 0 && price != 0 && method != null && email != null) {
+//			
+////			try {
+////				cnt = mem_dao.insert(period, price, method, email);
+////			} catch(SQLException e) {
+////				e.printStackTrace();
+////			}
+//		} // if
+		
+		try {
 			
-//			try {
-//				cnt = mem_dao.insert(period, price, method, email);
-//			} catch(SQLException e) {
-//				e.printStackTrace();
-//			}
-		} // if
-		
+			cnt = mem_dao.insertpayInfo(period, price, method, mem_uid);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		
 	}
