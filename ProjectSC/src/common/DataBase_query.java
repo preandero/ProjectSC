@@ -37,4 +37,7 @@ public class DataBase_query {
 			+ "where mem_uid = ?"
 			;
 	
+	public static final String SQL = "";
+	
+	
 }
