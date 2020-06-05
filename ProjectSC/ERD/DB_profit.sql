@@ -11,8 +11,6 @@ DROP TRIGGER TRI_sales_tb_sales_uid;
 DROP TRIGGER TRI_storeinfo_tb_store_uid;
 DROP TRIGGER TRI_subcribe_tb_sub_uid;
 
-
-
 /* Drop Tables */
 
 DROP TABLE cs_tb CASCADE CONSTRAINTS;
@@ -67,9 +65,8 @@ CREATE TABLE cs_tb
 CREATE TABLE member_tb
 (
 	mem_uid number NOT NULL,
-	mem_id varchar2(50) NOT NULL,
+	mem_id varchar2(50) NOT NULL UNIQUE,
 	mem_pw varchar2(50) NOT NULL,
-	mem_name varchar2(50),
 	mem_phonenum varchar2(20) NOT NULL,
 	mem_email varchar2(50) NOT NULL,
 	mem_sub_regdate date,
