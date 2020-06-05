@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 body {
-    padding-top: 4.8rem;
+    padding-top: 5rem;
     color: #333;
     overflow: hidden;
     width: 100vw;
@@ -76,17 +76,20 @@ pre {
     font-family: "Roboto", sans-serif;
 }
 
+
 .register .left .order-total {
-    background: burlywood;
+    /* background: burlywood; */
+    background-color: #343a40;
     height: 15vh;
-    font-size: 3vh;
+    font-size: 4vh;
     display: flex;
-    align-items: center;
+    flex-direction: row;
     justify-content: flex-end;
     padding: 0 10px;
-    font-family: "Roboto", sans-serif;
+    font-family: cursive;
     border: solid 1px black;
 }
+
 .register .left .buttons {
     display: grid;
     height: 55vh;
@@ -94,6 +97,7 @@ pre {
     grid-template-rows: 1fr 1fr 1fr 1fr;
     background: #d5d5d5;
 }
+
 .register .left .buttons button {
     background-color: #eee;
     padding: 0;
@@ -120,20 +124,23 @@ pre {
     padding: 0;
     margin: 0;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     height: 80vh;
     overflow-y: scroll;
 }
 .register .right .menu-items ul li {
-    height: 20vh;
-    background: #eee;
+    height: 17vh;
+    background: #343a40;
     margin: 5px;
     display: flex;
+    color: white;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     border-radius: 15px;
     border: black 1px solid;
+    font-size: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
   box-shadow: 5px 8px #888888;
 }
@@ -150,15 +157,17 @@ pre {
     background: #d5d5d5;
 }
 .register .right .payment-keys ul {
+    padding: 10px 10px;
     display: flex;
     padding: 0;
     margin: 0;
     list-style-type: none;
-    height: 15vh;
+    height: 14vh;
     background: #236c9c;
     color: #fff;
-
- 
+    transition: all 0.5s;
+    filter: hue-rotate(0deg);
+    border-radius: 5px;
     
 }
 .register .right .payment-keys ul li {
@@ -172,5 +181,62 @@ pre {
     /* border-radius: 15px; */
 }
 .register .right .payment-keys ul :hover {
-    background: #2980b9;
+    filter: hue-rotate(135deg);
 }
+
+
+.b-blue, .b-blue:before {
+    background: rgba(5,118,255,1);
+    background: -moz-linear-gradient(45deg, rgba(5,118,255,1) 0%, rgba(36,248,255,1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(5,118,255,1)), color-stop(100%, rgba(36,248,255,1)));
+    background: -webkit-linear-gradient(45deg, rgba(5,118,255,1) 0%, rgba(36,248,255,1) 100%);
+    background: -o-linear-gradient(45deg, rgba(5,118,255,1) 0%, rgba(36,248,255,1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(5,118,255,1) 0%, rgba(36,248,255,1) 100%);
+    background: linear-gradient(45deg, rgba(5,118,255,1) 0%, rgba(36,248,255,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0576ff', endColorstr='#24f8ff', GradientType=1 );
+  }
+
+  .button2 {
+    display: inline-block;
+    font-size: 2em;
+    margin: .5em;
+    padding: .5em;
+    border-radius: 5px;
+    transition: all .5s;
+    filter: hue-rotate(0deg);
+    color: #FFF;
+    text-decoration: none;
+  }
+
+
+  .form-elegant .font-small {
+    font-size: 0.8rem;
+}
+
+.form-elegant .z-depth-1a {
+    -webkit-box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25);
+    box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25);
+}
+
+.form-elegant .z-depth-1-half,
+.form-elegant .btn:hover {
+    -webkit-box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
+    box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
+}
+
+.form-elegant .modal-header {
+    border-bottom: none;
+}
+
+.modal-dialog .form-elegant .btn .fab {
+    color: #2196f3 !important;
+}
+
+.form-elegant .modal-body,
+.form-elegant .modal-footer {
+    font-weight: 400;
+}
+.btn{
+    border-radius: 8px;
+}
+  
