@@ -20,16 +20,25 @@
         	function loginChk(){
         		
         		frm = document.forms["formsignup"];
-        		var id = frm["Id"].trim().value;
-        		var pw = frm["Password"].trim().value;
+        		var id = frm["Id"].value;
+        		alert(id);
+        		var pw = frm["Password"].value;
+        		alert(pw);
         		var idChk = document.getElementById("id-format-txt");
         		var pwChk = document.getElementById("pw-format-txt");
         		
         		if(id == null || id == ""){
         			idChk.style.display = "inline";
+        			frm["Id"].focus();
+        			return false;
+        		}
+        		if(pw == null || pw == ""){
+        			pwChk.style.display = "inline";
+        			frm["Password"].focus();
         			return false;
         		}
         		
+        		frm.submit();
         		
         	}
         </script>
@@ -49,7 +58,7 @@
 	<div class="container" id="container">
     
 	<div class="form-container sign-in-container">
-		<form action="loginOk.do" id="formsignup" method="POST">
+		<form action="loginOk.do" id="formsignup" method="POST" onsubmit="return loginChk();">
 			<h1>Login</h1>
             <span>Please fill in login form</span>
             <label class="label" for="name">ID</label>
@@ -59,7 +68,7 @@
             <span id="pw-format-txt">Incorrect Password format</span>
             <input type="password" placeholder="Password" id="Password" name="Password" />
             <span id="id-pw-backChk">Incorrect ID or Password</span>
-            <button class="ghost" id="signUp" onclick="loginChk();">login</button>
+            <button type="button" class="ghost" id="signUp" onclick="loginChk();">login</button>
         </form>
         
     </div>
