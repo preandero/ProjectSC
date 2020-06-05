@@ -28,7 +28,6 @@ public class DataBase_query {
 	// 로그인시 확인할 id & pw 확인하기
 	public static final String SQL_MEM_CHK = 
 			"SELECT * FROM member_tb WHERE mem_id = ? AND mem_pw = ?";
-<<<<<<< HEAD
 	
 	public static final String SQL_PAYINFO_INSERT = 
 			"UPDATE member_tb SET "
@@ -39,8 +38,6 @@ public class DataBase_query {
 			;
 	
 	public static final String SQL = "";
-	
-=======
->>>>>>> refs/heads/master
+
 	
 }
