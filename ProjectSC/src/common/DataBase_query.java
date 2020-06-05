@@ -27,6 +27,6 @@ public class DataBase_query {
 	
 	// 로그인시 확인할 id & pw 확인하기
 	public static final String SQL_MEM_CHK = 
-			"SELECT mem_uid FROM member_tb WHERE mem_id = ? AND mem_pw = ?";
+			"SELECT * FROM member_tb WHERE mem_id = ? AND mem_pw = ?";
 	
 }
