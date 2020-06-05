@@ -50,6 +50,11 @@ CREATE SEQUENCE SEQ_store_uid INCREMENT BY 1 START WITH 1;
 
 
 /* Create Tables */
+SELECT * FROM soonmo_1004;
+
+INSERT INTO soonmo_1004 VALUES(1,'순모');
+
+DROP TABLE soonmo_1004;
 
 CREATE TABLE cs_tb
 (
