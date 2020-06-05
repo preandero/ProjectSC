@@ -40,28 +40,28 @@ public class MemberDAO {
 		} // end close()
 		
 		
-		// 회원가입해서 DB 에 INSERT
-		public int insert(String id, String pw, String name, String email, int phonenum) throws SQLException{
-			int cnt = 0;
-			
-			try {
-				pstmt = conn.prepareStatement(DataBase_query.SQL_MEM_INSERT);
-				pstmt.setString(1, id);
-				pstmt.setString(2, pw);
-				pstmt.setString(3, name);
-				pstmt.setString(4, email);
-				pstmt.setInt(5,phonenum);
-				cnt = pstmt.executeUpdate();
-				
-			} catch(Exception e) {
-				e.printStackTrace();
-			} finally {
-				close();
-			}
-			return cnt;
-
-
-	} // 생성자
+//		// 회원가입해서 DB 에 INSERT
+//		public int insert(String id, String pw, String name, String email, int phonenum) throws SQLException{
+//			int cnt = 0;
+//			
+//			try {
+//				pstmt = conn.prepareStatement(DataBase_query.SQL_MEM_INSERT);
+//				pstmt.setString(1, id);
+//				pstmt.setString(2, pw);
+//				pstmt.setString(3, name);
+//				pstmt.setString(4, email);
+//				pstmt.setInt(5,phonenum);
+//				cnt = pstmt.executeUpdate();
+//				
+//			} catch(Exception e) {
+//				e.printStackTrace();
+//			} finally {
+//				close();
+//			}
+//			return cnt;
+//
+//
+//	} 
 
 
 	// 회원 가입 INSERT
@@ -125,6 +125,24 @@ public class MemberDAO {
 		return arr;
 	}
 	
+	public int insertpayInfo(int period, int payment, String pay_method, int mem_uid) throws SQLException{
+		int cnt = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(DataBase_query.SQL_PAYINFO_INSERT);
+			pstmt.setInt(1, period);
+			pstmt.setInt(2, payment);
+			pstmt.setString(3, pay_method);
+			pstmt.setInt(4, mem_uid);
+			
+			cnt = pstmt.executeUpdate();
+			
+		} finally {
+			close();
+		}
+		
+		return cnt;
+	}
 	
 	public MemberDTO[] createArray(ResultSet rs) throws SQLException {
 		MemberDTO[] arr = null; // DTO 배열
