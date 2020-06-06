@@ -33,7 +33,7 @@
         <i class="far fa-check-circle"></i>
         <span>이제 AHSANGBINSSI 의 POS 최고의 서비스를 경험해보세요</span>      
         <div id="signUpBtn">
-          <button>Start Service</button>
+          <button type="button" onclick="location.href='pos_index.jsp'">Start Service</button>
         </div>
       </form>
     </div>
