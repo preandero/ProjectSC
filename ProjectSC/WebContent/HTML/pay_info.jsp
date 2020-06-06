@@ -1,7 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="pos.beans.*"%>
 <!DOCTYPE html>
 <html lang="ko">
+
+<% 
+	MemberDTO[] arr = (MemberDTO[])request.getAttribute("list");
+	int mem_uid = arr[0].getUid();
+	session.setAttribute("mem_uid", mem_uid);	
+
+	
+%>
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">

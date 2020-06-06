@@ -27,11 +27,6 @@ body {
   }
 }
 
-h1 {
-	font-weight: bold;
-	margin: 0;
-}
-
 h2 {
 	text-align: center;
 }
@@ -73,6 +68,7 @@ button {
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	transition: transform 80ms ease-in;
+	margin: 10px 0px;
 }
 
 button:active {
@@ -124,7 +120,6 @@ input {
 }
 
 .container {
-	
     margin-top: 100px;
 	background-color: #fff;
 	border-radius: 10px;
@@ -134,7 +129,6 @@ input {
 	overflow: hidden;
     width: 908px;
     height: 600px;
-    
 	max-width: 100%;
 	min-height: 480px;
 }
@@ -145,11 +139,14 @@ input {
 	height: 100%;
 	transition: all 0.6s ease-in-out;
 }
-
+/*.error{
+	margin-right: 327px;
+}*/
 .sign-in-container {
-	left: 0;
-	width: 50%;
-	z-index: 1;
+    left: 0;
+    width: 50%;
+    z-index: 1;
+    padding: 50px 50px;
 }
 
 .container.right-panel-active .sign-in-container {
@@ -158,11 +155,11 @@ input {
 }
 
 .sign-up-container {
-	
-	left: 0;
-	width: 50%;
-	opacity: 0;
-	z-index: 1;
+    left: 0;
+    width: 50%;
+    opacity: 0;
+    z-index: 1;
+    padding: 50px 50px;
 }
 
 .container.right-panel-active .sign-up-container {

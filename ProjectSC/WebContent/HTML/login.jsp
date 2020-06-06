@@ -3,17 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 	
-	<%-- <c:choose>
-	<c:when test="${ empty list || fn:length(list) == 0 }">
-		<script type="text/javascript">
-			alert("해당 정보가 없습니다");
-			history.back();
-		</script>
-	</c:when>
-	<c:otherwise> --%>
-	
 <!DOCTYPE html>
 <html lang="ko">
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,12 +15,38 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
         <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+        
+        <script type="text/javascript">
+        	function loginChk(){
+        		
+        		frm = document.forms["formsignup"];
+        		var id = frm["Id"].value;
+        		alert(id);
+        		var pw = frm["Password"].value;
+        		alert(pw);
+        		var idChk = document.getElementById("id-format-txt");
+        		var pwChk = document.getElementById("pw-format-txt");
+        		
+        		if(id == null || id == ""){
+        			idChk.style.display = "inline";
+        			frm["Id"].focus();
+        			return false;
+        		}
+        		if(pw == null || pw == ""){
+        			pwChk.style.display = "inline";
+        			frm["Password"].focus();
+        			return false;
+        		}
+        		
+        		frm.submit();
+        		
+        	}
+        </script>
+        
         <title>login</title>
     </head>
 
 <body>
-
-
 
     <header>
         <div class="logo">
@@ -40,22 +58,25 @@
 	<div class="container" id="container">
     
 	<div class="form-container sign-in-container">
-		<form action="loginOk.do" id="formsignup" method="POST">
+		<form action="loginOk.do" id="formsignup" method="POST" onsubmit="return loginChk();">
 			<h1>Login</h1>
-            <span>Please fill in this registration form</span>
+            <span>Please fill in login form</span>
             <label class="label" for="name">ID</label>
+            <span id="id-format-txt">Incorrect ID format</span>
             <input type="text" placeholder="ID" id="Id" name="Id"/>
             <label class="label" for="name">Password</label>
+            <span id="pw-format-txt">Incorrect Password format</span>
             <input type="password" placeholder="Password" id="Password" name="Password" />
-            <button class="ghost" id="signUp">login</button>
+            <span id="id-pw-backChk">Incorrect ID or Password</span>
+            <button type="button" class="ghost" id="signUp" onclick="loginChk();">login</button>
         </form>
         
     </div>
 
 <div class="overlay-container">
     <div class="overlay">
-        
 	</div>
+</div>
 </div>
 
 <%-- 
@@ -63,8 +84,6 @@
 </c:choose> --%>
 
 </body>
-
-<script src="../JS/" type="text/javascript" ></script>
 
 </html>
 

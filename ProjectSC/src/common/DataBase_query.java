@@ -27,6 +27,17 @@ public class DataBase_query {
 	
 	// 로그인시 확인할 id & pw 확인하기
 	public static final String SQL_MEM_CHK = 
-			"SELECT mem_uid FROM member_tb WHERE mem_id = ? AND mem_pw = ?";
+			"SELECT * FROM member_tb WHERE mem_id = ? AND mem_pw = ?";
+	
+	public static final String SQL_PAYINFO_INSERT = 
+			"UPDATE member_tb SET "
+			+ "(mem_sub_regdate, mem_sub_period, mem_sub_payment, mem_sub_method) "
+			+ "= "
+			+ "(SELECT SYSDATE, ?, ?, ? FROM DUAL) "
+			+ "where mem_uid = ?"
+			;
+	
+	public static final String SQL = "";
+
 	
 }

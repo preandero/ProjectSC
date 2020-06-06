@@ -1,12 +1,12 @@
 @charset "UTF-8";
 
 body {
-    padding-top: 4.8rem;
+    padding-top: 4.7rem;
     color: #333;
     overflow: hidden;
     width: 100vw;
     height: 100vh;
-    background: aliceblue;
+    background: white;
     font-family: "Roboto", sans-serif;
 }
 .register {
@@ -24,13 +24,13 @@ body {
     z-index: 10;
 }
 .register .left .order-window {
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.068);
     border: solid 1px black;
     height: 80vh;
     overflow-y: scroll;
-    
+    font-size: 20px;
     padding: 0;
-    margin: 0;
+    margin-right: 10px;
 }
 .register .left .order-window table {
     width: 100%;
@@ -64,8 +64,9 @@ body {
     background-color: #eee;
 }
 .register .left .order-window table tr:first-child {
+    color: #3a3939;
     font-weight: bold;
-    background-color: aliceblue;
+    background-color: rgba(121, 157, 181, 1);
     border-top: white 1px solid;
     position: sticky;
     top: 0px;
@@ -74,19 +75,27 @@ body {
 pre {
     color: white;
     font-family: "Roboto", sans-serif;
+    text-align: center;
+    margin-top: 26px;
+    margin-right: 1px;
 }
 
 .register .left .order-total {
-    background: burlywood;
+    /* background: burlywood; */
+    background-color: rgba(21, 22, 21, 0.692);
     height: 15vh;
-    font-size: 3vh;
+    font-size: 4vh;
     display: flex;
-    align-items: center;
+    flex-direction: row;
     justify-content: flex-end;
-    padding: 0 10px;
-    font-family: "Roboto", sans-serif;
+    /* width: 550px; */
+    font-family: cursive;
     border: solid 1px black;
+    /* margin-right: 10px; */
+    margin-right: 10px;
+    margin-top: 2px;
 }
+
 .register .left .buttons {
     display: grid;
     height: 55vh;
@@ -94,6 +103,7 @@ pre {
     grid-template-rows: 1fr 1fr 1fr 1fr;
     background: #d5d5d5;
 }
+
 .register .left .buttons button {
     background-color: #eee;
     padding: 0;
@@ -105,7 +115,7 @@ pre {
     background-color: #d5d5d5;
 }
 .register .right {
-    background-color: aliceblue;
+    background-color: white;
     position: relative;
     z-index: 5;
 }
@@ -120,22 +130,24 @@ pre {
     padding: 0;
     margin: 0;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     height: 80vh;
     overflow-y: scroll;
 }
 .register .right .menu-items ul li {
-    height: 20vh;
-    background: #eee;
-    margin: 5px;
+    height: 17vh;
+    background: #f1efefa3;
+    margin: 10px;
     display: flex;
+    color: #2b2b2be0;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     border-radius: 15px;
     border: black 1px solid;
-
-  box-shadow: 5px 8px #888888;
+    font-size: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 5px 8px #888888;
 }
 .register .right .menu-items ul li i {
     background: #236c9c;
@@ -147,18 +159,21 @@ pre {
     font-style: oblique;
 }
 .register .right .menu-items ul :hover {
-    background: #d5d5d5;
+    background: #e4e3e3;
 }
 .register .right .payment-keys ul {
+    padding: 10px 10px;
     display: flex;
     padding: 0;
     margin: 0;
     list-style-type: none;
-    height: 15vh;
-    background: #236c9c;
+    height: 14vh;
+    background: rgba(18, 71, 45, 0.582);
     color: #fff;
-
- 
+    transition: all 0.5s;
+    filter: hue-rotate(0deg);
+    border-radius: 5px;
+    margin-top: 2px;
     
 }
 .register .right .payment-keys ul li {
@@ -170,7 +185,25 @@ pre {
     align-items: center;
     justify-content: center;
     /* border-radius: 15px; */
+    
 }
 .register .right .payment-keys ul :hover {
-    background: #2980b9;
+    filter: hue-rotate(135deg);
+    background-color: rgba(18, 71, 45, 0.459);
 }
+#btn1{
+    background: rgba(121, 157, 181, 1);
+}
+#btn2{
+    background-color: rgb(100,141,209);
+}
+
+
+.fa-sort-down{
+    margin: 0;
+    left: 0;
+
+}
+
+
+  
