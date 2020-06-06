@@ -33,9 +33,6 @@ DROP SEQUENCE SEQ_order_tb_order_uid;
 DROP SEQUENCE SEQ_sales_tb_sales_uid;
 DROP SEQUENCE SEQ_store_uid;
 
-
-
-
 /* Create Sequences */
 
 CREATE SEQUENCE SEQ_cs_uid INCREMENT BY 1 START WITH 1;
@@ -46,8 +43,6 @@ CREATE SEQUENCE SEQ_orderlist_orderlist_uid INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_order_tb_order_uid INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_sales_tb_sales_uid INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_store_uid INCREMENT BY 1 START WITH 1;
-
-
 
 /* Create Tables */
 SELECT * FROM soonmo_1004;
@@ -107,6 +102,8 @@ CREATE TABLE menu_tb
 	PRIMARY KEY (menu_uid)
 );
 
+SELECT * FROM MENU_TB; 
+
 
 CREATE TABLE order_detail
 (
@@ -128,6 +125,19 @@ CREATE TABLE order_tb
 	store_uid number NOT NULL,
 	PRIMARY KEY (order_uid)
 );
+
+CREATE TABLE soonmo_1004
+(
+	soonmo_uid NUMBER NOT NULL,
+	soonmo_name varchar2(100),
+	PRIMARY KEY (soonmo_uid)
+);
+
+INSERT INTO SOONMO_1004 VALUES 
+(1, 'soonmo');
+
+SELECT * FROM soonmo_1004;
+
 
 
 
