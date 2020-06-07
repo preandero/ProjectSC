@@ -1,15 +1,4 @@
 
-/* Drop Triggers */
-
-DROP TRIGGER TRI_cs_tb_cs_uid;
-DROP TRIGGER TRI_inventory_tb_inv_uid;
-DROP TRIGGER TRI_member_tb_mem_uid;
-DROP TRIGGER TRI_menu_tb_menu_uid;
-DROP TRIGGER TRI_orderlist_orderlist_uid;
-DROP TRIGGER TRI_order_tb_order_uid;
-DROP TRIGGER TRI_sales_tb_sales_uid;
-DROP TRIGGER TRI_storeinfo_tb_store_uid;
-DROP TRIGGER TRI_subcribe_tb_sub_uid;
 
 /* Drop Tables */
 
@@ -33,9 +22,6 @@ DROP SEQUENCE SEQ_order_tb_order_uid;
 DROP SEQUENCE SEQ_sales_tb_sales_uid;
 DROP SEQUENCE SEQ_store_uid;
 
-
-
-
 /* Create Sequences */
 
 CREATE SEQUENCE SEQ_cs_uid INCREMENT BY 1 START WITH 1;
@@ -46,8 +32,6 @@ CREATE SEQUENCE SEQ_orderlist_orderlist_uid INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_order_tb_order_uid INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_sales_tb_sales_uid INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_store_uid INCREMENT BY 1 START WITH 1;
-
-
 
 /* Create Tables */
 SELECT * FROM soonmo_1004;
@@ -96,7 +80,7 @@ CREATE TABLE storeinfo_tb
 
 SELECT * FROM storeinfo_tb;
 DELETE mem_uid FROM MEMBER_TB;
-
+SELECT * FROM member_tb WHERE MEM_ID = 'suyeong' AND mem_pw = sorktndud1;
 
 CREATE TABLE menu_tb
 (
@@ -106,6 +90,13 @@ CREATE TABLE menu_tb
 	store_uid number NOT NULL,
 	PRIMARY KEY (menu_uid)
 );
+INSERT INTO menu_tb VALUES (SEQ_menu_tb_menu_uid.nextval,'아아',4500,2);
+INSERT INTO menu_tb VALUES (SEQ_menu_tb_menu_uid.nextval,'라뗴',5500,2);
+INSERT INTO menu_tb VALUES (SEQ_menu_tb_menu_uid.nextval,'쏘쿨',6500,2);
+INSERT INTO menu_tb VALUES (SEQ_menu_tb_menu_uid.nextval,'히하히하',7500,2);
+INSERT INTO menu_tb VALUES (SEQ_menu_tb_menu_uid.nextval,'아아',4500,3);
+SELECT * FROM MENU_TB; 
+SELECT * FROM MENU_TB mt WHERE STORE_UID = 3;
 
 
 CREATE TABLE order_detail
@@ -128,6 +119,19 @@ CREATE TABLE order_tb
 	store_uid number NOT NULL,
 	PRIMARY KEY (order_uid)
 );
+
+CREATE TABLE soonmo_1004
+(
+	soonmo_uid NUMBER NOT NULL,
+	soonmo_name varchar2(100),
+	PRIMARY KEY (soonmo_uid)
+);
+
+INSERT INTO SOONMO_1004 VALUES 
+(1, 'soonmo');
+
+SELECT * FROM soonmo_1004;
+
 
 
 

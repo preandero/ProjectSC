@@ -42,15 +42,16 @@
 			</div>
 			<div class="form-container sign-in-container">
 				<h1>JOIN US</h1>
-				<span>Please fill in this registration form</span> 
+				<span>Please fill in this registration form</span> <br><br>
 				<label class="label" for="name">ID</label> 
-				<input type="text" placeholder="ID" id="Id" name="Id" /> 
+				<input type="text" placeholder="ID" id="Id" name="Id" />  
+				<br><br>
 				<label class="label" for="name">Password</label> 
-				<input type="password" placeholder="Password" id="Password" name="Password" /> 
+				<input type="password" placeholder="Password" id="Password" name="Password" />  <br> <br>
 				<label class="label" for="name">Confirm Password</label> 
-				<input type="password" placeholder="confirm pw" id="ConfirmPw" name="ConfirmPw" /> 
+				<input type="password" placeholder="confirm pw" id="ConfirmPw" name="ConfirmPw" />  <br> <br>
 				<label class="label" for="name">PhoneNumber</label>
-				<input type="tel" placeholder="PhoneNumber" id="PhoneNumber" name="PhoneNumber" /> 
+				<input type="tel" placeholder="PhoneNumber" id="PhoneNumber" name="PhoneNumber" />  <br> <br>
 				<label class="label" for="name">E-mail</label>
 				<input type="email" placeholder="E-mail" id="Email" name="Email" />
 
