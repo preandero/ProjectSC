@@ -13,6 +13,8 @@ import command.Command;
 import command.JoinCommand;
 import command.LoginCommand;
 import command.PaySuccessCommand;
+import command.PosMgmtAddCommand;
+import command.PosMgmtListCommand;
 
 @WebServlet("*.do")
 public class MemberController extends HttpServlet {
@@ -67,6 +69,19 @@ public class MemberController extends HttpServlet {
 			command = new PaySuccessCommand();
 			command.execute(request, response);
 			viewPage = "pay_success.jsp";
+			break;
+			
+		case "/HTML/pos_mgmt_list.do":
+			System.out.println("pos_mgmt.list 성공");
+			command = new PosMgmtListCommand();  //바꿔야함
+			command.execute(request, response);
+			viewPage = "pos_mgmt_list.jsp";
+			break;
+		case "/HTML/pos_mgmt_writeOk.do":
+			System.out.println("pos_mgmt.writeOk 성공");
+			command = new PosMgmtAddCommand();  //바꿔야함
+			command.execute(request, response);
+			viewPage = "pos_mgmt_writeOk.jsp";
 			break;
 
 		} // switch
