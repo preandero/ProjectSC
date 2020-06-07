@@ -43,6 +43,7 @@
                      if($('.' + span1).text() > 1){
                     $('.' + span1).html($('.' + span1).text() -1).append('<i class="fas fa-sort-down"/>');
                     total -= span2;
+                    parseInt($('.' + span1 + "p").html(parseInt($('.' + span1).html()) * span2));
                     $('#totalprice').text(total);
                      }
                   })
