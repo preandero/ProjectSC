@@ -153,7 +153,6 @@ public class MemberDAO {
 			int uid = rs.getInt("mem_uid");
 			String id = rs.getString("mem_id");
 			String pw = rs.getString("mem_pw");
-			String name = rs.getString("mem_name");
 			String phonenum = rs.getString("mem_phonenum");
 			String email = rs.getString("mem_email");
 			Date regdate = rs.getDate("mem_sub_regdate");
@@ -161,7 +160,7 @@ public class MemberDAO {
 			int payment = rs.getInt("mem_sub_payment");
 			String method = rs.getString("mem_sub_method");
 
-			MemberDTO dto = new MemberDTO(uid, id, pw, name, email, phonenum, regdate, period, payment, method);
+			MemberDTO dto = new MemberDTO(uid, id, pw, email, phonenum, regdate, period, payment, method);
 			list.add(dto);
 
 		} // while
