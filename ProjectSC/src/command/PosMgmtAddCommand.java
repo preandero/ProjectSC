@@ -2,6 +2,7 @@ package command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import pos_mgmt.beans.WriteDAO;
 
@@ -14,9 +15,9 @@ public class PosMgmtAddCommand implements Command {
 
 		String menu_name = request.getParameter("menu_name");
 		int menu_price = Integer.parseInt(request.getParameter("menu_price"));
-//		HttpSession session = request.getSession();
-//		int store_uid = (int) session.getAttribute("mem_uid");
-		int store_uid = 2; // 임시
+		HttpSession session = request.getSession();
+		int store_uid = (int) session.getAttribute("mem_uid");
+//		int store_uid = 2; // 임시
 
 		if (menu_name != null && menu_name.trim().length() > 0) {
 

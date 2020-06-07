@@ -85,11 +85,12 @@ public class WriteDAO {
 	
 	}// end createArray
 	
-	public WriteDTO [] select() throws SQLException{
+	public WriteDTO [] select(int store_uid) throws SQLException{
 		
 		WriteDTO[] arr =null;
 		try {
-			pstmt = conn.prepareStatement(DataBase_query.SQL_MENU_SELECT_ALL);
+			pstmt = conn.prepareStatement(DataBase_query.SQL_MENU_SELECT_ALL2);
+			pstmt.setInt(1, store_uid);
 			rs= pstmt.executeQuery();
 			arr = createArray(rs);
 		}finally {
