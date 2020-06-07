@@ -16,10 +16,12 @@ public class PosMgmtAddCommand implements Command {
 
 		String menu_name = request.getParameter("menu_name");
 		int menu_price = Integer.parseInt(request.getParameter("menu_price"));
+
 		HttpSession session = request.getSession(false);
 		
 		
 		int store_uid = (Integer)session.getAttribute("mem_uid"); // 임시
+
 
 		if (menu_name != null && menu_name.trim().length() > 0) {
 

@@ -23,6 +23,7 @@ public class PosMgmtListCommand implements Command {
 		try {
 			//트랜잭션수행
 			arr = dao.select(uid);
+
 			//결과를 담아야한다.  결과 = arr ,  바구니 = request
 			// list 란 name 으로 request에 arr 값 전달
 			//즉 request에 담아서 컨트롤러에 전달되는 셈.
