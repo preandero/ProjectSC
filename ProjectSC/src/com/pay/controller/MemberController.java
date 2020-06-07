@@ -13,7 +13,9 @@ import command.Command;
 import command.JoinCommand;
 import command.LoginCommand;
 import command.PaySuccessCommand;
-import pos.beans.MemberDTO;
+import command.PosMgmtAddCommand;
+import command.PosMgmtListCommand;
+import command.PosSalesMenuListCommand;
 
 @WebServlet("*.do")
 public class MemberController extends HttpServlet {
@@ -31,9 +33,6 @@ public class MemberController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		MemberDTO[] arr = null;
-		
 		System.out.println("doPost() 호출");
 
 		request.setCharacterEncoding("UTF-8");
@@ -63,7 +62,6 @@ public class MemberController extends HttpServlet {
 			System.out.println("loginOk.do 성공");
 			command = new LoginCommand();
 			command.execute(request, response);
-			
 			viewPage = "pay_info.jsp";
 			break;
 			
@@ -72,6 +70,26 @@ public class MemberController extends HttpServlet {
 			command = new PaySuccessCommand();
 			command.execute(request, response);
 			viewPage = "pay_success.jsp";
+			break;
+			
+		case "/HTML/pos_mgmt_list.do":
+			System.out.println("pos_mgmt.list 성공");
+			command = new PosMgmtListCommand();  //바꿔야함
+			command.execute(request, response);
+			viewPage = "pos_mgmt_list.jsp";
+			break;
+		case "/HTML/pos_mgmt_writeOk.do":
+			System.out.println("pos_mgmt.writeOk 성공");
+			command = new PosMgmtAddCommand();  //바꿔야함
+			command.execute(request, response);
+			viewPage = "pos_mgmt_writeOk.jsp";
+			break;
+			
+		case "/HTML/pos_sales.do":
+			System.out.println("pos_sales 성공");
+			command = new PosSalesMenuListCommand();  //바꿔야함
+			command.execute(request, response);
+			viewPage = "pos_sales.jsp";
 			break;
 
 		} // switch

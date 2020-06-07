@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import pos.beans.MemberDAO;
 import pos.beans.MemberDTO;
@@ -14,6 +15,7 @@ public class LoginCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		MemberDAO mdao = new MemberDAO();
 		MemberDTO[] arr = null;
+		HttpSession session = null;
 		
 		String id = request.getParameter("Id");
 		String pw = request.getParameter("Password");
@@ -35,6 +37,7 @@ public class LoginCommand implements Command {
 		
 		
 		request.setAttribute("list", arr);
+		
 		
 	} // execute()
 

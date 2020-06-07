@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="card">
+        <div class="card" onclick="location.href='pos_sales.do'">
             <div class="imgBx">
                 <img src="../images/pos_index_1.png">
                 <h3>판매</h3>
@@ -20,7 +20,7 @@
                 보다 확실하고 효과적인 프로세스로 최고의 경험을 해보세요</p>
             </div>
         </div>
-        <div class="card">
+        <div class="card" onclick="location.href='pos_sales.do'">
             <div class="imgBx">
                 <img src="../images/pos_index_2.png">
                 <h3>매출</h3>
@@ -30,7 +30,7 @@
                 보다 확실하고 효과적인 프로세스로 최고의 경험을 해보세요</p>
             </div>
         </div>
-        <div class="card">
+        <div class="card" onclick="location.href='pos_mgmt_list.do'">
             <div class="imgBx">
                 <img src="../images/pos_index_3.png">
                 <h3>재고</h3>

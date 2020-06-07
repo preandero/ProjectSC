@@ -9,10 +9,11 @@ import javax.servlet.http.HttpSession;
 import pos_mgmt.beans.WriteDAO;
 import pos_mgmt.beans.WriteDTO;
 
-public class PosMgmtListCommand implements Command {
+public class PosSalesMenuListCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		
 		WriteDAO dao = new WriteDAO();   
 		WriteDTO[] arr = null;  
 		
@@ -37,5 +38,7 @@ public class PosMgmtListCommand implements Command {
 		}
 
 	}
+		
+
 
 }
