@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import pos_mgmt.beans.WriteDAO;
 import pos_mgmt.beans.WriteDTO;
@@ -14,10 +15,11 @@ public class PosMgmtListCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		WriteDAO dao = new WriteDAO();   
 		WriteDTO[] arr = null;  
-		
+		HttpSession session = request.getSession();
+		int store_uid = (int) session.getAttribute("mem_uid");
 		try {
 			//트랜잭션수행
-			arr = dao.select();
+			arr = dao.select(store_uid);
 			//결과를 담아야한다.  결과 = arr ,  바구니 = request
 			// list 란 name 으로 request에 arr 값 전달
 			//즉 request에 담아서 컨트롤러에 전달되는 셈.

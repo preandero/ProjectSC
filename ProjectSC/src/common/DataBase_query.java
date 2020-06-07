@@ -44,6 +44,9 @@ public class DataBase_query {
 	
 	public static String SQL_MENU_SELECT_ALL ="SELECT menu_name, menu_price FROM menu_tb";
 	
+	//세션 테스트용 쿼리
+	public static String SQL_MENU_SELECT_ALL2 ="SELECT menu_name, menu_price FROM menu_tb where store_uid = ?";
+	
 	// -------       pos_mgmt_query     end ---------------
 	
 	
