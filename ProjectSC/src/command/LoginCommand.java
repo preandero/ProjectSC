@@ -17,14 +17,11 @@ public class LoginCommand implements Command {
 		
 		String id = request.getParameter("Id");
 		String pw = request.getParameter("Password");
-		System.out.println("id + pw " + id + pw);
 		
 		if(id != null && id.trim().length() != 0 && pw != null && pw.trim().length() != 0) {
 			
 			try {
 				arr = mdao.selectByIdPw(id, pw);
-				
-				System.out.println(arr.toString());
 				
 			} catch(SQLException e) {
 				e.printStackTrace();
@@ -32,7 +29,6 @@ public class LoginCommand implements Command {
 			
 		} else {
 			// 로그인 실패!!
-			return;
 		}
 		
 		
