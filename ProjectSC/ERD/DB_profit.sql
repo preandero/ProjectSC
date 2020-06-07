@@ -101,6 +101,10 @@ CREATE TABLE menu_tb
 	store_uid number NOT NULL,
 	PRIMARY KEY (menu_uid)
 );
+INSERT INTO menu_tb VALUES (SEQ_menu_tb_menu_uid.nextval,'아아',4500,2);
+INSERT INTO menu_tb VALUES (SEQ_menu_tb_menu_uid.nextval,'라뗴',5500,2);
+INSERT INTO menu_tb VALUES (SEQ_menu_tb_menu_uid.nextval,'쏘쿨',6500,2);
+INSERT INTO menu_tb VALUES (SEQ_menu_tb_menu_uid.nextval,'히하히하',7500,2);
 
 SELECT * FROM MENU_TB; 
 

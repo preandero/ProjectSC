@@ -39,5 +39,12 @@ public class DataBase_query {
 	
 	public static final String SQL = "";
 
+	// -------       pos_mgmt_query    start ---------------
+	public static String SQL_MENU_INSERT = "insert into menu_tb values (SEQ_menu_tb_menu_uid.nextval, ?, ?, ?)";
+	
+	public static String SQL_MENU_SELECT_ALL ="SELECT menu_name, menu_price FROM menu_tb";
+	
+	// -------       pos_mgmt_query     end ---------------
+	
 	
 }
