@@ -29,21 +29,21 @@
         		
         		frm = document.forms["formsignup"];
         		var id = frm["Id"].value;
-        		alert(id);
+        		
         		var pw = frm["Password"].value;
-        		alert(pw);
+        		
         		var idChk = document.getElementById("id-format-txt");
         		var pwChk = document.getElementById("pw-format-txt");
         		
         		if(id == null || id == ""){
         			idChk.style.display = "inline";
         			frm["Id"].focus();
-        			return false;
+        			return;
         		}
         		if(pw == null || pw == ""){
         			pwChk.style.display = "inline";
         			frm["Password"].focus();
-        			return false;
+        			return;
         		}
         		
         		frm.submit();

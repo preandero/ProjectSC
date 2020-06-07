@@ -53,11 +53,11 @@
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active"><a class="nav-link h3 px-4"
 					href="#"><i class="fas fa-arrow-circle-left icon-2x"></i></a></li>
-				<li class="nav-item"><a class="nav-link h3 px-2">ORDER</a></li>
+				<li class="nav-item"><a class="nav-link h3 px-2" href="pos_sales.do">ORDER</a></li>
 				<li class="nav-item"><a class="nav-link h3 px-4" href="#">SALES</a>
 				</li>
 				<li class="nav-item"><a
-					class="nav-link bg-white text-dark h3 px-4" href="#">MENU CUSTOM</a></li>
+					class="nav-link bg-white text-dark h3 px-4">MENU CUSTOM</a></li>
 			</ul>
 
 			<div class="btn-group">
@@ -68,10 +68,10 @@
 					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					Side Menu</button>
 				<div class="dropdown-menu dropdown-menu-right ">
-					<button class="dropdown-item" type="button">My page</button>
-					<button class="dropdown-item" type="button">CS Board</button>
+					<button class="dropdown-item" type="button" onclick="location.href='my_page.html'">My page</button>
+					<button class="dropdown-item" type="button" onclick="location.href='cs_list.jsp'">CS Board</button>
 					<div class="dropdown-divider"></div>
-					<button class="dropdown-item" type="button">LogOut</button>
+					<button class="dropdown-item" type="button" onclick="location.href='#'">LogOut</button>
 				</div>
 			</div>
 		</div>

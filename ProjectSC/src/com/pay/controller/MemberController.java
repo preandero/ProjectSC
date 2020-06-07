@@ -15,6 +15,7 @@ import command.LoginCommand;
 import command.PaySuccessCommand;
 import command.PosMgmtAddCommand;
 import command.PosMgmtListCommand;
+import command.PosSalesMenuListCommand;
 
 @WebServlet("*.do")
 public class MemberController extends HttpServlet {
@@ -82,6 +83,13 @@ public class MemberController extends HttpServlet {
 			command = new PosMgmtAddCommand();  //바꿔야함
 			command.execute(request, response);
 			viewPage = "pos_mgmt_writeOk.jsp";
+			break;
+			
+		case "/HTML/pos_sales.do":
+			System.out.println("pos_sales 성공");
+			command = new PosSalesMenuListCommand();  //바꿔야함
+			command.execute(request, response);
+			viewPage = "pos_sales.jsp";
 			break;
 
 		} // switch
