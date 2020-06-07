@@ -35,7 +35,7 @@
         <div id="signUpBtn">
 <!--         위에께 원래꺼 -->
 <!--           <button type="button" onclick="location.href='pos_index.jsp'">Start Service</button> -->
-        		<button type="button" onclick="location.href='pos_mgmt_list.do'">Start Service</button>
+        		<button type="button" onclick="location.href='pos_index.jsp'">Start Service</button>
         </div>
       </form>
     </div>
