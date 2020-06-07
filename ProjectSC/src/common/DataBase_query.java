@@ -2,9 +2,9 @@ package common;
 
 public class DataBase_query {
 	public static final String DRIVER = "oracle.jdbc.driver.OracleDriver";
-	public static final String URL = "jdbc:oracle:thin:@localhost:1521:XE";
-	public static final String USERID = "scott0316";
-	public static final String USERPW = "tiger0316";
+	public static final String URL = "jdbc:oracle:thin:@winetree94.io:1521:XE";
+	public static final String USERID = "bini1004";
+	public static final String USERPW = "soonmo1004";
 	
 	// 회원가입해서 DB 에 INSERT
 
@@ -42,7 +42,7 @@ public class DataBase_query {
 	// -------       pos_mgmt_query    start ---------------
 	public static String SQL_MENU_INSERT = "insert into menu_tb values (SEQ_menu_tb_menu_uid.nextval, ?, ?, ?)";
 	
-	public static String SQL_MENU_SELECT_ALL ="SELECT menu_name, menu_price FROM menu_tb";
+	public static String SQL_MENU_SELECT_ALL ="SELECT menu_name, menu_price FROM menu_tb WHERE store_uid = ?";
 	
 	// -------       pos_mgmt_query     end ---------------
 	

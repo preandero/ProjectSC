@@ -1,15 +1,4 @@
 
-/* Drop Triggers */
-
-DROP TRIGGER TRI_cs_tb_cs_uid;
-DROP TRIGGER TRI_inventory_tb_inv_uid;
-DROP TRIGGER TRI_member_tb_mem_uid;
-DROP TRIGGER TRI_menu_tb_menu_uid;
-DROP TRIGGER TRI_orderlist_orderlist_uid;
-DROP TRIGGER TRI_order_tb_order_uid;
-DROP TRIGGER TRI_sales_tb_sales_uid;
-DROP TRIGGER TRI_storeinfo_tb_store_uid;
-DROP TRIGGER TRI_subcribe_tb_sub_uid;
 
 /* Drop Tables */
 
@@ -91,7 +80,7 @@ CREATE TABLE storeinfo_tb
 
 SELECT * FROM storeinfo_tb;
 DELETE mem_uid FROM MEMBER_TB;
-
+SELECT * FROM member_tb WHERE MEM_ID = 'suyeong' AND mem_pw = sorktndud1;
 
 CREATE TABLE menu_tb
 (
