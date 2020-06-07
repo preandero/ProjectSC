@@ -1,3 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>글작성</title>
+<style>
 * {
 	box-sizing: border-box;
 }
@@ -211,3 +220,79 @@ b{
         .form-elegant .modal-footer {
             font-weight: 400;
         }
+</style>
+</head>
+<script>
+function writeChk(){
+	
+	frm = document.forms["formwrite"];
+	var id = frm["Id"].value;
+	//alert(id);
+	var pw = frm["Password"].value;
+	//alert(pw);
+	var idChk = document.getElementById("id-format-txt");
+	var pwChk = document.getElementById("pw-format-txt");
+	
+	if(id == null || id == ""){
+		idChk.style.display = "inline";
+		frm["Id"].focus();
+		return false;
+	}
+	if(pw == null || pw == ""){
+		pwChk.style.display = "inline";
+		frm["Password"].focus();
+		return false;
+	}
+	
+	frm.submit();
+	
+}
+
+</script>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="../images/logo.png" id="logoimg">
+      <span id="slogo"><b>Asangbinsi</b></span>
+    </div>
+  </header>
+  <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <div class="container" id="container">
+
+    <div class="form-container sign-in-container">
+      <form action="writeOk.do" id="formwrite" method="POST" onsubmit="return writeChk();">
+        <h1>글작성</h1>
+        <span>Please fill in login form</span>
+        <label class="label" for="name">작성자</label>
+        <span id="id-format-txt">Incorrect ID format</span>
+        <input type="text" placeholder="ID" id="Id" name="Id" />
+        <label class="label" for="name">제목</label>
+        <span id="pw-format-txt">Incorrect Password format</span>
+        <input type="password" placeholder="Password" id="Password" name="Password" />
+        <span id="id-pw-backChk">Incorrect ID or Password</span>
+        <label class="label" for="content">내용</label>
+        <textarea name="content"></textarea>
+        <button type="submit" class="ghost" id="signUp" onclick="writeChk();">등록</button>
+        <button type="button" onclick="location.href='list.do'">목록으로</button>
+      </form>
+
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
