@@ -76,7 +76,7 @@
                     <button class="dropdown-item" type="button">My page</button>
                     <button class="dropdown-item" type="button">CS Board</button>
                     <div class="dropdown-divider"></div>
-                    <button class="dropdown-item" type="button">LogOut</button>
+                    <button class="dropdown-item" type="button" onclick="location.href='logOut.do'">LogOut</button>
                 </div>
             </div>
 

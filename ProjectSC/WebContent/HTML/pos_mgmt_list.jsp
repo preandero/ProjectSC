@@ -41,7 +41,7 @@
 <body>
 	<!-- 포스 메뉴 화면 틀 시작-->
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-		<a class="navbar-brand h2" href="#">POS WEBAPP!</a>
+		<a class="navbar-brand h2" href="#">POS WEB-APP!</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarsExampleDefault"
 			aria-controls="navbarsExampleDefault" aria-expanded="false"
@@ -71,7 +71,7 @@
 					<button class="dropdown-item" type="button" onclick="location.href='my_page.html'">My page</button>
 					<button class="dropdown-item" type="button" onclick="location.href='cs_list.jsp'">CS Board</button>
 					<div class="dropdown-divider"></div>
-					<button class="dropdown-item" type="button" onclick="location.href='#'">LogOut</button>
+					<button class="dropdown-item" type="button" onclick="location.href='logOut.do'">LogOut</button>
 				</div>
 			</div>
 		</div>

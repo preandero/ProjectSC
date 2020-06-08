@@ -78,6 +78,7 @@ public class MemberController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "pos_mgmt_list.jsp";
 			break;
+			
 		case "/HTML/pos_mgmt_writeOk.do":
 			System.out.println("pos_mgmt.writeOk 성공");
 			command = new PosMgmtAddCommand();  //바꿔야함
@@ -90,6 +91,9 @@ public class MemberController extends HttpServlet {
 			command = new PosSalesMenuListCommand();  //바꿔야함
 			command.execute(request, response);
 			viewPage = "pos_sales.jsp";
+			break;
+			
+		case "/HTML/logOut.do":
 			break;
 
 		} // switch
