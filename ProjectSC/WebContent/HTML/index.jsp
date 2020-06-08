@@ -42,7 +42,9 @@
                     </div>
                     <div>
 
+
                         <a class="vid-txt-a2" onclick="location.href='about_us.html'">비회원이신가요?&emsp; <br>새로운 계정을 생성해보세요</a>
+
 
 
                     </div>
