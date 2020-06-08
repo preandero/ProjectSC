@@ -182,6 +182,27 @@ public class MemberDAO {
 		arr = createArray(rs);
 		return arr;
 	}
+	
+	public Date periodSelectByIdPw(String id, String pw) throws SQLException{
+		
+		Date period = null;
+		try {
+		pstmt = conn.prepareStatement(DataBase_query.SQL_MEM_PERIOD);
+		pstmt.setString(1, id);
+		pstmt.setString(2, pw);
+		rs = pstmt.executeQuery();
+		
+		period = rs.getDate(0);
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			close();
+		}
+		return period;
+		
+	}
 
 
 } // PaySuccessDAO{}
