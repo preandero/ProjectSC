@@ -59,10 +59,9 @@ public class MemberController extends HttpServlet {
 			break;
 			
 		case "/HTML/loginOk.do":
-			System.out.println("loginOk.do 성공");
 			command = new LoginCommand();
 			command.execute(request, response);
-			viewPage = "pay_info.jsp";
+			viewPage = "loginOk.jsp";
 			break;
 			
 		case "/HTML/paySuccess.do":
