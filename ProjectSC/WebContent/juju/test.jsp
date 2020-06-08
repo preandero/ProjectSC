@@ -29,7 +29,7 @@ h1 {
 
 span {
     font-size: 12px;
-    margin: 20px 0px;
+    margin: 0px 0px;
 }
 
 a {
@@ -39,10 +39,12 @@ a {
 	margin: 15px 0;
 }
 
-.label{
+.label {
     margin-top: 10px;
     font-size: 13px;
     text-align: left;
+    width: 5%;
+    margin-right: 95%;
 }
 
 button {
@@ -77,37 +79,46 @@ button:hover{
 form {
     opacity: 0.85;
     z-index: 3;
-	background-color: #FFFFFF;
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	padding: 0px 50px;
-	height: 100%;
+    background-color: #FFFFFF;
+    /* display: flex; */
+    justify-content: center;
+    flex-direction: column;
+    padding: 0px 50px;
+    height: 100%;
 }
 
 form label{
     font-size: 11px;
 }
 
-#id-format-txt, #pw-format-txt, #id-pw-backChk {
+#name-format-txt, #subject-format-txt, #name-subject-backChk {
 	display: none;
+	margin-right: 81%;
 }
-
+#name{
+margin-right: 81%;
+width: 17%;
+height: 30px;
+}
+#subject {
+    margin-right: 0%;
+    width: 100%;
+    height: 30px;
+}
 input {
-	background-color: #eee;
-	border: none;
-	padding: 12px 15px;
-	margin: 8px 0;
-	width: 100%;
+    background-color: #eee;
+    border: none;
+    padding: 12px 15px;
+    /*margin: 0px 0;*/
+    margin-right: 91%;
+    
 }
-
 .container {
-	
-    margin-top: 100px;
+    margin-top: 110px;
 	background-color: #fff;
 	border-radius: 10px;
-  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-			0 10px 10px rgba(8, 8, 8, 0.22);
+  	/*box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(8, 8, 8, 0.22);*/
 	position: relative;
 	overflow: hidden;
     width: 908px;
@@ -125,9 +136,9 @@ input {
 }
 
 .sign-in-container {
-	left: 0;
-	width: 50%;
-	z-index: 1;
+    left: 0;
+    width: 100%;
+    z-index: 1;
 }
 
 .overlay-container {
@@ -220,27 +231,30 @@ b{
         .form-elegant .modal-footer {
             font-weight: 400;
         }
+        textarea{
+        width: 100%;
+    height: 41%;}
 </style>
 </head>
 <script>
 function writeChk(){
 	
 	frm = document.forms["formwrite"];
-	var id = frm["Id"].value;
+	var name = frm["name"].value;
 	//alert(id);
-	var pw = frm["Password"].value;
+	var subject = frm["subject"].value;
 	//alert(pw);
-	var idChk = document.getElementById("id-format-txt");
-	var pwChk = document.getElementById("pw-format-txt");
+	var nameChk = document.getElementById("name-format-txt");
+	var subjectChk = document.getElementById("subject-format-txt");
 	
-	if(id == null || id == ""){
-		idChk.style.display = "inline";
-		frm["Id"].focus();
+	if(name == null || name == ""){
+		nameChk.style.display = "inline";
+		frm["name"].focus();
 		return false;
 	}
-	if(pw == null || pw == ""){
-		pwChk.style.display = "inline";
-		frm["Password"].focus();
+	if(subject == null || subject == ""){
+		subjectChk.style.display = "inline";
+		frm["subject"].focus();
 		return false;
 	}
 	
@@ -263,18 +277,21 @@ function writeChk(){
     <div class="form-container sign-in-container">
       <form action="writeOk.do" id="formwrite" method="POST" onsubmit="return writeChk();">
         <h1>글작성</h1>
-        <span>Please fill in login form</span>
+ 		<br>
         <label class="label" for="name">작성자</label>
-        <span id="id-format-txt">Incorrect ID format</span>
-        <input type="text" placeholder="ID" id="Id" name="Id" />
+        <span id="name-format-txt">Incorrect Name format</span>
+        <input type="text" placeholder="" id="name" name="name" />
         <label class="label" for="name">제목</label>
-        <span id="pw-format-txt">Incorrect Password format</span>
-        <input type="password" placeholder="Password" id="Password" name="Password" />
-        <span id="id-pw-backChk">Incorrect ID or Password</span>
+        <span id="subject-format-txt">Incorrect subject format</span>
+        <input type="text" placeholder="" id="subject" name="subject" />
         <label class="label" for="content">내용</label>
         <textarea name="content"></textarea>
-        <button type="submit" class="ghost" id="signUp" onclick="writeChk();">등록</button>
-        <button type="button" onclick="location.href='list.do'">목록으로</button>
+        <div id="btn">
+        <button onclick="location.href='update.do?uid=<%= uid%>'">수정하기</button>
+<button onclick="location.href = 'list.do'">목록보기</button>
+<button onclick="chkDelete(<%= uid %>)">삭제하기</button>
+<button onclick="location.href = 'write.do'">신규등록</button>
+        </div>
       </form>
 
     </div>
