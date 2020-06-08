@@ -83,7 +83,7 @@ CREATE TABLE storeinfo_tb
 	mem_uid number NOT NULL,
 	PRIMARY KEY (store_uid)
 );
-
+/**/
 SELECT * FROM storeinfo_tb;
 DELETE mem_uid FROM MEMBER_TB;
 SELECT * FROM member_tb WHERE MEM_ID = 'suyeong' AND mem_pw = sorktndud1;
@@ -103,7 +103,7 @@ INSERT INTO menu_tb VALUES (SEQ_menu_tb_menu_uid.nextval,'히하히하',7500,2);
 INSERT INTO menu_tb VALUES (SEQ_menu_tb_menu_uid.nextval,'아아',4500,3);
 SELECT * FROM MENU_TB; 
 SELECT * FROM MENU_TB mt WHERE STORE_UID = 3;
-
+SELECT * FROM menu_tb WHERE STORE_UID = 11;
 
 CREATE TABLE order_detail
 (

@@ -67,13 +67,13 @@ public class WriteDAO {
 		WriteDTO[] arr = null;   //DTO 배열 초기화
 		ArrayList<WriteDTO> list = new ArrayList<WriteDTO>();
 		while(rs.next()){
-				//rs의 값 받아오기
-//			int uid = rs.getInt("wr_uid");
+			//rs의 값 받아오기
+			int uid = rs.getInt("menu_uid");
 			String menu_name = rs.getString("menu_name");
 			int menu_price = rs.getInt("menu_price");
 
 	
-			WriteDTO dto = new WriteDTO(menu_name ,menu_price);
+			WriteDTO dto = new WriteDTO(uid, menu_name ,menu_price);
 			list.add(dto);
 		}//end while
 		int size = list.size();
@@ -101,4 +101,18 @@ public class WriteDAO {
 	
 		return arr;
 	}//end select
+	
+	public int deleteByUid(int uid) throws SQLException{
+		int cnt = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(DataBase_query.SQL_MENU_DELETE);
+			pstmt.setInt(1, uid);
+			cnt = pstmt.executeUpdate();
+		}finally {
+			close();
+		}
+		
+		return cnt;
+	}//end deleteByUid
 }
