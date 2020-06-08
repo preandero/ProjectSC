@@ -36,7 +36,7 @@
 
           <th>UID</th>
           <th>Title</th>
-          <th>Name</th>
+          <th>m_uid</th>
           <th>regdate</th>
         </tr>
 <%
@@ -46,7 +46,7 @@
          <tr>
             <td><%= arr[i].getUid() %></td>
             <td><a href="cs_view.do?uid=<%= arr[i].getUid()%>"><%= arr[i].getSubject() %></a></td>
-            <td><%=arr[i].getName() %></td>
+            <td><%=arr[i].getM_uid() %></td>
             <%-- <td><%= arr[i].getViewCnt() %></td> --%>
             <td><%= arr[i].getRegDate() %></td>
          </tr>

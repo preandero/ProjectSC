@@ -7,7 +7,7 @@ public class CS_WriteDTO {
 	private String content;		
 	private String regDate;
 	private int mem_uid;
-	private String name;
+	
 
 
 
@@ -16,16 +16,6 @@ public class CS_WriteDTO {
 		System.out.println("WriteDTO() 생성");
 	}
 
-
-	public CS_WriteDTO(int uid, String subject, String content,int m_uid,String name) {
-		super();
-		this.uid = uid;
-		this.subject = subject;
-		this.content = content;
-		this.mem_uid = m_uid;
-		this.name=name;
-
-	}
 
 	public CS_WriteDTO(int uid, String subject, String content,int m_uid) {
 		super();
@@ -36,6 +26,16 @@ public class CS_WriteDTO {
 		
 
 	}
+
+//	public CS_WriteDTO(int uid, String subject, String content,int m_uid) {
+//		super();
+//		this.uid = uid;
+//		this.subject = subject;
+//		this.content = content;
+//		this.mem_uid = m_uid;
+//		
+//
+//	}
 
 	
 
@@ -89,14 +89,14 @@ public class CS_WriteDTO {
 	}
 	
 	
-	public String getName() {
-		return name;
-	}
-	
-	
-	public void setName(String name) {
-		this.name = name;
-	}
-	
+//	public String getName() {
+//		return name;
+//	}
+//	
+//	
+//	public void setName(String name) {
+//		this.name = name;
+//	}
+//	
 	
 }

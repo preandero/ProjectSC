@@ -10,14 +10,14 @@
 		int paydate = -5;
     	MemberDTO[] arr = (MemberDTO[])request.getAttribute("list");  //형을 맞춰줘야한다.
     	
-    	if(arr != null ){
-    		
-    		int mem_uid = arr[0].getUid();
-        	session.setAttribute("mem_uid", mem_uid);
-        	if(arr[0].getPeriod() != 0){
+    	if(arr != null && arr[0].getPeriod() != 0){
+    	int mem_uid = arr[0].getUid();
+    	session.setAttribute("mem_uid", mem_uid);	
     	paydate = (Integer)request.getAttribute("compare");
-        	}
     	}
+    	
+    	
+    	
     %>
 
 <% if(arr == null ){ %>
