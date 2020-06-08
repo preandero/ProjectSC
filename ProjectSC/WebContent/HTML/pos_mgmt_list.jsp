@@ -5,7 +5,6 @@
 	WriteDTO[] arr = (WriteDTO[]) request.getAttribute("pos_mgmt_list");
 %>
 
-<!-- 	String SQL_INSERT_MENU = "insert into demo_menu_table values (uid_seq.nextval, ?, ?)"; -->
 <%
 // 	int cnt = (Integer) request.getAttribute("result");
 // int mem_uid = (Integer)session.getAttribute("mem_uid");
@@ -37,6 +36,7 @@
 	
 </script>
 <link href="../CSS/pos_mgmt.css" rel="stylesheet" type="text/css">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 	<!-- 포스 메뉴 화면 틀 시작-->
@@ -131,7 +131,38 @@
 		<button type="button" class="btn btn-outline-primary btn-lg mi" data-toggle="modal" data-target="#addmenu">Add</button>
 		<button type="button" class="btn btn-outline-primary btn-lg mi" id="deleteTrigger">Delete</button>
 	</div>
+	
+	<!-- 수정을 위해 더블클릭하면 나오는 모달 -->
+	<div class="modal fade" id="updatemenu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog .modal-lg modal-right"> 
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">Update menu</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+           <div class="form-container sign-in-container">
+				<!-- 폼 시작 -->
+<!-- 				<script src="JS/chkSubmit"></script> -->
+            <form action="pos_mgmt_Update.do" id="formUpdate" method="post" onsubmit="return chkSubmit()">
+               <label class="label" for="name">Menu_NAME</label>
+               <input type="text" placeholder="수정할 메뉴이름을 입력하세요" name="menu_update_name"/>
+               <label class="label" for="name">Menu_PRICE</label>
+               <input placeholder="수정할 가격을 입력하세요" name="menu_update_price"/>
+	            <div class="modal-footer">
+	              <button type="submit" class="btn btn-primary ">Update</button>
+	              <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
+	            </div>
+            </form>
+				<!-- 폼 끝 -->            
+         </div>
+          </div>
+        </div>
+      </div>
 
+	<!-- 수정을 위해 더블클릭하면 나오는 모달 -->
+	
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script>
 function chkSubmit(){
@@ -177,6 +208,14 @@ function onSuccess(json, status){
 function onError(data, status){ 
  alert("error");
 }
-
 </script>
+<!-- 더블 클릭 -->
+<script>
+$('button.mi').dblclick(function(){
+// 	$(this).attr("data-target","#updatemenu");
+// 	$('#updatemenu').show();
+	$('#updatemenu').modal('show');
+})
+</script>
+<!-- 더블 클릭 -->
 </html>
