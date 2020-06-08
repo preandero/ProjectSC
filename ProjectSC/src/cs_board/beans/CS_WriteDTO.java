@@ -27,6 +27,15 @@ public class CS_WriteDTO {
 
 	}
 
+	public CS_WriteDTO(int uid, String subject, String content,int m_uid) {
+		super();
+		this.uid = uid;
+		this.subject = subject;
+		this.content = content;
+		this.mem_uid = m_uid;
+		
+
+	}
 
 	
 

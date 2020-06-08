@@ -89,7 +89,7 @@ public class CS_WriteDAO {
 			Date d = rs.getDate("cs_regdate");
 			Time t = rs.getTime("cs_regdate");
 			int m_uid=rs.getInt("mem_uid");
-			String name = rs.getString("cs_name");
+//			String name = rs.getString("cs_name");
 			//위에 Date, Time 은  java.sql 걸로 돌아감
 			
 			String regDate="";
@@ -98,7 +98,7 @@ public class CS_WriteDAO {
 							new SimpleDateFormat("hhmmss").format(t);
 			}
 	
-			CS_WriteDTO dto = new CS_WriteDTO(uid, subject, content,m_uid,name);
+			CS_WriteDTO dto = new CS_WriteDTO(uid, subject, content,m_uid);
 			dto.setRegDate(regDate);
 			list.add(dto);
 		}//end while

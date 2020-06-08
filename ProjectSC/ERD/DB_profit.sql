@@ -50,6 +50,7 @@ CREATE TABLE cs_tb
 	PRIMARY KEY (cs_uid)
 );
 
+SELECT * FROM cs_tb;
 
 CREATE TABLE member_tb
 (
