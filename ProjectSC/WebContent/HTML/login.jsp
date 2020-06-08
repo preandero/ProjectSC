@@ -7,7 +7,7 @@
 	MemberDTO[] arr = (MemberDTO[])request.getAttribute("list");
 	int mem_uid = arr[0].getUid();
 	session.setAttribute("mem_uid", mem_uid);	
-
+	push
 	
 %> --%>
 	

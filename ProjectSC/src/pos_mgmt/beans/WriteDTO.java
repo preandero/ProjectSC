@@ -16,6 +16,15 @@ public class WriteDTO {
 			this.menu_name = menu_name;
 			this.menu_price = menu_price;
 		}
+		
+		
+
+		public WriteDTO(int uid, String menu_name, int menu_price) {
+			super();
+			this.uid = uid;
+			this.menu_name = menu_name;
+			this.menu_price = menu_price;
+		}
 
 		public WriteDTO(int uid, String menu_name, int menu_price, int store_uid) {
 			super();
