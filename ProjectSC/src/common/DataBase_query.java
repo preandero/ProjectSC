@@ -40,7 +40,7 @@ public class DataBase_query {
 	public static final String SQL = "";
 
 	// -------       pos_mgmt_query    start ---------------
-	public static String SQL_MENU_INSERT = "insert into menu_tb values (SEQ_menu_tb_menu_uid.nextval, ?, ?, ?)";
+	public static String SQL_MENU_INSERT = "insert into menu_tb values (SEQ_menu_uid.nextval, ?, ?, ?)";
 	
 //	public static String SQL_MENU_SELECT_ALL ="SELECT menu_name, menu_price FROM menu_tb WHERE store_uid = ?";
 	public static String SQL_MENU_SELECT_ALL ="select * from menu_tb WHERE store_uid = ?";
@@ -61,7 +61,7 @@ public class DataBase_query {
 	//게시글 추가 (C)
 	public static final String SQL_WRITE_INSERT = "INSERT INTO cs_tb "
 					+"(cs_uid, cs_subject, cs_content, mem_uid)"
-					+" VALUES(cs_SEQ.nextval, ?, ?, ?)";
+					+" VALUES(SEQ_cs_uid.nextval, ?, ?, ?)";
 	
 	// 1명 게시글 읽어오기(R)
 	public static final String SQL_WRITE_SELECT_BY_UID = 

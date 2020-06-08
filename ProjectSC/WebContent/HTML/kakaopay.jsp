@@ -3,7 +3,7 @@
 <%
     String email = (String)request.getParameter("email");
     int price = Integer.parseInt(request.getParameter("price"));    
-	String period = (String)request.getParameter("period");
+	int period = Integer.parseInt(request.getParameter("period"));
 	String method = request.getParameter("method");
 	
 	int mem_uid = (Integer)session.getAttribute("mem_uid");
