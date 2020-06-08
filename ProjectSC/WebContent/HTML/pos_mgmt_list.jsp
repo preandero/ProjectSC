@@ -209,10 +209,7 @@ function onError(data, status){
  alert("error");
 }
 </script>
-<<<<<<< HEAD
-=======
 
->>>>>>> refs/heads/master
 <!-- 더블 클릭 -->
 <script>
 $('button.mi').dblclick(function(){
@@ -222,9 +219,8 @@ $('button.mi').dblclick(function(){
 })
 </script>
 <!-- 더블 클릭 -->
-<<<<<<< HEAD
-</html>
-=======
+
 </html>
 
->>>>>>> refs/heads/master
+
+
