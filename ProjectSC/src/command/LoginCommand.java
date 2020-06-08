@@ -23,35 +23,44 @@ public class LoginCommand implements Command {
 		String id = request.getParameter("Id");
 		String pw = request.getParameter("Password");
 		System.out.println("id + pw " + id + pw);
-//		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-//		Date sysdate = new Date();
-//		String date = dateFormat.format(sysdate);
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date sysdate = new Date();
+		
+		String date = dateFormat.format(sysdate);
 		
 		
-//		Date comparedate;
+		Date comparedate;
 		
 		if(id != null && id.trim().length() != 0 && pw != null && pw.trim().length() != 0) {
 			
 			try {
 				arr = mdao.selectByIdPw(id, pw);
+				
+				Date paydate = new MemberDAO().periodSelectByIdPw(id, pw);
+				System.out.println(paydate);
+				if(arr != null) {
+				
 				request.setAttribute("list", arr);
+				}
 				
-				Date paydate = mdao.periodSelectByIdPw(id, pw);
 				
-//				System.out.println(paydate);
-//				System.out.println(dateFormat.format(sysdate));
-//				
-//				comparedate = dateFormat.parse(date);
-//				int compare = paydate.compareTo(comparedate);
-//				
-//				System.out.println(compare);
-				
+				if(paydate != null) {
+
+					comparedate = dateFormat.parse(date);
+					int compare = paydate.compareTo(comparedate);
+					
+					System.out.println("paydate = " + paydate);
+					System.out.println("sysdate = " + date);
+					System.out.println(compare);
+					
+					request.setAttribute("compare", (Object)compare);
+				}
 			} catch(SQLException e) {
 				e.printStackTrace();
 			} 
-//			catch (ParseException e1) {
-//				e1.printStackTrace();
-//			}// try
+			catch (ParseException e1) {
+				e1.printStackTrace();
+			}// try
 			
 		} else {
 			// 로그인 실패!!

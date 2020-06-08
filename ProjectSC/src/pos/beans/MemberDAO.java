@@ -191,9 +191,10 @@ public class MemberDAO {
 		pstmt.setString(1, id);
 		pstmt.setString(2, pw);
 		rs = pstmt.executeQuery();
+		while(rs.next()) {
+		period = rs.getDate("PERIOD");
 		
-		period = rs.getDate(0);
-		
+		}
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
