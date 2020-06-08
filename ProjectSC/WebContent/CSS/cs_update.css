@@ -32,19 +32,43 @@ a {
 }
 
 .label {
-   color: white;
     margin-top: 10px;
     font-size: 13px;
     text-align: left;
     width: 5%;
     margin-right: 95%;
 }
-
-button {   
+#btn{
+border-radius: 20px;
+   border: 1px solid aliceblue;
+   background-color: black;
+   color: #FFFFFF;
+   font-size: 12px;
+   font-weight: bold;
+   padding: 12px 45px;
+   letter-spacing: 1px;
+   text-transform: uppercase;
+   transition: transform 80ms ease-in;
+   margin: 0;
+}
+#btn.ghost{
+border-style: none;
+   border-color: #FFFFFF;
+   color: white;
+    margin-top: 40px;
+}
+#btn:hover{
+ border-style: none;
+    border-color: #FFFFFF;
+   transition: ease-in-out 0.7s;
+   transform : scale(1.2);
+   opacity: 1;
+}
+button {
    border-radius: 20px;
    border: 1px solid aliceblue;
    background-color: black;
-   color: white;
+   color: #FFFFFF;
    font-size: 12px;
    font-weight: bold;
    padding: 12px 45px;
@@ -52,9 +76,7 @@ button {
    text-transform: uppercase;
    transition: transform 80ms ease-in;
 }
-#btn{
-   color:white;
-}
+
 button.ghost {
    border-style: none;
    border-color: #FFFFFF;
@@ -68,7 +90,6 @@ button:hover{
    transition: ease-in-out 0.7s;
    transform : scale(1.2);
    opacity: 1;
-   color: white;
 
 }
 
@@ -122,9 +143,6 @@ input {
     
    max-width: 100%;
    min-height: 480px;
-}
-#txt{
-   color: black;
 }
 
 .form-container {
