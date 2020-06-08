@@ -83,7 +83,7 @@ CREATE TABLE storeinfo_tb
 	mem_uid number NOT NULL,
 	PRIMARY KEY (store_uid)
 );
-
+/**/
 SELECT * FROM storeinfo_tb;
 DELETE mem_uid FROM MEMBER_TB;
 SELECT * FROM member_tb WHERE MEM_ID = 'suyeong' AND mem_pw = sorktndud1;
