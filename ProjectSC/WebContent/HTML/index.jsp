@@ -41,7 +41,14 @@
                         <a class="vid-txt-a1" onclick="location.href='login.do'">정회원이신가요?&emsp;<br> 지금바로 POS 를 이용해보세요</a>
                     </div>
                     <div>
+<<<<<<< HEAD
                         <a class="vid-txt-a2" onclick="location.href='joinUs.do'">비회원이신가요?&emsp; <br>새로운 계정을 생성해보세요</a>
+=======
+
+                        <a class="vid-txt-a2" onclick="location.href='about_us.html'">비회원이신가요?&emsp; <br>새로운 계정을 생성해보세요</a>
+
+
+>>>>>>> refs/heads/master
                     </div>
                 </div>
             </div>
