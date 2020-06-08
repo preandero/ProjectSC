@@ -50,7 +50,7 @@ public class DataBase_query {
 	//세션 테스트용 쿼리
 	public static String SQL_MENU_SELECT_ALL2 ="SELECT menu_name, menu_price FROM menu_tb where store_uid = ?";
 	
-	public static String SQL_MEM_PERIOD =  "SELECT MEM_SUB_REGDATE + MEM_SUB_PERIOD FROM MEMBER_TB WHERE mem_id = ? AND mem_pw = ?";
+	public static String SQL_MEM_PERIOD =  "SELECT (MEM_SUB_REGDATE + MEM_SUB_PERIOD) AS PERIOD  FROM MEMBER_TB WHERE mem_id = ? AND mem_pw = ?";
 	
 	// -------       pos_mgmt_query     end ---------------
 	

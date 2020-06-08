@@ -3,19 +3,16 @@
 <!DOCTYPE html>
 <html lang="ko">
 
-<% 
-	MemberDTO[] arr = (MemberDTO[])request.getAttribute("list");
-	int mem_uid = arr[0].getUid();
-	session.setAttribute("mem_uid", mem_uid);	
 
-	
-%>
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../CSS/pay_info.css" rel="stylesheet" type="text/css">
   <meta charset="UTF-8">
   <title>pay info</title>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"
+	integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+	crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -36,16 +33,15 @@
           <i class="fa fa-sort"></i>
           <select class="floatLabel" name="period">
             <option value="select">Select option</option>
-            <option value="30">30 days ￦20,000</option>
-            <option value="180">6 month ￦70,000</option>
-            <option value="365">1 year ￦120,000</option>
-            <option value="0">30days FREE</option>
+            <option value="30" id="day">30 days ￦20,000</option>
+            <option value="180" id="month">6 month ￦70,000</option>
+            <option value="365" id="year">1 year ￦120,000</option>
 
           </select>
 
         </div>
         <label class="label" for="name">가격</label>
-        <input type="text" placeholder="" id="price" name="price" />
+        <input type="text" placeholder="price" id="price" name="price" disabled/>
         <label class="label" for="name">결제방식</label>
 
         <div class="controls">
@@ -77,7 +73,16 @@
 
     </div>
   </div>
-  <script src="./script.js"></script>
 </body>
+
+<script>
+		if($('#day option:selected')){
+			$('#price').html('￦20,000');
+		}
+				
+		
+		
+
+</script>
 
 </html>
