@@ -1,6 +1,9 @@
 package command;
 
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,17 +23,35 @@ public class LoginCommand implements Command {
 		String id = request.getParameter("Id");
 		String pw = request.getParameter("Password");
 		System.out.println("id + pw " + id + pw);
+//		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//		Date sysdate = new Date();
+//		String date = dateFormat.format(sysdate);
+		
+		
+//		Date comparedate;
 		
 		if(id != null && id.trim().length() != 0 && pw != null && pw.trim().length() != 0) {
 			
 			try {
 				arr = mdao.selectByIdPw(id, pw);
+				request.setAttribute("list", arr);
 				
-				System.out.println(arr.toString());
+				Date paydate = mdao.periodSelectByIdPw(id, pw);
+				
+//				System.out.println(paydate);
+//				System.out.println(dateFormat.format(sysdate));
+//				
+//				comparedate = dateFormat.parse(date);
+//				int compare = paydate.compareTo(comparedate);
+//				
+//				System.out.println(compare);
 				
 			} catch(SQLException e) {
 				e.printStackTrace();
-			} // try
+			} 
+//			catch (ParseException e1) {
+//				e1.printStackTrace();
+//			}// try
 			
 		} else {
 			// 로그인 실패!!
@@ -40,7 +61,7 @@ public class LoginCommand implements Command {
 		
 		
 		
-		request.setAttribute("list", arr);
+		
 		
 		
 	} // execute()
