@@ -47,6 +47,7 @@ public class DataBase_query {
 	
 	public static String SQL_MENU_DELETE = "delete from menu_tb where menu_uid = ?";
 	
+	public static String SQL_MENU_UPDATE = "update menu_tb set menu_name = ?, menu_price = ? where menu_uid = ?";  // 여기 해야해
 	//세션 테스트용 쿼리
 	public static String SQL_MENU_SELECT_ALL2 ="SELECT menu_name, menu_price FROM menu_tb where store_uid = ?";
 	

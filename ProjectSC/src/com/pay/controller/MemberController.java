@@ -22,6 +22,7 @@ import command.PaySuccessCommand;
 import command.PosMgmtAddCommand;
 import command.PosMgmtDeleteCommand;
 import command.PosMgmtListCommand;
+import command.PosMgmtUpdateCommand;
 import command.PosSalesMenuListCommand;
 
 @WebServlet("*.do")
@@ -80,13 +81,13 @@ public class MemberController extends HttpServlet {
 			
 		case "/HTML/pos_mgmt_list.do":
 			System.out.println("pos_mgmt.list 성공");
-			command = new PosMgmtListCommand();  //바꿔야함
+			command = new PosMgmtListCommand();  
 			command.execute(request, response);
 			viewPage = "pos_mgmt_list.jsp";
 			break;
 		case "/HTML/pos_mgmt_writeOk.do":
 			System.out.println("pos_mgmt.writeOk 성공");
-			command = new PosMgmtAddCommand();  //바꿔야함
+			command = new PosMgmtAddCommand();  
 			command.execute(request, response);
 			viewPage = "pos_mgmt_writeOk.jsp";
 			break;
@@ -105,6 +106,12 @@ public class MemberController extends HttpServlet {
 			viewPage = "pos_mgmt_deleteOk.jsp";
 			break;
 			
+		case "/HTML/pos_mgmt_updateOk.do":
+			System.out.println("pos_mgmt_updateOk 성공");
+			command = new PosMgmtUpdateCommand();
+			command.execute(request, response);
+			viewPage="pos_mgmt_updateOk.jsp";
+			break;
 		
 		case "/HTML/cs_list.do":
 			command = new CSListCommand();
