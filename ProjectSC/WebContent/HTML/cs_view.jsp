@@ -36,7 +36,7 @@
 %>
 <%
    int uid = arr[0].getUid();
-   String name = arr[0].getName();
+   int m_uid = arr[0].getM_uid();
    String subject = arr[0].getSubject();
    String content = arr[0].getContent();
    String regDate = arr[0].getRegDate();
@@ -92,7 +92,7 @@ function chkDelete(uid){
       <div  id="formwrite" method="POST">
 <h2><%= subject %></h2>
 <br>
-작성자 : <%= name %><br>
+작성자 : <%= m_uid %><br>
 제목 : <%= subject %><br>
 등록일 : <%= regDate %><br>
 내용: <br>

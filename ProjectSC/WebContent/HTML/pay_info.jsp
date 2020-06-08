@@ -41,7 +41,7 @@
 
         </div>
         <label class="label" for="name">가격</label>
-        <input type="text" placeholder="price" id="price" name="price" disabled/>
+        <input type="text" placeholder="price" id="price" name="price"/>
         <label class="label" for="name">결제방식</label>
 
         <div class="controls">

@@ -34,7 +34,7 @@
          </script>
 <%
 
-   String name = arr[0].getName();
+   int m_uid = arr[0].getM_uid();
    String subject = arr[0].getSubject();
    String content = arr[0].getContent();
    String regDate = arr[0].getRegDate();
@@ -76,7 +76,7 @@ function chkSubmit(){
 <form name="frm" action="updateOk.do" method="post" onsubmit="return chkSubmit()">
 <h1>수정</h1>
 <input type="hidden" name="uid" value="<%= uid %>"/>
-작성자 : <%= name %><br> <%-- 작성자 이름 변경 불가 --%>
+작성자 : <%= m_uid %><br> <%-- 작성자 이름 변경 불가 --%>
 제목 : 
 <input type="text" name="subject" value="<%= subject %>"/><br>
 내용: <br>
