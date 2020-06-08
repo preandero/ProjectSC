@@ -13,11 +13,12 @@
         var price = parseInt($("#menu_price").html( (quantity +1) * menu_price));
         
         // 
-        if(menu_name == ($("#menu_name").html())){
+        if(menu_name == ($("#menu_name" + i).text())){
                 qty_add;
                 price;
                 total += menu_price;
                 $('#totalprice').text(total);
+                i++;
                 
         } else {
                 html += '<tr id="order_list' + i + '">';
@@ -29,7 +30,7 @@
                 html += '</tr>';
 
                 $("#addable").append(html);
-                i++;
+                
                 total += menu_price;
                 $('#totalprice').text(total);
                 order_num++;
@@ -55,7 +56,7 @@
     
     $("#btn2").click(function(){
     	for(var j = 0; j < i; j++){
-    		var menu_name = $(".menu-items li").children('.item').text();
+    		var menu_name = $("#menu_name" + i).text(); 
     	    alert(menu_name);
     	}
     });
