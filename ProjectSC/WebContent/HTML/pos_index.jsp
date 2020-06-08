@@ -6,9 +6,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../CSS/pos_index.css">
-    <title>Isometric Cards</title>
+    <title>Pos Index</title>
 </head>
 <body>
+
+    <header>
+        <div class="logo">
+            <img src="../images/logo.png" id="logoimg">
+            <span><b>Asangbinsi</b></span>
+        </div>
+    </header>
+    
+    
     <div class="container">
         <div class="card" onclick="location.href='pos_sales.do'">
             <div class="imgBx">

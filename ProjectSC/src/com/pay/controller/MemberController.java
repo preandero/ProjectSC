@@ -14,6 +14,7 @@ import command.JoinCommand;
 import command.LoginCommand;
 import command.PaySuccessCommand;
 import command.PosMgmtAddCommand;
+import command.PosMgmtDeleteCommand;
 import command.PosMgmtListCommand;
 import command.PosSalesMenuListCommand;
 
@@ -59,10 +60,9 @@ public class MemberController extends HttpServlet {
 			break;
 			
 		case "/HTML/loginOk.do":
-			System.out.println("loginOk.do 성공");
 			command = new LoginCommand();
 			command.execute(request, response);
-			viewPage = "pay_info.jsp";
+			viewPage = "loginOk.jsp";
 			break;
 			
 		case "/HTML/paySuccess.do":
@@ -91,7 +91,14 @@ public class MemberController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "pos_sales.jsp";
 			break;
-
+		
+		case "/HTML/pos_mgmt_deleteOk.do":
+			System.out.println("pos_mgmt_deleteOk 성공");
+			command = new PosMgmtDeleteCommand();
+			command.execute(request, response);
+			viewPage = "pos_mgmt_deleteOk.jsp";
+			break;
+			
 		} // switch
 		
 		// request 를 위에서 결정된 view 에 forward 해줌.
