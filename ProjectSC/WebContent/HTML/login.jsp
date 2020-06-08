@@ -78,7 +78,7 @@
             <span id="id-pw-backChk">Incorrect ID or Password</span>
             <button type="button" class="ghost" id="signUp" onclick="loginChk();">login</button>
         </form>
-        
+     
     </div>
 
 <div class="overlay-container">

@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 *{
   font-family: "Avenir Next", "Century Gothic", "Franklin Gothic Medium", "Helvetica Neue", Helvetica, Arial, sans-serif,'Nanum Gothic Coding', monospace;
   letter-spacing: 1px;
@@ -60,35 +61,66 @@ video#bgvideo {
   font-weight: 200;
 }
 
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
 /* 버튼 */
 .vid-txt-1 {
   position: fixed;
-  left: 49%;
-  top: 67%;
-  width: 56%;
+  left: 55%;
+  top: 73%;
+  width: 53%;
 }
-
-.vid-txt-1 div {
-  padding: 4% 4%;
-  background-color: rgb(0, 0, 85);
-  opacity: 80%;
-  width: 30%;
-  display: inline-block;
-  margin-right: 14px;
+.button {
+  box-sizing: border-box;
+  /* height: 50px;
+  width: 400px; */
+  display: table;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.55);
+  transition: background 0.5s;
   cursor: pointer;
-  border-radius: 40px;
+  float: left;
+  margin-right: 60px;
+  border-radius: 20px;
 }
-.vid-txt-1 :hover{
-  cursor: pointer;
-  background-color: rgb(18, 20, 43);
-  /* opacity: 80%; */
-  z-index: 100;
+.button span {
+  width: 330px;
+  height: 40px;
+  padding: 35px;
+  font-size: 25px;
+  font-weight: bold;
+  color: #e0e1e6;
+  box-shadow: 0 0 0 3px #bbbec9 inset;
+  background:  rgba(8, 8, 8, 0.219);
+  border-radius: 20px;
+ 
 }
-
-.vid-txt-1 a{
-  font-size: 20px;
-  text-decoration: none;
-  color: rgb(247, 232, 211);
+.button .away {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: left;
+  
+}
+.button .over {
+  display: none;
+  
+  
+}
+.button:hover span.away {
+  display: none;
+  
+}
+.button:hover span.over {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: left;
+  color: white;
+  box-shadow: none;
+  
+  
+}
+.button:hover {
+  background-color: rgb(36, 30, 63);
+  border-radius: 20px;
 }
 
 /* foot3 */
@@ -133,11 +165,20 @@ b{
     margin: 13px 10px;
 }
 
-.lan{
-    color:rgb(26, 26, 26);
-    opacity: 0.7;
-    font-size: 7px;
-    text-align: center;
-    margin-left: 10px;
-    width: 480px;
-  }
+.lan {
+  color: rgb(26, 26, 26);
+  opacity: 0.7;
+  font-size: 17px;
+  font-weight: 600;
+  text-align: center;
+  margin: auto;
+
+  margin-bottom: 6px;
+}
+/* .lan2{
+  color: rgb(26, 26, 26);
+  opacity: 0.7;
+  font-size: 15px;
+  text-align: center;
+  margin: auto;
+} */
