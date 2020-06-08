@@ -9,7 +9,7 @@
 <%
 // 	int cnt = (Integer) request.getAttribute("result");
 // int mem_uid = (Integer)session.getAttribute("mem_uid");
-// int store_uid = (Integer)session.getAttribute("mem_uid");
+// int store_uid = (Integer)session.getAttribute("mem_uid");  헤깔리지마세요 세션되어있습니다.
 %>
 
 
@@ -83,33 +83,18 @@
 <!-- 			더미용 -->
 <!-- 				<button type="button" class="btn btn-outline-secondary btn-lg mi" data-toggle="button" aria-pressed="false"> -->
 <!-- 				<br><span>Water</span><br><br><hr>2000</button> -->
-<!-- 				<button type="button" class="btn btn-outline-secondary btn-lg mi" data-toggle="button" aria-pressed="false"> -->
-<!-- 				<br><span>Americano</span><br><br><hr>5000</button> -->
-<!-- 				<button type="button" class="btn btn-outline-secondary btn-lg mi" data-toggle="button" aria-pressed="false"> -->
-<!-- 				<br><span>Latte</span><br><br><hr>5000</button> -->
-<!-- 				<button type="button" class="btn btn-outline-secondary btn-lg mi" data-toggle="button" aria-pressed="false"> -->
-<!-- 				<br><span>Water</span><br><br><hr>2000</button> -->
-<!-- 				<button type="button" class="btn btn-outline-secondary btn-lg mi" data-toggle="button" aria-pressed="false"> -->
-<!-- 				<br><span>Americano</span><br><br><hr>5000</button> -->
-<!-- 				<button type="button" class="btn btn-outline-secondary btn-lg mi" data-toggle="button" aria-pressed="false"> -->
-<!-- 				<br><span>Latte</span><br><br><hr>5000</button> -->
-<!-- 				<button type="button" class="btn btn-outline-secondary btn-lg mi" data-toggle="button" aria-pressed="false"> -->
-<!-- 				<br><span>Water</span><br><br><hr>2000</button> -->
-<!-- 				<button type="button" class="btn btn-outline-secondary btn-lg mi" data-toggle="button" aria-pressed="false"> -->
-<!-- 				<br><span>Americano</span><br><br><hr>5000</button> -->
-<!-- 				<button type="button" class="btn btn-outline-secondary btn-lg mi" data-toggle="button" aria-pressed="false"> -->
-<!-- 				<br><span>Latte</span><br><br><hr>5000</button> -->
-				<%
+		<form id="menuInfo" action="pos_mgmt_deleteOk.do" method="post">
+		<%
 			if(arr != null){
 				for (int i =0; i<arr.length; i++){
 		%>
-				<button type="button" class="btn btn-outline-secondary btn-lg mi" data-toggle="button" aria-pressed="false">
-				<br><span><%= arr[i].getMenu_name() %></span><br><br><hr>
-				<%= arr[i].getMenu_price() %></button>
+				<button type="button" class="btn btn-outline-secondary btn-lg mi pressed" data-toggle="button" aria-pressed="false">
+				<br><input type="hidden" name="uid" value="<%=arr[i].getUid() %>">
+				<span><%= arr[i].getMenu_name() %></span><br><br><hr><%= arr[i].getMenu_price() %></button>
 		<% 
-				}//end for
-			}
-		%>
+				}//end for 
+		 } %>
+		 </form>
 		</div>
 	</div>
 	<div class="right1">
@@ -144,7 +129,7 @@
       </div>
 		<!-- 모달을 띄울 공간 -->
 		<button type="button" class="btn btn-outline-primary btn-lg mi" data-toggle="modal" data-target="#addmenu">Add</button>
-		<button type="button" class="btn btn-outline-primary btn-lg mi" id="load2">Delete</button>
+		<button type="button" class="btn btn-outline-primary btn-lg mi" id="deleteTrigger">Delete</button>
 	</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -168,5 +153,30 @@ function chkSubmit(){
 	}
 	
 }
+</script>
+<script>
+$('#deleteTrigger').click(function(){
+	var formData = $('#menuInfo').serialize();
+	
+	console.log(formData );
+	$.ajax({
+		type : "POST",
+		url : "pos_mgmt_deleteOk.do",
+		cache : false,
+		data : formData,
+		success : onSuccess,
+		error : onError
+	})	
+})
+function onSuccess(json, status){
+//  alert($.trim(json));
+// alert("삭제 성공!");
+
+ location.href="pos_mgmt_list.do";
+}
+function onError(data, status){ 
+ alert("error");
+}
+
 </script>
 </html>
