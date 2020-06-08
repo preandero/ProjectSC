@@ -1,58 +1,58 @@
-    var order_num = 1;
+    var cnt = 1;
     var total = 0;
-    var i = 0;
-    
-//    주문이 들어와서 메뉴들을 눌렀을때 (li 안에 담겨져 있다)
     $(".menu-items li").click(function () {
-        var html = '';
-        var default_qty = 1;
-        var menu_name = $(this).children('.item').text();
-        var menu_price = parseInt($(this).children('.price').text());
-        var quantity = parseInt($("#menu_qty").html());
-        var qty_add = $("#menu_qty").html((quantity + 1) +'<i class="fas fa-sort-down"/>');
-        var price = parseInt($("#menu_price").html( (quantity +1) * menu_price));
         
-        // 
-        if(menu_name == ($("#menu_name" + i).text())){
-                qty_add;
+        var html = '';
+        var cntdft = 1;
+        var span = $(this).children('.item').text();
+        var span1 = $(this).children('.item').text().replace(" ", "");
+        var span2 = parseInt($(this).children('.price').text());
+        var Quantity = parseInt($('.' + span1).html());
+        var addquan = $('.' + span1).html((Quantity + 1) +'<i class="fas fa-sort-down"/>');
+        var price = parseInt($('.' + span1 + "p").html( (Quantity +1) * span2));
+        
+        alert(span1);
+        
+        if(span == $('#' + span1).text()){
+//        	alert($('#' + span1).text().replace(" ", ""));
+                addquan;
                 price;
-                total += menu_price;
+                total += span2;
                 $('#totalprice').text(total);
-                i++;
-                
         } else {
-                html += '<tr id="order_list' + i + '">';
-                html += '<td>' + order_num + '</td>';
-                html += '<td id="menu_name' + i + '">' + menu_name + '</td>';
-                html += '<td id="menu_qty' + i + '">'+ default_qty +'<i class="fas fa-sort-down"/></td>';
-                html += '<td id="menu_price' + i + '">' + menu_price + '</td>';
-                html += '<td id="menu_delete' + i + '"> <i class="fas fa-times"></i> </td>';
+                html += '<tr>';
+                html += '<td>' + cnt + '</td>';
+                html += '<td id="'+ span1 + '">' + span + '</td>';
+                html += '<td class="'+ span1 + '">'+ cntdft +'<i class="fas fa-sort-down"/></td>'; 
+                html += '<td class="'+ span1 + "p" + '">' + span2 + '</td>';
+                html += '<td class="'+ span1  + 'd"> <i class="fas fa-times"></i> </td>';
                 html += '</tr>';
-
-                $("#addable").append(html);
                 
-                total += menu_price;
+                $("#addable").append(html);
+                total += span2;
                 $('#totalprice').text(total);
-                order_num++;
+                cnt++;
 
-                $("#menu_delete" + i).click(function () { 
-                    total = total - $("#menu_price" + i).text();
+                $('.' + span1 +'d').click(function () { 
+                    total = total - $('.' + span1 + "p").text();
                     $('#totalprice').text(total);
                     $(this).closest('tr').remove();
                  })   
 
-                 $("#menu_qty" + i).click(function () { 
-                     if($("#menu_qty" + i).text() > 1){
-                    $("#menu_qty" + i).html($("#menu_qty" + i).text() -1).append('<i class="fas fa-sort-down"/>');
-                    total -= menu_price;
-                    parseInt($("#menu_price" + i).html(parseInt($("#menu_qty" + i).html()) * menu_price));
+                 $('.' + span1).click(function () { 
+                     if($('.' + span1).text() > 1){
+                    $('.' + span1).html($('.' + span1).text() -1).append('<i class="fas fa-sort-down"/>');
+                    total -= span2;
                     $('#totalprice').text(total);
                      }
                   })
-                  
         }
+
+       
         
     });
+
+    
     
     $("#btn2").click(function(){
     	for(var j = 0; j < i; j++){

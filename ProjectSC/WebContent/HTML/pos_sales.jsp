@@ -21,22 +21,6 @@
         integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous">
     </script>
 
-    <!-- Google Fonts -->
-    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"> -->
-    <!-- Bootstrap core CSS -->
-    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"> -->
-    <!-- Material Design Bootstrap -->
-    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/css/mdb.min.css" rel="stylesheet"> -->
-    <!-- Bootstrap tooltips -->
-    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js">
-    </script> -->
-    <!-- Bootstrap core JavaScript -->
-    <!-- <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script> -->
-    <!-- MDB core JavaScript -->
-    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/js/mdb.min.js">
-    </script> -->
-
     <link href="../CSS/pos_sales.css" rel="stylesheet" type="text/css">
     <meta charset="UTF-8">
     <title>POS_SALES</title>
@@ -88,7 +72,9 @@
     <div class="register">
         <div class="left">
             <div class="order-window">
+             <form action="order.do" method="post">
                 <table>
+               
                     <tbody id="addable">
                         <tr>
                             <td>#</td>
@@ -97,54 +83,14 @@
                             <td>Price</td>
                         </tr>
                     </tbody>
+                   
                 </table>
+                 </form>
             </div>
 
             <div class="order-total">
                 <pre>Total  <span id="totalprice">0</span>₩ </pre>
             </div>
-            <!-- <div class="buttons">
-      
-            <button>
-              <i class="fas fa-print"></i>
-              Print
-            </button>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>
-              <i class="fas fa-ban"></i> 
-              Void
-            </button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button><i class="fa fa-times"></i>
-              QTY
-            </button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>
-              <i class="fas fa-sign-out-alt"></i>
-                Exit
-            </button>
-            <div></div>
-            <button>0</button>
-            <button>.00</button>
-          </div> -->
-        </div>
-        <div class="right">
-            <!-- <div class="categories">
-            <ul>
-              <li><a href="#">All Items</a></li>
-              <li><a href="#">Beverages</a></li>
-              <li><a href="#">Soup/Salad</a></li>
-              <li><a href="#">Appetizers</a></li>
-              <li><a href="#">Entrees</a></li>
-              <li><a href="#">Desserts</a></li>
-            </ul>
-          </div> -->
             <div class="menu-items">
                 <ul>
                     <%
