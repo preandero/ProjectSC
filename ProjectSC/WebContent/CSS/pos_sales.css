@@ -130,12 +130,12 @@ pre {
     padding: 0;
     margin: 0;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     height: 80vh;
     overflow-y: scroll;
 }
 .register .right .menu-items ul li {
-    height: 17vh;
+    height: 20vh;
     background: #f1efefa3;
     margin: 10px;
     display: flex;
