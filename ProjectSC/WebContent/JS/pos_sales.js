@@ -11,7 +11,7 @@
         var addquan = $('.' + span1).html((Quantity + 1) +'<i class="fas fa-sort-down"/>');
         var price = parseInt($('.' + span1 + "p").html( (Quantity +1) * span2));
         
-        alert(span1);
+        
         
         if(span == $('#' + span1).text()){
 //        	alert($('#' + span1).text().replace(" ", ""));
@@ -54,16 +54,28 @@
 
     
     
-    $("#btn2").click(function(){
-    	for(var j = 0; j < i; j++){
-    		var menu_name = $("#menu_name" + i).text(); 
-    	    alert(menu_name);
-    	}
-    });
+//    $("#btn2").click(function(){
+//    	for(var j = 0; j < i; j++){
+//    		var menu_name = $("#menu_name" + i).text(); 
+//    	    
+//    	}
+//    });
     
-    var name = 0;
+//    var name = 0;
 
-    
+    $('#payment').click(function(){
+    	var formData = $('#insertorder').serialize();
+    	
+    	console.log(formData );
+    	$.ajax({
+    		type : "POST",
+    		url : "order.do",
+    		cache : false,
+    		data : formData,
+    		success : onSuccess,
+    		error : onError
+    	})	
+    })
 
     
 

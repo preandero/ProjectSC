@@ -72,7 +72,7 @@
     <div class="register">
         <div class="left">
             <div class="order-window">
-             <form action="order.do" method="post">
+             <form id="insertorder" action="order.do" method="post">
                 <table>
                
                     <tbody id="addable">
@@ -91,6 +91,8 @@
             <div class="order-total">
                 <pre>Total  <span id="totalprice">0</span>₩ </pre>
             </div>
+            </div>	
+        <div class="right">
             <div class="menu-items">
                 <ul>
                     <%
@@ -111,10 +113,10 @@
             </div>
             <div class="payment-keys">
                     <ul>
-                        <li id="btn1">    
+                        <li id="orderlist">    
                         <i   class="fas fa-check-square fa-2x fa-fw" data-fa-transform="up-2"></i> 
                             OrderList
-                        <li id="btn2">
+                        <li id="payment">
                         <i  class="fas fa-credit-card fa-2x fa-fw" data-fa-transform="up-2"></i> 
                          PayMent
                         </li>

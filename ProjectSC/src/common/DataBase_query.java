@@ -37,7 +37,36 @@ public class DataBase_query {
 			+ "where mem_uid = ?"
 			;
 	
-	public static final String SQL = "";
+	public static final String SQL_ORDER_INSERT = "INSERT INTO order_tb"
+			+ "(order_uid, order_regdate, order_totalprice, store_uid)"
+			+ "VALUES"
+			+ "(SEQ_ORDER_UID.nextval, SYSDATE, ?, ?)";
+	
+	public static final String SQL_ORDER_DETAIL_INSERT = "INSERT INTO order_detail"
+			+ "(orderdetail_uid, orderdetail_price, order_menuname, orderdetail_quantity, ?, ?)"
+			+ "VALUES"
+			+ "(SEQ_ORDER_UID.nextval, SYSDATE, ?, ?)";
+	
+//	CREATE TABLE order_detail
+//	(
+//		orderdetail_uid number NOT NULL,
+//		orderdetail_price number NOT NULL,
+//		orderdetail_menuname varchar2(40) NOT NULL,
+//		orderdetail_quantity number NOT NULL,
+//		order_uid number NOT NULL,
+//		menu_uid number NOT NULL,
+//		PRIMARY KEY (orderdetail_uid)
+//	);
+//
+//
+//	CREATE TABLE order_tb
+//	(
+//		order_uid number NOT NULL,
+//		order_regdate date,
+//		order_totalprice number,
+//		store_uid number NOT NULL,
+//		PRIMARY KEY (order_uid)
+//	);
 
 	// -------       pos_mgmt_query    start ---------------
 	public static String SQL_MENU_INSERT = "insert into menu_tb values (SEQ_menu_uid.nextval, ?, ?, ?)";
