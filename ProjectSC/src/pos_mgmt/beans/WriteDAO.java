@@ -115,4 +115,25 @@ public class WriteDAO {
 		
 		return cnt;
 	}//end deleteByUid
+	
+	public int update(int uid, String menu_update_name, int menu_update_price) throws SQLException{
+		
+		int cnt = 0;
+		try {
+			//트랜잭션 실행
+			pstmt = conn.prepareStatement(DataBase_query.SQL_MENU_UPDATE);
+//			pstmt.setString(1, subject);
+//			pstmt.setString(2, content);
+//			pstmt.setInt(3, uid);
+			pstmt.setString(1, menu_update_name);
+			pstmt.setInt(2, menu_update_price);
+			pstmt.setInt(3, uid);
+			cnt = pstmt.executeUpdate();
+		}finally {
+			close();
+		}
+		
+		return cnt;
+		
+	}//end update
 }
