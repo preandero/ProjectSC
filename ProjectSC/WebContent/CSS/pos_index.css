@@ -9,27 +9,27 @@
 
 header{
     width: 100%;
-    height: 70px;
+    height: 80px;
     background-color: rgb(26, 26, 26);
     opacity: 0.7;
+    margin-top: 0px;
 }
 
 
 body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 80%;
+    min-height: 70%;
     overflow: hidden;
+   
 }
 
 .container{
     position: relative;
-    width: 1050px;
+    width: 1200px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     transform: skewY(-10deg);
+    margin: 15% auto;
 }
 
 .container .card:before{
@@ -86,6 +86,7 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    cursor: pointer;
 }
 
 .container .card .imgBx img{
@@ -146,8 +147,8 @@ body{
 #logoimg{
     padding-top: 10px;
     padding-left: 15px;
-    height: 45px;
-    width: 45px;
+    height: 60px;
+    width: 60px;
     text-align: left;
 }
 span{

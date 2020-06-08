@@ -38,10 +38,13 @@
                     괜찮습니다. 로이버스 POS 시스템으로 사업 운영을 효율적으로 관리해보세요!</h2>
                 <div class="vid-txt-1">
                     <div>
-                        <a class="vid-txt-a1" onclick="location.href='login.jsp'">정회원이신가요?&emsp;<br> 지금바로 POS 를 이용해보세요</a>
+                        <a class="vid-txt-a1" onclick="location.href='login.do'">정회원이신가요?&emsp;<br> 지금바로 POS 를 이용해보세요</a>
                     </div>
                     <div>
+
                         <a class="vid-txt-a2" onclick="location.href='about_us.html'">비회원이신가요?&emsp; <br>새로운 계정을 생성해보세요</a>
+
+
                     </div>
                 </div>
             </div>

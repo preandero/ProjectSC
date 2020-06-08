@@ -209,6 +209,7 @@ function onError(data, status){
  alert("error");
 }
 </script>
+
 <!-- 더블 클릭 -->
 <script>
 $('button.mi').dblclick(function(){
@@ -219,3 +220,4 @@ $('button.mi').dblclick(function(){
 </script>
 <!-- 더블 클릭 -->
 </html>
+
