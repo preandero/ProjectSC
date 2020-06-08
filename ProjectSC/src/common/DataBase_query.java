@@ -42,12 +42,45 @@ public class DataBase_query {
 	// -------       pos_mgmt_query    start ---------------
 	public static String SQL_MENU_INSERT = "insert into menu_tb values (SEQ_menu_tb_menu_uid.nextval, ?, ?, ?)";
 	
-	public static String SQL_MENU_SELECT_ALL ="SELECT menu_name, menu_price FROM menu_tb WHERE store_uid = ?";
+//	public static String SQL_MENU_SELECT_ALL ="SELECT menu_name, menu_price FROM menu_tb WHERE store_uid = ?";
+	public static String SQL_MENU_SELECT_ALL ="select * from menu_tb WHERE store_uid = ?";
+	
+	public static String SQL_MENU_DELETE = "delete from menu_tb where menu_uid = ?";
 	
 	//세션 테스트용 쿼리
 	public static String SQL_MENU_SELECT_ALL2 ="SELECT menu_name, menu_price FROM menu_tb where store_uid = ?";
 	
+	public static String SQL_MEM_PERIOD =  "SELECT (MEM_SUB_REGDATE + MEM_SUB_PERIOD) AS PERIOD  FROM MEMBER_TB WHERE mem_id = ? AND mem_pw = ?";
+	
 	// -------       pos_mgmt_query     end ---------------
+	
+	
+	
+	// -------	cs_tb_query	 start ---------------
+
+	//게시글 추가 (C)
+	public static final String SQL_WRITE_INSERT = "INSERT INTO cs_tb "
+					+"(cs_uid, cs_subject, cs_content, mem_uid)"
+					+" VALUES(cs_SEQ.nextval, ?, ?, ?)";
+	
+	// 1명 게시글 읽어오기(R)
+	public static final String SQL_WRITE_SELECT_BY_UID = 
+			"SELECT * FROM cs_tb WHERE mem_uid = ?";
+	
+	// 모든 게시글 보여주기(R)
+	public static final String SQL_WRITE_SELECT = 
+			"SELECT * FROM cs_tb ORDER BY cs_uid DESC";
+	
+	//게시글 업데이트(U)
+	public static final String SQL_WRITE_UPDATE = 
+			"UPDATE cs_tb SET cs_subject = ?, cs_content = ?, cs_regdate=?  WHERE mem_uid = ?";
+
+	//게시글 삭제(D)
+	public static final String SQL_WRITE_DELETE_BY_UID =
+			"DELETE FROM cs_tb WHERE cs_uid = ?";
+	
+	
+	
 	
 	
 }
