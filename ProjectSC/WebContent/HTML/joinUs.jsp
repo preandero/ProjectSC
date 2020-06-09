@@ -19,6 +19,16 @@
 </head>
 
 <body>
+    <video id="video" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
+        <source src="../images/banner.mp4">
+  </video>
+    <header>
+        <div class="logo">
+            <img src="../images/logo.png" id="logoimg">
+            <span><b>Asangbinsi</b></span>
+        </div>
+    </header>
+
 	<script	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<div class="container" id="container">
 		<form action="joinUs.do" id="formstore" method="POST" name="frm">

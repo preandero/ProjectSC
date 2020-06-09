@@ -1,8 +1,9 @@
 @charset "UTF-8";
 
+
 *{
   font-family: "Avenir Next", "Century Gothic", "Franklin Gothic Medium", "Helvetica Neue", Helvetica, Arial, sans-serif,'Nanum Gothic Coding', monospace;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   }
 
 .header{
@@ -33,62 +34,95 @@ video#bgvideo {
 .vid-text {
   /* margin: 60px 100px 0px 100px; */
   position: fixed;
-  top: 20%;
-  left: 4%;
-  max-width: 55%;
+  top: 15%;
+  left: 28%;
+  width: 30%;
+  height: 60%;
   vertical-align: middle;
   color: #fff;
-  border: 2px solid rgb(255, 255, 255);
-  padding: 2% 3%;
-  background-color: rgba(46, 39, 39, 0.219);
+  border: 2px solid rgb(250, 244, 244);
+  padding:2% 7%;
+  background-color: rgba(5, 5, 5, 0.26);
+  text-align: center;
 }
 .vid-h1{
-    font-size: 30px;
-    margin-bottom: 30px;
-    font-weight: bold
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 15%;
 }
 .vid-h2{
   font-size: 20px;
-  margin-bottom: 30px;
-  font-weight: 800;
+  margin-bottom: 10%;
+  font-weight: 600;
 }
 .vid-h3{
   font-size: 15px;
-  margin-bottom: 50px;
-  font-weight: 600;
+  margin-bottom: 20%;
+  font-weight: 300;
   line-height: 150%;
   font-weight: 200;
 }
 
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
 /* 버튼 */
 .vid-txt-1 {
   position: fixed;
-  left: 49%;
-  top: 67%;
-  width: 56%;
+  left: 34%;
+  top: 68%;
+  width: 53%;
+}
+.button {
+  box-sizing: border-box;
+  /* height: 50px;
+  width: 400px; */
+  display: table;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.55);
+  transition: background 0.5s;
+  cursor: pointer;
+  float: left;
+  margin-right: 30px;
+  border-radius: 20px;
+}
+.button span {
+  width: 260px;
+  height: 35px;
+  padding: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #e0e1e6;
+  box-shadow: 0 0 0 3px #bbbec9 inset;
+  background: rgba(8, 8, 8, 0.219);
+  /* border-radius: 10px; */
 }
 
-.vid-txt-1 div {
-  padding: 4% 4%;
-  background-color: rgb(0, 0, 85);
-  opacity: 80%;
-  width: 30%;
-  display: inline-block;
-  margin-right: 14px;
-  cursor: pointer;
-  border-radius: 40px;
+.button .away {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  
 }
-.vid-txt-1 :hover{
-  cursor: pointer;
-  background-color: rgb(18, 20, 43);
-  /* opacity: 80%; */
-  z-index: 100;
+.button .over {
+  display: none;
+  
+  
 }
-
-.vid-txt-1 a{
-  font-size: 20px;
-  text-decoration: none;
-  color: rgb(247, 232, 211);
+.button:hover span.away {
+  display: none;
+  
+}
+.button:hover span.over {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  color: white;
+  box-shadow: none;
+  
+  
+}
+.button:hover {
+  background-color: rgb(36, 30, 63);
+  border-radius: 10px;
 }
 
 /* foot3 */
@@ -100,9 +134,27 @@ video#bgvideo {
   width: 100%;
   height: 3%;
   text-align: left;
-  position: fixed;
-  
+  position: fixed; 
 }
+
+
+.lan {
+  color: rgb(26, 26, 26);
+  opacity: 0.7;
+  font-size: 17px;
+  font-weight: 600;
+  text-align: center;
+  margin: auto;
+
+  margin-bottom: 6px;
+}
+/* .lan2{
+  color: rgb(26, 26, 26);
+  opacity: 0.7;
+  font-size: 15px;
+  text-align: center;
+  margin: auto;
+} */
 
 
 body{
@@ -123,21 +175,10 @@ header{
     width: 45px;
     text-align: left;
 }
-span{
-   font-size: 30px;
-   color: white;
-}
+
 b{
     
     position: fixed;
     margin: 13px 10px;
 }
 
-.lan{
-    color:rgb(26, 26, 26);
-    opacity: 0.7;
-    font-size: 7px;
-    text-align: center;
-    margin-left: 10px;
-    width: 480px;
-  }
