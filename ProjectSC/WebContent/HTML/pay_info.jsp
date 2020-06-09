@@ -82,19 +82,19 @@
 		switch($(".floatLabel").val()){
 		
 		case '30':
-			$("#price").val('20000');
+			$("#price").attr('value', '20000');
 			break;
 			
 		case '180':
-			$("#price").val('70000');
+			$("#price").attr('value', '70000');
 			break;
 			
 		case '365':
-			$("#price").val('120000');
+			$("#price").attr('value', '120000');
 			break;
 			
 		default :
-			$("#price").val("");
+			$("#price").attr('value', '');
 			break;		
 		}
 		});
