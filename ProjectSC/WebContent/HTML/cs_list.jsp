@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import="cs_board.beans.*" %>    
+	pageEncoding="UTF-8"%>
+<%@ page import="cs_board.beans.*"%>
+<%@ page import="pos.beans.*"%>
 
-<%  // Controller 로부터 결과 데이터 받음.
-   CS_WriteDTO [] arr = (CS_WriteDTO [])request.getAttribute("list");
+<%
+	// Controller 로부터 결과 데이터 받음.
+	CS_WriteDTO[] arr = (CS_WriteDTO[]) request.getAttribute("list");
+	MemberDTO[] memarr = (MemberDTO[]) request.getAttribute("memtb");
 %>
 
 <!DOCTYPE html>
@@ -15,49 +18,54 @@
 <title>글 목록</title>
 </head>
 <body>
- 
-  <header>
-    <div class="logo">
-        <img src="../images/logo.png" id="logoimg">
-        <span id="slogo"><b>Asangbinsi</b></span>
-    </div>
-</header>
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<div class="container" id="container">
-<div class="form-container sign-in-container">
-  <form action="#" id="formsignup">
-    
-    <div id="list">
 
-      <h2>Customer Service</h2>
-     
-      <table>
-        <tr id="gray">
+	<header>
+		<div class="logo">
+			<img src="../images/logo.png" id="logoimg"> <span id="slogo"><b>Asangbinsi</b></span>
+		</div>
+	</header>
+	<script
+		src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<div class="container" id="container">
+		<div class="form-container sign-in-container">
+			<form id="formsignup">
 
-          <th>UID</th>
-          <th>Title</th>
-          <th>m_uid</th>
-          <th>regdate</th>
-        </tr>
-<%
-   if(arr != null){
-      for(int i = 0; i < arr.length; i++){
-%>
-         <tr>
-            <td><%= arr[i].getUid() %></td>
-            <td><a href="cs_view.do?uid=<%= arr[i].getUid()%>"><%= arr[i].getSubject() %></a></td>
-            <td><%=arr[i].getM_uid() %></td>
-            <%-- <td><%= arr[i].getViewCnt() %></td> --%>
-            <td><%= arr[i].getRegDate() %></td>
-         </tr>
-<%         
-      } // end for
-   } // end if
-%>
-      </table>
-      <br>
-      <div id="btn">
-      <button onclick="location.href='cs_write.do'">신규등록</button>
-      </div>
+				<div id="list">
+
+					<h2>Customer Service</h2>
+
+					<table>
+						<tr id="gray">
+
+							<th>No.</th>
+							<th>Title</th>
+							<th>ID</th>
+							<th>regdate</th>
+						</tr>
+						<%
+							if (arr != null) {
+								for (int i = 0; i < arr.length; i++) {
+						%>
+						<tr>
+							<td><%=arr[i].getUid()%></td>
+							<td><a href="cs_view.do?uid=<%=arr[i].getUid()%>"><%=arr[i].getSubject()%></a></td>
+							<td><%=memarr[0].getId()%></td>
+							<%-- <td><%= arr[i].getViewCnt() %></td> --%>
+							<td><%=arr[i].getRegDate()%></td>
+						</tr>
+						<%
+							} // end for
+							} // end if
+						%>
+					</table>
+					<br>
+					<div id="btn">
+						<!--btn 눌렀을시 cs_write.do 로 이동안함-->
+					</div>
+				</div>
+			</form>
+			<button onclick="location.href='cs_write.jsp'">신규등록</button>
+		</div>
+	</div>
 </body>
 </html>

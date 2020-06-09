@@ -109,6 +109,11 @@ public class DataBase_query {
 	public static final String SQL_WRITE_DELETE_BY_UID =
 			"DELETE FROM cs_tb WHERE cs_uid = ?";
 	
+	public static final String SQL_SELECT_UID =
+			"SELECT c.CS_UID, c.CS_SUBJECT, m.MEM_ID, c.CS_REGDATE " + 
+			"FROM cs_tb c , member_tb m " + 
+			"WHERE c.mem_uid = m.mem_uid AND m.mem_uid = ?";
+	
 	
 	
 	

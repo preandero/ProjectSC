@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import common.DataBase_query;
+import pos.beans.MemberDTO;
 
 
 public class CS_WriteDAO {
@@ -86,6 +87,7 @@ public class CS_WriteDAO {
 			int uid = rs.getInt("cs_uid");
 			String subject = rs.getString("cs_subject");
 			String content = rs.getString("cs_content");
+			//String mem_id = rs.getString("mem_id");
 			Date d = rs.getDate("cs_regdate");
 			Time t = rs.getTime("cs_regdate");
 			int m_uid=rs.getInt("mem_uid");
@@ -98,7 +100,7 @@ public class CS_WriteDAO {
 							new SimpleDateFormat("hhmmss").format(t);
 			}
 	
-			CS_WriteDTO dto = new CS_WriteDTO(uid, subject, content,m_uid);
+			CS_WriteDTO dto = new CS_WriteDTO(uid, subject, content, m_uid);
 			dto.setRegDate(regDate);
 			list.add(dto);
 		}//end while
@@ -214,5 +216,23 @@ public class CS_WriteDAO {
 		
 		return cnt;
 	}//end deleteByUid
+	
+	// 모든 게시판 가져오기 (member_tb)에 있는 id를 참조를 해서... [SELECT]
+	public CS_WriteDTO[] selectCSbyId(int uid) throws SQLException{
+		CS_WriteDTO[] arr = null;
+		
+		try {
+		pstmt=conn.prepareStatement(DataBase_query.SQL_SELECT_UID);
+		pstmt.setInt(1, uid);
+		rs=pstmt.executeQuery();
+		arr=createArray(rs);
+		} finally {
+			close();
+		}
+		
+		return arr;
+	} 
+	
+	
 	
 }
