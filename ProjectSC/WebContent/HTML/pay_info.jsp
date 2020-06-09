@@ -41,7 +41,7 @@
 
         </div>
         <label class="label" for="name">가격</label>
-        <input type="text" placeholder="price" id="price" name="price"/>
+        <input type="text" placeholder="price" id="price" name="price" value="" readonly/>
         <label class="label" for="name">결제방식</label>
 
         <div class="controls">
@@ -76,13 +76,29 @@
 </body>
 
 <script>
-		if($('#day option:selected')){
-			$('#price').html('￦20,000');
+		// var = $("#")
+		$(".floatLabel").change(function(){
+			
+		switch($(".floatLabel").val()){
+		
+		case '30':
+			$("#price").val('20000');
+			break;
+			
+		case '180':
+			$("#price").val('70000');
+			break;
+			
+		case '365':
+			$("#price").val('120000');
+			break;
+			
+		default :
+			$("#price").val("");
+			break;		
 		}
-				
-		
-		
-
+		});
+	
 </script>
 
 </html>
