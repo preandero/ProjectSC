@@ -84,6 +84,7 @@
                     </tbody>
                    
                 </table>
+                <input id="totalPriceSend" type="hidden" name="totalPrice" value="0">
                  </form>
             </div>
 

@@ -99,7 +99,6 @@ public class MemberDAO {
 			pstmt.setInt(4, mem_uid);
 			cnt = pstmt.executeUpdate();
 			
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
