@@ -13,11 +13,12 @@ public class CSWriteCommand implements Command {
 		
 		int cnt = 0;
 		CS_WriteDAO dao = new CS_WriteDAO();
-		HttpSession session = request.getSession(false);
+		HttpSession session = request.getSession();
 		//매개변수 받아오기  . 매개변수들은 이제 전부다 request에 있다
 		String subject = request.getParameter("subject");
 		String content = request.getParameter("content");
 		int mem_uid = (int) session.getAttribute("mem_uid");
+		String mem_id=request.getParameter("mem_id");
 		
 		
 		if(subject !=null 

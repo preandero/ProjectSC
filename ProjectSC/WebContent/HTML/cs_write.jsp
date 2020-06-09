@@ -1,5 +1,13 @@
+<%@page import="cs_board.beans.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%CS_WriteDTO[] arr = (CS_WriteDTO[]) request.getAttribute("list");
+String mem_id=(String)session.getAttribute("mem_id");
+
+%>
+    
+    
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -42,7 +50,6 @@ function writeChk(){
    frm.submit();
    
 }
-
 </script>
 <body>
 
@@ -61,7 +68,7 @@ function writeChk(){
        <br>
         <label class="label" for="name" id="txt">작성자</label>
         <span id="name-format-txt">Incorrect Name format</span>
-        <input type="text" placeholder="" id="name" name="name" />
+        <input type="text" placeholder="" id="name" name="name" value="<%= mem_id%>" readonly/>
         <label class="label" for="name" id="txt">제목</label>
         <span id="subject-format-txt">Incorrect subject format</span>
         <input type="text" placeholder="" id="subject" name="subject" />
