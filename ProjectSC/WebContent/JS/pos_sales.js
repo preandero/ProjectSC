@@ -21,7 +21,6 @@
                 $('#totalprice').text(total);
         } else {
                 html += '<tr>';
-                html += '<td>' + cnt + '</td>';
                 html += '<td id="'+ span1 + '">' + span + '</td>';
                 html += '<td class="'+ span1 + '">'+ cntdft +'<i class="fas fa-sort-down"/></td>'; 
                 html += '<td class="'+ span1 + "p" + '">' + span2 + '</td>';
@@ -42,6 +41,7 @@
                  $('.' + span1).click(function () { 
                      if($('.' + span1).text() > 1){
                     $('.' + span1).html($('.' + span1).text() -1).append('<i class="fas fa-sort-down"/>');
+                    $('.' + span1 + 'p').html($('.' + span1 + 'p').text() - span2);
                     total -= span2;
                     $('#totalprice').text(total);
                      }

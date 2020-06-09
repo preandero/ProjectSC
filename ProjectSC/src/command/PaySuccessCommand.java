@@ -15,9 +15,6 @@ public class PaySuccessCommand implements Command {
 		int cnt = 0;
 		MemberDAO mem_dao = new MemberDAO();
 		
-		
-		
-		
 		int period = Integer.parseInt(request.getParameter("period"));
 		int price = Integer.parseInt(request.getParameter("price"));
 		String method = request.getParameter("method");
