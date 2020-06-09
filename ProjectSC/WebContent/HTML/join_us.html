@@ -15,82 +15,76 @@
     </head>
 
 <body>
+    <video id="video" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
+        <source src="../images/banner.mp4">
+  
+  </video>
+
     <header>
         <div class="logo">
             <img src="../images/logo.png" id="logoimg">
             <span id="slogo"><b>Asangbinsi</b></span>
         </div>
     </header>
-    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<div class="container" id="container">
-        
-	<div class="form-container sign-up-container">
+		<form action="joinUs.do" id="formstore" method="POST" name="frm">
+			<div class="form-container sign-up-container">
+				<div class="store-container">
+				<label class="label" for="name">Store Name</label> 
+				<input type="text" placeholder="Store Name" id="StoreName" name="StoreName" /> 
+				<label class="label" for="name">Address</label>
+				<div class="sample4">
+					<input type="text" id="sample4_post" placeholder="Zip Code" name="ZipCode" readonly>
+					<input type="button" onclick="juso()" value="Search by Zip Code"	id="sample4_btn">
+				</div>
+				<input type="text" id="sample4_roadAddress" placeholder="Street Address" name="StreetAddr" readonly> 
+				<input type="text" id="sample4_jibunAddress" placeholder="Lot Number Address" name="Jibun" readonly>
+				<input type="text" id="sample4_detailAddress" placeholder="Street Address (Line 2)" name="DetailAddr"> 
+				<input type="text" id="sample4_extraAddress" placeholder="Detailed Address" name="ExtraAddr" readonly> 
+				<label class="label" for="name">StoreNumber</label>
+				<input type="tel" placeholder="StoreNumber" id="StoreNumber" name="StoreNumber" /> <br>
+				<button type="submit" id="signUpBtn" onclick="formChk();">LET'S GET STARTED!</button>
+				</div>
+			</div>
+			<div class="form-container sign-in-container">
+				<h1>JOIN US</h1>
+				<span>Please fill in this registration form</span> <br><br>
+				<label class="label" for="name">ID</label> 
+				<input type="text" placeholder="ID" id="Id" name="Id" />  
+				<br><br>
+				<label class="label" for="name">Password</label> 
+				<input type="password" placeholder="Password" id="Password" name="Password" />  <br> <br>
+				<label class="label" for="name">Confirm Password</label> 
+				<input type="password" placeholder="confirm pw" id="ConfirmPw" name="ConfirmPw" />  <br> <br>
+				<label class="label" for="name">PhoneNumber</label>
+				<input type="tel" placeholder="PhoneNumber" id="PhoneNumber" name="PhoneNumber" />  <br> <br>
+				<label class="label" for="name">E-mail</label>
+				<input type="email" placeholder="E-mail" id="Email" name="Email" />
+
+			</div>
+		</form>
 		
-		<form action="#" id="formstore">
-			<!-- <h1>Your Store Information</h1> -->
+		<div class="overlay-container">
+			<div class="overlay">
+				<div class="overlay-panel overlay-left">
+					<h1>Store Registration</h1>
+					<p>We Require Store Information</p>
+					<button class="ghost" id="signIn">Back to Member Registration</button>
+				</div>
+				<div class="overlay-panel overlay-right">
+					<h1>Member Registration</h1>
+					<br>
+					<button class="ghost" id="signUp">Store Registration</button>
 
-            <!-- <span>Please fill in this registration form</span> -->
-            <label class="label" for="name">Store Name</label>
-            <input type="text" placeholder="Store Name" id="StoreName" name="StoreName" />
-
-            
-            <label class="label" for="name">Address</label>
-            <div class="sample4">
-            <input type="text" id="sample4_post" placeholder="우편번호" disabled>
-            <input type="button" onclick="juso()" value="우편번호 찾기" id="sample4_btn">
-            </div>
-            <input type="text" id="sample4_roadAddress" placeholder="도로명주소" disabled>
-            <input type="text" id="sample4_jibunAddress" placeholder="지번주소" disabled>
-            <!-- <span id="guide" style="color:#999;display:none"></span> -->
-            <input type="text" id="sample4_detailAddress" placeholder="상세주소">
-            <input type="text" id="sample4_extraAddress" placeholder="참고항목" disabled>
-
-
-            <label class="label" for="name">StoreNumber</label>
-			<input type="tel" placeholder="StoreNumber" id="StoreNumber" name="StoreNumber" />
-			<br>
-            <button id="signUpBtn">POS 이용하러 가기</button>
-          
-		</form>
-    </div>
-    
-	<div class="form-container sign-in-container">
-		<form action="#" id="formsignup">
-			<h1>JOIN US</h1>
-            <span>Please fill in this registration form</span>
-            <label class="label" for="name">ID</label>
-            <input type="text" placeholder="ID" id="Id" name="Id"/>
-            <label class="label" for="name">Password</label>
-            <input type="password" placeholder="Password" id="Password" name="Password" />
-            <label class="label" for="name">Confirm Password</label>
-            <input type="password" placeholder="confirm pw" id="ConfirmPw" name="ConfirmPw"/>
-            <label class="label" for="name">PhoneNumber</label>
-            <input type="tel" placeholder="PhoneNumber" id="PhoneNumber" name="PhoneNumber"/>
-            <label class="label" for="name">E-mail</label>
-            <input type="email" placeholder="E-mail" id="Email" name="Email"/>
-		</form>
-    </div>
-
-<div class="overlay-container">
-    <div class="overlay">
-        <div class="overlay-panel overlay-left">
-            <h1>매장등록</h1>
-            <p>To keep connected with us please fill out your store info</p>
-            <button class="ghost" id="signIn">Back to Join Us</button>
-        </div>
-        <div class="overlay-panel overlay-right">
-            <h1>회원가입</h1>
-            <br>
-                <button class="ghost" id="signUp">매장 정보 입력하러 가기</button>
-			
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
 </body>
 
-<script src="../JS/join_us.js" type="text/javascript" ></script>
+<script src="../JS/join_us.js" type="text/javascript"></script>
 
 
 
