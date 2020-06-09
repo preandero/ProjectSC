@@ -13,7 +13,9 @@
 
 	if (arr != null) {
 		int mem_uid = arr[0].getUid();
+		String mem_id=arr[0].getId();
 		session.setAttribute("mem_uid", mem_uid);
+		session.setAttribute("mem_id", mem_id);
 		if (arr[0].getPeriod() != 0) {
 			paydate = (Integer) request.getAttribute("compare");
 

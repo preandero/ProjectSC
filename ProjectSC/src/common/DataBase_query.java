@@ -90,12 +90,14 @@ public class DataBase_query {
 
 	//게시글 추가 (C)
 	public static final String SQL_WRITE_INSERT = "INSERT INTO cs_tb "
-					+"(cs_uid, cs_subject, cs_content, mem_uid)"
-					+" VALUES(SEQ_cs_uid.nextval, ?, ?, ?)";
+					+"(cs_uid, cs_subject, cs_content, cs_regdate,mem_uid)"
+					+" VALUES(SEQ_cs_uid.nextval, ?, ?, sysdate,?)";
 	
 	// 1명 게시글 읽어오기(R)
 	public static final String SQL_WRITE_SELECT_BY_UID = 
-			"SELECT * FROM cs_tb WHERE mem_uid = ?";
+			"SELECT c.cs_uid, c.cs_subject, c.cs_content, c.cs_regdate, m.mem_id "+ 
+			"FROM cs_tb c , member_tb m " + 
+			"WHERE c.mem_uid = m.mem_uid AND c.cs_uid=?";
 	
 	// 모든 게시글 보여주기(R)
 	public static final String SQL_WRITE_SELECT = 
@@ -109,10 +111,11 @@ public class DataBase_query {
 	public static final String SQL_WRITE_DELETE_BY_UID =
 			"DELETE FROM cs_tb WHERE cs_uid = ?";
 	
+	// 모든 게시글 보여주기(R-1)
 	public static final String SQL_SELECT_UID =
 			"SELECT c.CS_UID, c.CS_SUBJECT, m.MEM_ID, c.CS_REGDATE " + 
 			"FROM cs_tb c , member_tb m " + 
-			"WHERE c.mem_uid = m.mem_uid AND m.mem_uid = ?";
+			"WHERE c.mem_uid = m.mem_uid";
 	
 	
 	
