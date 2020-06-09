@@ -7,20 +7,23 @@
 	crossorigin="anonymous"></script>
 
 <%
-		int paydate = -5;
-    	MemberDTO[] arr = (MemberDTO[])request.getAttribute("list");  //형을 맞춰줘야한다.
-    	
-    	if(arr != null && arr[0].getPeriod() != 0){
-    	int mem_uid = arr[0].getUid();
-    	session.setAttribute("mem_uid", mem_uid);	
-    	paydate = (Integer)request.getAttribute("compare");
-    	}
-    	
-    	
-    	
-    %>
+	int paydate = -5;
+	MemberDTO[] arr = (MemberDTO[]) request.getAttribute("list"); //형을 맞춰줘야한다.
+	session.removeAttribute("mem_uid");
 
-<% if(arr == null ){ %>
+	if (arr != null) {
+		int mem_uid = arr[0].getUid();
+		session.setAttribute("mem_uid", mem_uid);
+		if (arr[0].getPeriod() != 0) {
+			paydate = (Integer) request.getAttribute("compare");
+
+		}
+	}
+%>
+
+<%
+	if (arr == null) {
+%>
 <script>
 		 $(document).ready(function () {
 	            swal({
@@ -38,7 +41,9 @@
 	            });
 	      });
 		</script>
-<% }else if(paydate<0 || paydate == -5){ %>
+<%
+	} else if (paydate < 0 || paydate == -5) {
+%>
 <script>
 $(document).ready(function () {
        swal({
@@ -56,7 +61,9 @@ $(document).ready(function () {
        });
  });
 </script>
-<% }else{   %>
+<%
+	} else {
+%>
 <script>
 		 $(document).ready(function () {
 	            swal({
@@ -74,7 +81,9 @@ $(document).ready(function () {
 	            });
 	      });
 		</script>
-<% } %>
+<%
+	}
+%>
 
 
 

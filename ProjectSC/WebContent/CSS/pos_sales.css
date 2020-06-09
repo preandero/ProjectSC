@@ -39,14 +39,13 @@ body {
 .register .left .order-window table tr {
     display: grid;
     width: 100%;
-    grid-template-columns: 1fr 2fr 1fr 2fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
     overflow-x: hidden;
 }
 .register .left .order-window table tr td {
     border: 0;
     padding: 10px;
-    /* border: black 1px solid;
-    margin-right: 1px; */
+    text-align: center;
 }
 
 .register .left .order-window table tr td:nth-child(3) {
@@ -203,9 +202,8 @@ pre {
 
 
 .fa-sort-down{
-    margin: 0;
     left: 0;
-
+    margin-left: 10px;
 }
 
 

@@ -9,7 +9,6 @@ public class OrderDTO {
 	int totalprice;
 	int store_uid;
 	
-	
 	public OrderDTO() {}
 	
 	public OrderDTO(int uid, Date regdate, int totalprice, int store_uid) {

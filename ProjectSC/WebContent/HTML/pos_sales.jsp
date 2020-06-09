@@ -77,7 +77,6 @@
                
                     <tbody id="addable">
                         <tr>
-                            <td>#</td>
                             <td>Item</td>
                             <td>Quantity</td>
                             <td>Price</td>

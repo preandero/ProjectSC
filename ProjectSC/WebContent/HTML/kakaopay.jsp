@@ -5,6 +5,7 @@
     int price = Integer.parseInt(request.getParameter("price"));    
 	int period = Integer.parseInt(request.getParameter("period"));
 	String method = request.getParameter("method");
+    System.out.println(email + " " + price + " " + period + " " + method);
 	
 	int mem_uid = (Integer)session.getAttribute("mem_uid");
 %>
