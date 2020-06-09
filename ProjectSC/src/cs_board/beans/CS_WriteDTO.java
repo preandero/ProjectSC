@@ -7,6 +7,7 @@ public class CS_WriteDTO {
 	private String content;		
 	private String regDate;
 	private int mem_uid;
+	private String m_id;
 	
 
 
@@ -23,9 +24,18 @@ public class CS_WriteDTO {
 		this.subject = subject;
 		this.content = content;
 		this.mem_uid = m_uid;
-		
-
 	}
+	
+	public CS_WriteDTO(int uid, String subject, String content,int m_uid, String m_id) {
+		super();
+		this.uid = uid;
+		this.subject = subject;
+		this.content = content;
+		this.mem_uid = m_uid;
+		this.m_id = m_id;
+	}
+	
+	
 
 //	public CS_WriteDTO(int uid, String subject, String content,int m_uid) {
 //		super();

@@ -119,9 +119,9 @@ public class MemberController extends HttpServlet {
 			viewPage = "cs_list.jsp"; 	//포워딩할 jsp 선택
 			break;
 			
-		case "/HTML/cs_write.do":
-			viewPage = "cs_write.jsp";
-			break;
+//		case "/HTML/cs_write.do":
+//			viewPage = "cs_write.jsp";
+//			break;
 		
 		case "/HTML/cs_writeOk.do":
 			command = new CSWriteCommand();

@@ -48,6 +48,11 @@ CREATE TABLE cs_tb
 	PRIMARY KEY (cs_uid)
 );
 
+SELECT * FROM cs_tb;
+
+SELECT c.CS_UID, c.CS_SUBJECT, m.MEM_ID, c.CS_REGDATE 
+FROM cs_tb c , member_tb m
+WHERE c.mem_uid = m.mem_uid AND m.mem_uid = 3;
 
 CREATE TABLE member_tb
 (
