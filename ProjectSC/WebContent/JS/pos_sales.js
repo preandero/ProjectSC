@@ -48,23 +48,12 @@
                   })
         }
 
-       
-        
     });
-
-    
-    
-//    $("#btn2").click(function(){
-//    	for(var j = 0; j < i; j++){
-//    		var menu_name = $("#menu_name" + i).text(); 
-//    	    
-//    	}
-//    });
-    
-//    var name = 0;
 
     $('#payment').click(function(){
     	var formData = $('#insertorder').serialize();
+    	
+    	alert(formData);
     	
     	console.log(formData );
     	$.ajax({
