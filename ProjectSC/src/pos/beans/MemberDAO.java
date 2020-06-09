@@ -204,6 +204,22 @@ public class MemberDAO {
 		return period;
 		
 	}
+	
+	public MemberDTO[] memTbSelectByUid(int uid) throws SQLException{
+		MemberDTO[] arr =null;
+		try {
+			pstmt=conn.prepareStatement(DataBase_query.SQL_SELECT_UID);
+			pstmt.setInt(1, uid);
+			rs=pstmt.executeQuery();
+			arr=createArray(rs);
+			
+		}finally {
+			close();
+		}
+		
+		return arr;
+		
+	}//end selectByUid
 
 
 } // PaySuccessDAO{}

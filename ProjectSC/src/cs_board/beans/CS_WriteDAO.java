@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import common.DataBase_query;
+import pos.beans.MemberDTO;
 
 
 public class CS_WriteDAO {
@@ -214,5 +215,8 @@ public class CS_WriteDAO {
 		
 		return cnt;
 	}//end deleteByUid
+	
+	
+	
 	
 }

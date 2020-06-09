@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="cs_board.beans.*" %>    
+<%@ page import="cs_board.beans.*" %>
+<%@ page import="pos.beans.*" %>      
 
 <%  // Controller 로부터 결과 데이터 받음.
    CS_WriteDTO [] arr = (CS_WriteDTO [])request.getAttribute("list");
+	MemberDTO[] memarr = (MemberDTO[])request.getAttribute("memtb");
 %>
 
 <!DOCTYPE html>
@@ -25,7 +27,7 @@
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <div class="container" id="container">
 <div class="form-container sign-in-container">
-  <form action="#" id="formsignup">
+  <form  id="formsignup">
     
     <div id="list">
 
@@ -34,9 +36,9 @@
       <table>
         <tr id="gray">
 
-          <th>UID</th>
+          <th>No.</th>
           <th>Title</th>
-          <th>m_uid</th>
+          <th>ID</th>
           <th>regdate</th>
         </tr>
 <%
@@ -46,7 +48,7 @@
          <tr>
             <td><%= arr[i].getUid() %></td>
             <td><a href="cs_view.do?uid=<%= arr[i].getUid()%>"><%= arr[i].getSubject() %></a></td>
-            <td><%=arr[i].getM_uid() %></td>
+            <td><%= memarr[0].getId() %></td>
             <%-- <td><%= arr[i].getViewCnt() %></td> --%>
             <td><%= arr[i].getRegDate() %></td>
          </tr>

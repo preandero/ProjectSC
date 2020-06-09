@@ -79,6 +79,9 @@ public class DataBase_query {
 	public static final String SQL_WRITE_DELETE_BY_UID =
 			"DELETE FROM cs_tb WHERE cs_uid = ?";
 	
+	public static final String SQL_SELECT_UID =
+			"SELECT * FROM member_tb WHERE mem_uid = ?";
+	
 	
 	
 	
