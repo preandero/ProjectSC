@@ -15,6 +15,14 @@
   } */
 
   /*로고*/
+div.box{
+	cursor : pointer;
+}
+a#jump{
+	display:block;
+	width:auto;
+	z-index : 5;
+}  
 #logo1 {
 	font-size: 30px;
 	color: white;

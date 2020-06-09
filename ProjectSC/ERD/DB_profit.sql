@@ -1,5 +1,3 @@
-
-
 /* Drop Tables */
 
 DROP TABLE cs_tb CASCADE CONSTRAINTS;
@@ -50,7 +48,6 @@ CREATE TABLE cs_tb
 	PRIMARY KEY (cs_uid)
 );
 
-SELECT * FROM cs_tb;
 
 CREATE TABLE member_tb
 (
@@ -272,7 +269,3 @@ BEGIN
 END;
 
 /
-
-
-
-

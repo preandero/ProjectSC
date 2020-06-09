@@ -5,7 +5,6 @@
 	WriteDTO[] arr = (WriteDTO[]) request.getAttribute("pos_mgmt_list");
 %>
 
-<!-- 	String SQL_INSERT_MENU = "insert into demo_menu_table values (uid_seq.nextval, ?, ?)"; -->
 <%
 // 	int cnt = (Integer) request.getAttribute("result");
 // int mem_uid = (Integer)session.getAttribute("mem_uid");
@@ -37,6 +36,7 @@
 	
 </script>
 <link href="../CSS/pos_mgmt.css" rel="stylesheet" type="text/css">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 	<!-- 포스 메뉴 화면 틀 시작-->
@@ -112,7 +112,7 @@
            <div class="form-container sign-in-container">
 				<!-- 폼 시작 -->
 <!-- 				<script src="JS/chkSubmit"></script> -->
-            <form action="pos_mgmt_writeOk.do" id="formsignup" method="post" onsubmit="return chkSubmit()">
+            <form action="pos_mgmt_writeOk.do" id="formsignup" method="post" onsubmit="return chkSubmit2()">
                <label class="label" for="name">NAME</label>
                <input type="text" placeholder="이름을 입력하세요" name="menu_name"/>
                <label class="label" for="name">PRICE</label>
@@ -131,10 +131,62 @@
 		<button type="button" class="btn btn-outline-primary btn-lg mi" data-toggle="modal" data-target="#addmenu">Add</button>
 		<button type="button" class="btn btn-outline-primary btn-lg mi" id="deleteTrigger">Delete</button>
 	</div>
+	
+	<!-- 수정을 위해 더블클릭하면 나오는 모달 -->
+	<div class="modal fade" id="updatemenu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog .modal-lg modal-right"> 
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">Update menu</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+           <div class="form-container sign-in-container">
+				<!-- 폼 시작 -->
+<!-- 				<script src="JS/chkSubmit"></script> -->
+            <form action="pos_mgmt_updateOk.do" id="formUpdate" method="post" onsubmit="return chkSubmit()">
+               <label class="label" for="name">Menu_NAME</label>
+               <input type="text" placeholder="수정할 메뉴이름을 입력하세요" name="menu_update_name"/>
+               <label class="label" for="name">Menu_PRICE</label>
+               <input text="number" placeholder="수정할 가격을 입력하세요" name="menu_update_price"/>
+	            <div class="modal-footer">
+	              <button id="updateTrigger" type="submit" class="btn btn-primary ">Update</button>
+	              <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
+	            </div>
+            </form>
+				<!-- 폼 끝 -->            
+         </div>
+          </div>
+        </div>
+      </div>
 
+	<!-- 수정을 위해 더블클릭하면 나오는 모달 -->
+	
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script>
 function chkSubmit(){
+	frm = document.forms["formUpdate"];	   //form 객체 가져오기
+	
+	var menu_update_name = frm.menu_update_name.value.trim();  			//작성자
+	var menu_update_price = frm.menu_update_price.value.trim();		//제목
+	
+	if(menu_update_name == ""){
+		alert("작성자 란은 반드시 입력해야 합니다.");
+		frm.menu_update_name.focus();
+		return false;
+	}
+	
+	if(menu_update_price == ""){
+		alert("제목은 반드시 작성해야합니다");
+		frm.menu_update_price.focus();
+		return false;
+	}
+	
+}
+</script>
+<script>
+function chkSubmit2(){
 	frm = document.forms["formsignup"];	   //form 객체 가져오기
 	
 	var menu_name = frm.menu_name.value.trim();  			//작성자
@@ -164,19 +216,57 @@ $('#deleteTrigger').click(function(){
 		url : "pos_mgmt_deleteOk.do",
 		cache : false,
 		data : formData,
-		success : onSuccess,
-		error : onError
+		success : onDeleteSuccess,
+		error : onDeleteError
 	})	
 })
-function onSuccess(json, status){
+function onDeleteSuccess(json, status){
 //  alert($.trim(json));
 // alert("삭제 성공!");
 
  location.href="pos_mgmt_list.do";
 }
-function onError(data, status){ 
+function onDeleteError(data, status){ 
  alert("error");
 }
+</script>
 
+<!-- 더블 클릭 -->
+<script>
+$('button.mi').dblclick(function(){
+// 	$(this).attr("data-target","#updatemenu");
+// 	$('#updatemenu').show();
+// 	var passdata = $(this).siblings('input').val();
+	var passdata = $(this).find('input[type="hidden"]').val();
+	console.log(passdata);
+	$('#formUpdate').prepend("<input type='hidden' name='uid' value='"+passdata+"'>");
+// 	$('#formUpdate').append("<input type='hidden' name='uid' value='"+passdata+"'>"); 이거 쓰면 안돼여
+	$('#updatemenu').modal('show');
+	
+})
+</script>
+<!-- 더블 클릭 -->
+<script>
+// $('#updateTrigger').click(function(){
+// 	var updateData = $('formUpdate').serialize();
+// 	$.ajax({
+// 		type : "POST",
+// 		url : "pos_mgmt_updateOk.do",
+// 		cache : false,
+// 		data : updateData,
+// 		success : onUpdateSuccess,
+// 		error : onUpdateError
+// 	})	
+// })
+// function onUpdateSuccess(json, status){
+
+//  location.href="pos_mgmt_list.do";
+// }
+// function onUpdateError(data, status){ 
+//  alert("error");
+// }
 </script>
 </html>
+
+
+

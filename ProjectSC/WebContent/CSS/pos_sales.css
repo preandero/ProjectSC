@@ -135,7 +135,7 @@ pre {
     overflow-y: scroll;
 }
 .register .right .menu-items ul li {
-    height: 20vh;
+    height: 17vh;
     background: #f1efefa3;
     margin: 10px;
     display: flex;
@@ -145,7 +145,7 @@ pre {
     justify-content: center;
     border-radius: 15px;
     border: black 1px solid;
-    font-size: 30px;
+    font-size: 25px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     box-shadow: 5px 8px #888888;
 }
@@ -154,6 +154,7 @@ pre {
 }
 .register .right .menu-items ul li .item {
     font-weight: bold;
+    text-align: center;
 }
 .register .right .menu-items ul li .category {
     font-style: oblique;
@@ -191,10 +192,12 @@ pre {
     filter: hue-rotate(135deg);
     background-color: rgba(18, 71, 45, 0.459);
 }
-#btn1{
+
+#orderlist{
     background: rgba(121, 157, 181, 1);
 }
-#btn2{
+
+#payment{
     background-color: rgb(100,141,209);
 }
 
