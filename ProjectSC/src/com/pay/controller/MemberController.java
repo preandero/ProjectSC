@@ -28,7 +28,7 @@ import command.PosSalesMenuListCommand;
 @WebServlet("*.do")
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	// bK
 	public MemberController() {
 		super();
 	}
