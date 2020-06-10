@@ -13,8 +13,8 @@
       <script>
        $(document).ready(function () {
                swal({
-                   title: '....ㅠㅠ',
-                   text: '안됬다리',
+                   title: 'Fail',
+                   text: 'problem occured',
                    icon: 'warning',
                    button:{
                          text : '돌아간다리..',
@@ -31,11 +31,11 @@
       <script>
        $(document).ready(function () {
                swal({
-                   title: '기모기모찌',
-                   text: '추가됬다리',
+                   title: 'Nice',
+                   text: 'write successfully',
                    icon: 'success',
                    button:{
-                         text : 'list출력한다리',
+                         text : 'go to list',
                          value : true,
                    }
                }).then((result) => {

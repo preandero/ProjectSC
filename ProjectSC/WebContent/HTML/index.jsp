@@ -40,7 +40,7 @@
 
 
                     <div class="vid-txt-1">
-                        <a class="button" onclick="location.href='login.do'">
+                        <a class="button" onclick="location.href='login.jsp'">
                             <span class="away">정회원이신가요?</span>
                             <span class="over">바로 POS 를 이용해보세요</span>
                         </a>
