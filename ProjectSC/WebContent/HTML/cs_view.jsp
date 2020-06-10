@@ -7,9 +7,8 @@
 <%@ page import="cs_board.beans.*" %>
 
 <% // Controller 로부터 결과 데이터 받음
-   CS_WriteDTO [] arr = (CS_WriteDTO [])request.getAttribute("view");
-
-	String mem_id=(String)session.getAttribute("mem_id");
+	CS_WriteDTO [] arr = (CS_WriteDTO [])request.getAttribute("view");
+	String mem_id=arr[0].getMem_id();
 %>
 
 <%
@@ -38,11 +37,10 @@
 %>
 <%
    int uid = Integer.parseInt(request.getParameter("uid"));
- 
    String subject = arr[0].getSubject();
    String content = arr[0].getContent();
    String regDate = arr[0].getRegDate();
-   /*int viewCnt = arr[0].getViewCnt();*/
+   int chk_uid = (int)session.getAttribute("mem_uid");
 %>
 
 
@@ -102,12 +100,27 @@ function chkDelete(uid){
 <div>
 <%= content %>
 </div>
+<form>
+<input type="hidden" id="mem_uid" name="mem_uid" value="<%= mem_id %>">
+<input type="hidden" id="chkuid" name="chkuid" value = "<%= chk_uid %>">
+</form>
+
+<script>
+if(($("#mem_id").val())!=($("#chk_uid").val())){
+	$("#udt").hide();
+	$("#dlt").hide();
+	$("#new").hide();
+}
+
+</script>
+
+
 
 <br>
-<button onclick="location.href='cs_update.do?uid=<%= uid%>'">수정</button>
+<button onclick="location.href='cs_update.do?uid=<%= uid%>'" id="udt">수정</button>
+<button onclick="chkDelete(<%= uid %>)" id="dlt">삭제</button>
+<button onclick="location.href = 'cs_write.do'" id="new">신규</button>
 <button onclick="location.href = 'cs_list.do'">목록</button>
-<button onclick="chkDelete(<%= uid %>)">삭제</button>
-<button onclick="location.href = 'cs_write.do'">신규</button>
 
 </div>
 

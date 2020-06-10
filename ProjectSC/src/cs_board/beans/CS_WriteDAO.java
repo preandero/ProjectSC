@@ -259,7 +259,7 @@ public CS_WriteDTO[] createArrayView(ResultSet rs) throws SQLException {
 	
 	
 	//특정 uid의 글 수정(제목 , 내용)
-	public int update(int uid, String subject, String content) throws SQLException{
+	public int update(String subject, String content, int uid) throws SQLException{
 		
 		int cnt = 0;
 		try {

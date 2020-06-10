@@ -35,7 +35,7 @@
 
 
    int mem_uid = arr[0].getMem_uid();
-	String mem_id= (String)session.getAttribute("mem_id");
+	String mem_id= arr[0].getMem_id();
    String subject = arr[0].getSubject();
    String content = arr[0].getContent();
    String regDate = arr[0].getRegDate();
