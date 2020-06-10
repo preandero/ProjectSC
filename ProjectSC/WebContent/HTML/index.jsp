@@ -45,7 +45,7 @@
 
 
 				<div class="vid-txt-1">
-					<a class="button" onclick="location.href='login.do'"> <span
+					<a class="button" onclick="location.href='login.jsp'"> <span
 						class="away">Are you a regular member?</span> <span class="over">Join!</span>
 					</a> <a class="button" onclick="location.href='about_us.html'"> <span
 						class="away">Are you a non-member?</span> <span class="over">Sign Up</span>
