@@ -185,6 +185,8 @@ header{
 #slogo{
    font-size: 30px;
    color: white;
+   cursor: pointer;
+   
 }
 b{
    font-family: "Avenir Next", "Century Gothic", "Franklin Gothic Medium", "Helvetica Neue", Helvetica, Arial, sans-serif, 'Nanum Gothic Coding', monospace;

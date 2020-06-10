@@ -25,7 +25,7 @@
     <header>
         <div class="logo">
             <img src="../images/logo.png" id="logoimg">
-            <span><b>Asangbinsi</b></span>
+            <span onclick="location.href='index.jsp'"><b>Asangbinsi</b></span>
         </div>
     </header>
 
