@@ -4,7 +4,7 @@
 	session.removeAttribute("mem_uid");
 	session.removeAttribute("mem_id");
 // 	session.invalidate();
-	//bk
+
 //   
     
 %>
