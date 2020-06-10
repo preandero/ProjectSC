@@ -5,10 +5,10 @@
    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
    crossorigin="anonymous"></script>
 <%  // Controller 로부터 결과 데이터 받음
-   int cnt = (Integer)request.getAttribute("updateOk");
+   int cnt = (Integer)request.getAttribute("result");
    int uid = Integer.parseInt(request.getParameter("uid"));
 %>  
-1234
+
 <% if(cnt == 0){ %>
    <script>
     $(document).ready(function () {
@@ -47,4 +47,3 @@
       
    </script>
 <% } %>
-
