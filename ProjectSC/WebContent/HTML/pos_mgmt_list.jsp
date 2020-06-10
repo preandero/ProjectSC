@@ -248,14 +248,14 @@ function chkSubmit2(){
 	
 }
 </script>
-<script>
+<!-- <script>
  $('#deleteTrigger').click(function(){
 	var formData = $('#menuInfo').serialize();
 	
 	console.log(formData );
 	$.ajax({
 		type : "POST",
-		url : "pos_mgmt_deleteOk.do",
+		url : "pos_mgmt_deleteOk.do", 
 		cache : false,
 		data : formData,
 		success : onDeleteSuccess,
@@ -266,11 +266,20 @@ function onDeleteSuccess(json, status){
 //  alert($.trim(json));
 // alert("삭제 성공!"); 
 
- location.href="pos_mgmt_list.do";
+ location.href="pos_mgmt_deleteOk.do";
 }
 function onDeleteError(data, status){ 
  alert("error");
 }
+</script> -->
+
+<script>
+$('#deleteTrigger').click(function(){
+	
+	var formData = $('#menuInfo').submit();
+})
+
+
 </script>
 
 <!-- 더블 클릭 -->
