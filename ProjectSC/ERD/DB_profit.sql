@@ -1,4 +1,6 @@
+/***************/
 /* Drop Tables */
+/***************/
 
 DROP TABLE cs_tb CASCADE CONSTRAINTS;
 DROP TABLE order_detail CASCADE CONSTRAINTS;
@@ -7,37 +9,31 @@ DROP TABLE order_tb CASCADE CONSTRAINTS;
 DROP TABLE storeinfo_tb CASCADE CONSTRAINTS;
 DROP TABLE member_tb CASCADE CONSTRAINTS;
 
-
-
+/***************/
 /* Drop Sequences */
+/***************/
 
 DROP SEQUENCE SEQ_cs_uid;
-DROP SEQUENCE SEQ_inv_uid;
 DROP SEQUENCE SEQ_mem_uid;
 DROP SEQUENCE SEQ_menu_uid;
-DROP SEQUENCE SEQ_orderdetail_uid;
 DROP SEQUENCE SEQ_order_uid;
-DROP SEQUENCE SEQ_sales_uid;
 DROP SEQUENCE SEQ_store_uid;
 
+/***************/
 /* Create Sequences */
+/***************/
 
 CREATE SEQUENCE SEQ_cs_uid INCREMENT BY 1 START WITH 1;
-CREATE SEQUENCE SEQ_inv_uid INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_mem_uid INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_menu_uid INCREMENT BY 1 START WITH 1;
-CREATE SEQUENCE SEQ_orderdetail_uid INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_order_uid INCREMENT BY 1 START WITH 1;
-CREATE SEQUENCE SEQ_sales_uid INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_store_uid INCREMENT BY 1 START WITH 1;
 
+/***************/
 /* Create Tables */
-SELECT * FROM soonmo_1004;
+/***************/
 
-INSERT INTO soonmo_1004 VALUES(1,'순모');
-
-DROP TABLE soonmo_1004;
-
+/* Customer Table */
 CREATE TABLE cs_tb
 (
 	cs_uid number NOT NULL,
@@ -48,23 +44,9 @@ CREATE TABLE cs_tb
 	PRIMARY KEY (cs_uid)
 );
 
+SELECT * FROM CS_TB;
 
-SELECT c.CS_UID, c.CS_SUBJECT, m.MEM_ID, c.CS_REGDATE 
-FROM cs_tb c , member_tb m 
-WHERE c.mem_uid = m.mem_uid AND m.mem_uid =1;
-
-
-
-
-
-
-
-SELECT * FROM cs_tb;
-
-SELECT c.CS_UID, c.CS_SUBJECT, m.MEM_ID, c.CS_REGDATE 
-FROM cs_tb c , member_tb m
-WHERE c.mem_uid = m.mem_uid AND m.mem_uid = 3;
-
+/* Member Table */
 CREATE TABLE member_tb
 (
 	mem_uid number NOT NULL,
@@ -79,15 +61,9 @@ CREATE TABLE member_tb
 	PRIMARY KEY (mem_uid)
 );
 
-SELECT (TRUNC(SYSDATE, 'MI')-TO_DATE('20171122 00:00:00','YYYYMMDD HH24:MI:SS')) * 1440 FROM DUAL;
-
-
-SELECT MEM_SUB_REGDATE FROM MEMBER_TB WHERE MEM_UID = 3;
-
-SELECT MEM_SUB_REGDATE + MEM_SUB_PERIOD FROM MEMBER_TB ;
 SELECT * FROM MEMBER_TB;
-DELETE * FROM MEMBER_TB WHERE mem_uid = 2;
 
+/* Store Table */
 CREATE TABLE storeinfo_tb
 (
 	store_uid number NOT NULL,
@@ -97,11 +73,10 @@ CREATE TABLE storeinfo_tb
 	mem_uid number NOT NULL,
 	PRIMARY KEY (store_uid)
 );
-/**/
-SELECT * FROM storeinfo_tb;
-DELETE mem_uid FROM MEMBER_TB;
-SELECT * FROM member_tb WHERE MEM_ID = 'suyeong' AND mem_pw = sorktndud1;
 
+SELECT * FROM STOREINFO_TB;
+
+/* Menu Table */
 CREATE TABLE menu_tb
 (
 	menu_uid number NOT NULL,
@@ -110,27 +85,20 @@ CREATE TABLE menu_tb
 	store_uid number NOT NULL,
 	PRIMARY KEY (menu_uid)
 );
-INSERT INTO menu_tb VALUES (SEQ_menu_tb_menu_uid.nextval,'아아',4500,2);
-INSERT INTO menu_tb VALUES (SEQ_menu_tb_menu_uid.nextval,'라뗴',5500,2);
-INSERT INTO menu_tb VALUES (SEQ_menu_tb_menu_uid.nextval,'쏘쿨',6500,2);
-INSERT INTO menu_tb VALUES (SEQ_menu_tb_menu_uid.nextval,'히하히하',7500,2);
-INSERT INTO menu_tb VALUES (SEQ_menu_tb_menu_uid.nextval,'아아',4500,3);
-SELECT * FROM MENU_TB; 
-SELECT * FROM MENU_TB mt WHERE STORE_UID = 3;
-SELECT * FROM menu_tb WHERE STORE_UID = 11;
 
+SELECT * FROM MENU_TB;
+
+/* OrderDetail Table */
 CREATE TABLE order_detail
 (
-	orderdetail_uid number NOT NULL,
-	orderdetail_price number NOT NULL,
-	orderdetail_menuname varchar2(40) NOT NULL,
-	orderdetail_quantity number NOT NULL,
 	order_uid number NOT NULL,
 	menu_uid number NOT NULL,
-	PRIMARY KEY (orderdetail_uid)
+	menu_quantity number NOT NULL
 );
 
+SELECT * FROM ORDER_DETAIL od ;
 
+/* Order Table */
 CREATE TABLE order_tb
 (
 	order_uid number NOT NULL,
@@ -140,46 +108,31 @@ CREATE TABLE order_tb
 	PRIMARY KEY (order_uid)
 );
 
-CREATE TABLE soonmo_1004
-(
-	soonmo_uid NUMBER NOT NULL,
-	soonmo_name varchar2(100),
-	PRIMARY KEY (soonmo_uid)
-);
+SELECT * FROM ORDER_TB ot ;
 
-INSERT INTO SOONMO_1004 VALUES 
-(1, 'soonmo');
-
-SELECT * FROM soonmo_1004;
-
-
-
-
+/***************/
 /* Create Foreign Keys */
+/***************/
 
 ALTER TABLE cs_tb
 	ADD FOREIGN KEY (mem_uid)
 	REFERENCES member_tb (mem_uid)
 ;
 
-
 ALTER TABLE storeinfo_tb
 	ADD FOREIGN KEY (mem_uid)
 	REFERENCES member_tb (mem_uid)
 ;
-
 
 ALTER TABLE order_detail
 	ADD FOREIGN KEY (menu_uid)
 	REFERENCES menu_tb (menu_uid)
 ;
 
-
 ALTER TABLE order_detail
 	ADD FOREIGN KEY (order_uid)
 	REFERENCES order_tb (order_uid)
 ;
-
 
 ALTER TABLE menu_tb
 	ADD FOREIGN KEY (store_uid)
@@ -191,97 +144,3 @@ ALTER TABLE order_tb
 	ADD FOREIGN KEY (store_uid)
 	REFERENCES storeinfo_tb (store_uid)
 ;
-
-
-
-/* Create Triggers */
-
-CREATE OR REPLACE TRIGGER TRI_cs_tb_cs_uid BEFORE INSERT ON cs_tb
-FOR EACH ROW
-BEGIN
-	SELECT SEQ_cs_tb_cs_uid.nextval
-	INTO :new.cs_uid
-	FROM dual;
-END;
-
-/
-
-CREATE OR REPLACE TRIGGER TRI_inventory_tb_inv_uid BEFORE INSERT ON inventory_tb
-FOR EACH ROW
-BEGIN
-	SELECT SEQ_inventory_tb_inv_uid.nextval
-	INTO :new.inv_uid
-	FROM dual;
-END;
-
-/
-
-CREATE OR REPLACE TRIGGER TRI_member_tb_mem_uid BEFORE INSERT ON member_tb
-FOR EACH ROW
-BEGIN
-	SELECT SEQ_member_tb_mem_uid.nextval
-	INTO :new.mem_uid
-	FROM dual;
-END;
-
-/
-
-CREATE OR REPLACE TRIGGER TRI_menu_tb_menu_uid BEFORE INSERT ON menu_tb
-FOR EACH ROW
-BEGIN
-	SELECT SEQ_menu_tb_menu_uid.nextval
-	INTO :new.menu_uid
-	FROM dual;
-END;
-
-/
-
-CREATE OR REPLACE TRIGGER TRI_orderlist_orderlist_uid BEFORE INSERT ON orderlist
-FOR EACH ROW
-BEGIN
-	SELECT SEQ_orderlist_orderlist_uid.nextval
-	INTO :new.orderlist_uid
-	FROM dual;
-END;
-
-/
-
-CREATE OR REPLACE TRIGGER TRI_order_tb_order_uid BEFORE INSERT ON order_tb
-FOR EACH ROW
-BEGIN
-	SELECT SEQ_order_tb_order_uid.nextval
-	INTO :new.order_uid
-	FROM dual;
-END;
-
-/
-
-CREATE OR REPLACE TRIGGER TRI_sales_tb_sales_uid BEFORE INSERT ON sales_tb
-FOR EACH ROW
-BEGIN
-	SELECT SEQ_sales_tb_sales_uid.nextval
-	INTO :new.sales_uid
-	FROM dual;
-END;
-
-/
-
-CREATE OR REPLACE TRIGGER TRI_storeinfo_tb_store_uid BEFORE INSERT ON storeinfo_tb
-FOR EACH ROW
-BEGIN
-	SELECT SEQ_storeinfo_tb_store_uid.nextval
-	INTO :new.store_uid
-	FROM dual;
-END;
-
-/
-
-CREATE OR REPLACE TRIGGER TRI_subcribe_tb_sub_uid BEFORE INSERT ON subcribe_tb
-FOR EACH ROW
-BEGIN
-	SELECT SEQ_subcribe_tb_sub_uid.nextval
-	INTO :new.sub_uid
-	FROM dual;
-END;
-
-/

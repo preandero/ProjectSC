@@ -25,7 +25,7 @@
                 html += '<tr>';
                 html += '<td id="'+ span1 + '" name="menu" value="'+span1+'">' + span + '</td>';
                 html += '<td class="'+ span1 + '"name="quantity" value="0">'+ cntdft +'<i class="fas fa-sort-down"/></td>'; 
-                html += '<td class="'+ span1 + 'p" name = "price" value="'+span2+'">' + span2 + '</td>';
+                html += '<td class="'+ span1 + 'p" name = "price" value="'+ span2 +'">' + span2 + '</td>';
                 html += '<td class="'+ span1  + 'd"> <i class="fas fa-times"></i> </td>';
                 html += '</tr>';
                 
@@ -57,15 +57,15 @@
     	$("#totalPriceSend").attr("value", $("#totalprice").text());
     	alert($("#totalPriceSend").attr("value", $("#totalprice").text()));
     	var formData = $('#insertorder').serialize();
-    	var formData2 = $('#insertorder').serializeArray();
+//    	var formData2 = $('#insertorder').serializeArray();
 //    	alert(formData);
 //    	alert(formData2[0].name);
 //    	console.log(formData );
     	$.ajax({
     		type : "POST",
-    		url : "order.do",
+    		url : "order.ajax",
     		cache : false,
-    		data : formData2,
+    		data : formData,
     		success : function(){
     			
     		}
