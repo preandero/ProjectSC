@@ -2,55 +2,21 @@ package pos.beans;
 
 public class OrderDetailDTO {
 	
-	int uid;
-	int price;
-	String menuname;
-	int quantity;
 	int order_uid;
 	int menu_uid;
+	int quantity;
+	int price;
 	
-	public OrderDetailDTO() {}
+	public OrderDetailDTO() {
+		// TODO Auto-generated constructor stub
+	}
 	
-	public OrderDetailDTO(int uid, int price, String menuname, int quantity, int order_uid, int menu_uid) {
+	public OrderDetailDTO(int order_uid, int menu_uid, int quantity, int price) {
 		super();
-		this.uid = uid;
-		this.price = price;
-		this.menuname = menuname;
-		this.quantity = quantity;
 		this.order_uid = order_uid;
 		this.menu_uid = menu_uid;
-	}
-
-	public int getUid() {
-		return uid;
-	}
-
-	public void setUid(int uid) {
-		this.uid = uid;
-	}
-
-	public int getPrice() {
-		return price;
-	}
-
-	public void setPrice(int price) {
-		this.price = price;
-	}
-
-	public String getMenuname() {
-		return menuname;
-	}
-
-	public void setMenuname(String menuname) {
-		this.menuname = menuname;
-	}
-
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+		this.price = price;
 	}
 
 	public int getOrder_uid() {
@@ -68,6 +34,26 @@ public class OrderDetailDTO {
 	public void setMenu_uid(int menu_uid) {
 		this.menu_uid = menu_uid;
 	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	
+	
+	
+	
 	
 	
 }
