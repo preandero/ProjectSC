@@ -117,7 +117,8 @@ public class DataBase_query {
 	public static final String SQL_SELECT_UID =
 			"SELECT c.CS_UID, c.CS_SUBJECT, m.MEM_ID, c.CS_REGDATE " + 
 			"FROM cs_tb c , member_tb m " + 
-			"WHERE c.mem_uid = m.mem_uid";
+			"WHERE c.mem_uid = m.mem_uid " +
+			"ORDER BY c.CS_UID DESC";
 	
 	
 	
