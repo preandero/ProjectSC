@@ -105,7 +105,9 @@ public class DataBase_query {
 	
 	//게시글 업데이트(U)
 	public static final String SQL_WRITE_UPDATE = 
-			"UPDATE cs_tb SET cs_subject = ?, cs_content = ?, cs_regdate=?  WHERE mem_uid = ?";
+			"UPDATE (SELECT c.cs_uid, c.cs_subject, c.cs_content, c.cs_regdate, m.mem_id FROM cs_tb c , member_tb m WHERE c.mem_uid = m.mem_uid)"
+			+"SET cs_subject = ?, cs_content = ?"
+			+"WHERE cs_uid = ?";
 
 	//게시글 삭제(D)
 	public static final String SQL_WRITE_DELETE_BY_UID =
