@@ -17,7 +17,6 @@ public class CSViewCommand implements Command {
 		
 		CS_WriteDTO[] arr = null;  //초기값
 		CS_WriteDAO dao = new CS_WriteDAO();
-		
 //		int uid = (int)(session.getAttribute("mem_uid"));
 		
 		int uid = Integer.parseInt(request.getParameter("uid"));
@@ -26,6 +25,7 @@ public class CSViewCommand implements Command {
 		try {
 			arr = dao.readByUid(uid);
 			request.setAttribute("view", arr);
+			System.out.println(arr[0].getMem_uid());
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

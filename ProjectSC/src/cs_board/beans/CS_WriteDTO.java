@@ -36,12 +36,13 @@ public class CS_WriteDTO {
 		
 		this.mem_id = mem_id;
 	}
-	public CS_WriteDTO(int uid, String subject, String content,String mem_id) {
+	public CS_WriteDTO(int uid, String subject, String content,String mem_id,int mem_uid) {
 		super();
 		this.uid = uid;
 		this.subject = subject;
 		this.content = content;
 		this.mem_id = mem_id;
+		this.mem_uid=mem_uid;
 	}
 
 
@@ -89,7 +90,7 @@ public class CS_WriteDTO {
 	}
 
 
-	public void setMem_id(int mem_uid) {
+	public void setMem_uid(int mem_uid) {
 		this.mem_uid = mem_uid;
 	}
 

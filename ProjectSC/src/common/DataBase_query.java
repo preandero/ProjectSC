@@ -95,7 +95,7 @@ public class DataBase_query {
 	
 	// 1명 게시글 읽어오기(R)
 	public static final String SQL_WRITE_SELECT_BY_UID = 
-			"SELECT c.cs_uid, c.cs_subject, c.cs_content, c.cs_regdate, m.mem_id "+ 
+			"SELECT c.cs_uid, c.cs_subject, c.cs_content, c.cs_regdate, m.mem_id, c.mem_uid "+ 
 			"FROM cs_tb c , member_tb m " + 
 			"WHERE c.mem_uid = m.mem_uid AND c.cs_uid=?";
 	
