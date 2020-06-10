@@ -1,6 +1,5 @@
 * {
 	box-sizing: border-box;
-	/*overflow-x: hidden;*/
 }
 
 header{
@@ -11,9 +10,9 @@ header{
     margin-top: 0px;
 }
 
-span {
-    font-size: 12px;
-    color: black;
+span{
+   font-size: 30px;
+   color: white;
 }
 b{
     
@@ -169,7 +168,7 @@ input {
     left: 0;
     width: 50%;
     z-index: 1;
-    padding: 26px 50px;
+    padding: 50px 50px;
 }
 
 .container.right-panel-active .sign-in-container {
