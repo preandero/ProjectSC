@@ -19,7 +19,7 @@ public class CSUpdateOkCommand implements Command {
 		
 		
 			try {
-				cnt = dao.update(uid, subject, content);
+				cnt = dao.update(subject, content,uid);
 			}catch (Exception e) {
 				e.printStackTrace();
 			}

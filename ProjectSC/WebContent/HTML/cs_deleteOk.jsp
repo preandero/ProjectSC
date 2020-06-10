@@ -5,18 +5,18 @@
    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
    crossorigin="anonymous"></script>
 <%  // Controller 로부터 결과 데이터 받음
-   int cnt = (Integer)request.getAttribute("result");
+   int cnt = (Integer)request.getAttribute("delete");
 %>
 
 <% if(cnt == 0){ %>
    <script>
    $(document).ready(function () {
         swal({
-            title: '....ㅠㅠ',
-            text: '안됬다리',
+            title: 'Fail',
+            text: 'could not delete',
             icon: 'warning',
             button:{
-                  text : '돌아간다리..',
+                  text : 'back',
                   value : true,
             }
         }).then((result) => {
@@ -31,11 +31,11 @@
    <script>
    $(document).ready(function () {
         swal({
-            title: '기모기모찌',
-            text: '삭제됬다리',
+            title: 'Delete',
+            text: 'successfully',
             icon: 'success',
             button:{
-                  text : 'list출력한다리',
+                  text : 'go to list',
                   value : true,
             }
         }).then((result) => {
