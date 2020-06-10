@@ -95,7 +95,7 @@ public class DataBase_query {
 	
 	// 1명 게시글 읽어오기(R)
 	public static final String SQL_WRITE_SELECT_BY_UID = 
-			"SELECT c.cs_uid, c.cs_subject, c.cs_content, c.cs_regdate, m.mem_id, c.mem_uid "+ 
+			"SELECT c.cs_uid, c.cs_subject, c.cs_content, c.cs_regdate, m.mem_id "+ 
 			"FROM cs_tb c , member_tb m " + 
 			"WHERE c.mem_uid = m.mem_uid AND c.cs_uid=?";
 	
@@ -117,11 +117,35 @@ public class DataBase_query {
 	public static final String SQL_SELECT_UID =
 			"SELECT c.CS_UID, c.CS_SUBJECT, m.MEM_ID, c.CS_REGDATE " + 
 			"FROM cs_tb c , member_tb m " + 
-			"WHERE c.mem_uid = m.mem_uid " +
-			"ORDER BY c.CS_UID DESC";
+			"WHERE c.mem_uid = m.mem_uid";
 	
+	// 모든 게시글 보여주기(R-2 테스트 - 상빈)
+	public static final String SQL_SELECT_UID2 =
+			"SELECT c.CS_UID, c.CS_SUBJECT, c.CS_CONTENT, m.MEM_ID, c.CS_REGDATE " + 
+					"FROM cs_tb c , member_tb m " + 
+					"WHERE c.mem_uid = m.mem_uid";
 	
+	String test = "SELECT c.CS_UID, c.CS_SUBJECT, c.CS_CONTENT, m.MEM_ID, c.CS_REGDATE " + 
+			"FROM cs_tb c , member_tb m " + 
+			"WHERE c.mem_uid = m.mem_uid";
 	
+	// -------------------- pagination ----------------------------
+	// 글 목록 전체 개수 가져오기
+		public static final String SQL_WRITE_COUNT_ALL = 
+				"SELECT count(*) FROM cs_tb";
+		
+		// fromRow 부터 pageRows 만큼 SELECT
+		// (몇번째) 부터 (몇개) 만큼
+		public static final String SQL_WRITE_SELECT_FROM_ROW =  
+				"SELECT * FROM " + 
+				"(SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM cs_tb ORDER BY cs_uid DESC) T) " + 
+				"WHERE RNUM >= ? AND RNUM < ?";
+		
+		public static final String SQL_WRITE_SELECT_FROM_ROW2 =  
+				"SELECT * FROM " + 
+						"(SELECT ROWNUM AS RNUM, T.* FROM (SELECT c.CS_UID, c.CS_SUBJECT, c.CS_CONTENT, m.MEM_ID, c.CS_REGDATE FROM cs_tb c , member_tb m WHERE c.mem_uid = m.mem_uid) T) " + 
+						"WHERE RNUM >= ? AND RNUM < ?";
+
 	
 	
 }
