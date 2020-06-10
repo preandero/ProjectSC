@@ -22,7 +22,7 @@
 <header>
         <div class="logo">
             <img src="../images/logo.png" id="logoimg">
-            <span id="slogo"><b>Asangbinsi</b></span>
+            <span id="slogo" onclick="location.href='index.jsp'"><b>Asangbinsi</b></span>
         </div>
     </header>
   <div class="container" id="container">
