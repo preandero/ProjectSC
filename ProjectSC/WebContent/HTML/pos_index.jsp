@@ -16,9 +16,7 @@
                 <span><b>Asangbinsi</b></span>
             </div>
         </header>
-    
-    
-    
+    	
         <div class="container">
             <div class="card" onclick="location.href='pos_sales.do'">
                 <div class="imgBx">

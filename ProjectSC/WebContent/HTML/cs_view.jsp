@@ -7,7 +7,9 @@
 <%@ page import="cs_board.beans.*" %>
 
 <% // Controller 로부터 결과 데이터 받음
-   CS_WriteDTO [] arr = (CS_WriteDTO [])request.getAttribute("list");
+   CS_WriteDTO [] arr = (CS_WriteDTO [])request.getAttribute("view");
+
+	String mem_id=(String)session.getAttribute("mem_id");
 %>
 
 <%
@@ -35,8 +37,8 @@
    } // end if
 %>
 <%
-   int uid = arr[0].getUid();
-   int m_uid = arr[0].getM_uid();
+   int uid = Integer.parseInt(request.getParameter("uid"));
+ 
    String subject = arr[0].getSubject();
    String content = arr[0].getContent();
    String regDate = arr[0].getRegDate();
@@ -51,7 +53,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>읽기 <%= subject %></title> <!-- title에 글제목 넣기 -->
-<link href="../CSS/css_view.css" rel="stylesheet" type="text/css">
+<link href="../CSS/cs_view.css" rel="stylesheet" type="text/css">
 </head>
 <script>
 function chkDelete(uid){
@@ -90,9 +92,10 @@ function chkDelete(uid){
 
     <div class="form-container sign-in-container">
       <div  id="formwrite" method="POST">
+      
 <h2><%= subject %></h2>
 <br>
-작성자 : <%= m_uid %><br>
+작성자 : <%= mem_id %><br>
 제목 : <%= subject %><br>
 등록일 : <%= regDate %><br>
 내용: <br>

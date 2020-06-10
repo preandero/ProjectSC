@@ -6,7 +6,7 @@
 <%
 	// Controller 로부터 결과 데이터 받음.
 	CS_WriteDTO[] arr = (CS_WriteDTO[]) request.getAttribute("list");
-	MemberDTO[] memarr = (MemberDTO[]) request.getAttribute("memtb");
+	
 %>
 
 <!DOCTYPE html>
@@ -49,7 +49,7 @@
 						<tr>
 							<td><%=arr[i].getUid()%></td>
 							<td><a href="cs_view.do?uid=<%=arr[i].getUid()%>"><%=arr[i].getSubject()%></a></td>
-							<td><%=memarr[0].getId()%></td>
+							<td><%=arr[i].getMem_id()%></td>
 							<%-- <td><%= arr[i].getViewCnt() %></td> --%>
 							<td><%=arr[i].getRegDate()%></td>
 						</tr>
@@ -64,7 +64,7 @@
 					</div>
 				</div>
 			</form>
-			<button onclick="location.href='cs_write.jsp'">신규등록</button>
+			<button onclick="location.href='cs_write.do'">신규등록</button>
 		</div>
 	</div>
 </body>

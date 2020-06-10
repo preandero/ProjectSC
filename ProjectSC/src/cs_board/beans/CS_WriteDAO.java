@@ -46,17 +46,17 @@ public class CS_WriteDAO {
 	// 새글 작성 <---DTO
 	public int insert(CS_WriteDTO dto) throws SQLException {
 				
+		int mem_uid=dto.getMem_uid();
 		String subject=dto.getSubject();				
 		String content=dto.getContent();
-		int m_uid=dto.getM_uid();
 
-		int cnt = this.insert(subject, content,m_uid);
+		int cnt = this.insert(subject, content,mem_uid);
 		return cnt;
 	}//end insert
 
 	
 	// 새글 작성 <-- 제목, 내용
-	public int insert(String subject, String content, int mem_uid) throws SQLException {
+	public int insert(String subject, String content,int mem_uid) throws SQLException {
 		int cnt = 0;
 
 		try {	
@@ -87,10 +87,10 @@ public class CS_WriteDAO {
 			int uid = rs.getInt("cs_uid");
 			String subject = rs.getString("cs_subject");
 			String content = rs.getString("cs_content");
-			//String mem_id = rs.getString("mem_id");
 			Date d = rs.getDate("cs_regdate");
 			Time t = rs.getTime("cs_regdate");
-			int m_uid=rs.getInt("mem_uid");
+			int mem_uid = rs.getInt("mem_uid");
+//			int m_uid=rs.getInt("mem_uid");
 //			String name = rs.getString("cs_name");
 			//위에 Date, Time 은  java.sql 걸로 돌아감
 			
@@ -100,7 +100,7 @@ public class CS_WriteDAO {
 							new SimpleDateFormat("hhmmss").format(t);
 			}
 	
-			CS_WriteDTO dto = new CS_WriteDTO(uid, subject, content, m_uid);
+			CS_WriteDTO dto = new CS_WriteDTO(uid, subject, content, mem_uid);
 			dto.setRegDate(regDate);
 			list.add(dto);
 		}//end while
@@ -114,6 +114,82 @@ public class CS_WriteDAO {
 	
 	}// end createArray
 	
+public CS_WriteDTO[] createArraylist(ResultSet rs) throws SQLException {
+		
+		CS_WriteDTO[] arr = null;   //DTO 배열 초기화
+		ArrayList<CS_WriteDTO> list = new ArrayList<CS_WriteDTO>();
+		
+			
+		while(rs.next()){
+			int uid = rs.getInt("cs_uid");
+			String subject = rs.getString("cs_subject");
+			String mem_id = rs.getString("mem_id");
+			Date d = rs.getDate("cs_regdate");
+			Time t = rs.getTime("cs_regdate");
+//			int m_uid=rs.getInt("mem_uid");
+//			String name = rs.getString("cs_name");
+			//위에 Date, Time 은  java.sql 걸로 돌아감
+			
+			String regDate="";
+			if(d != null){
+				regDate = new SimpleDateFormat("yyyyMMdd").format(d)+" "+
+							new SimpleDateFormat("hhmmss").format(t);
+			}
+	
+			CS_WriteDTO dto = new CS_WriteDTO(uid, subject, mem_id);
+			dto.setRegDate(regDate);
+			list.add(dto);
+		}//end while
+		
+		int size = list.size();
+		if(size == 0 ) return null;
+		arr = new CS_WriteDTO[size];
+		list.toArray(arr);
+		
+		return arr;
+	
+	}// end createArray
+
+
+public CS_WriteDTO[] createArrayView(ResultSet rs) throws SQLException {
+	
+	CS_WriteDTO[] arr = null;   //DTO 배열 초기화
+	ArrayList<CS_WriteDTO> list = new ArrayList<CS_WriteDTO>();
+	
+		
+	while(rs.next()){
+		int uid = rs.getInt("cs_uid");
+		String subject = rs.getString("cs_subject");
+		String content = rs.getString("cs_content");
+		Date d = rs.getDate("cs_regdate");
+		Time t = rs.getTime("cs_regdate");
+		String mem_id = rs.getString("mem_id");
+//		int m_uid=rs.getInt("mem_uid");
+//		String name = rs.getString("cs_name");
+		//위에 Date, Time 은  java.sql 걸로 돌아감
+		
+		String regDate="";
+		if(d != null){
+			regDate = new SimpleDateFormat("yyyyMMdd").format(d)+" "+
+						new SimpleDateFormat("hhmmss").format(t);
+		}
+
+		CS_WriteDTO dto = new CS_WriteDTO(uid, subject, content, mem_id);
+		dto.setRegDate(regDate);
+		list.add(dto);
+	}//end while
+	
+	int size = list.size();
+	if(size == 0 ) return null;
+	arr = new CS_WriteDTO[size];
+	list.toArray(arr);
+	
+	return arr;
+
+}// end createArray
+
+
+
 	
 	//전체 SELECT
 	public CS_WriteDTO [] select() throws SQLException{
@@ -148,7 +224,7 @@ public class CS_WriteDAO {
 			pstmt.setInt(1, uid);
 			rs = pstmt.executeQuery();
 			
-			arr= createArray(rs);
+			arr= createArrayView(rs);
 			conn.commit();
 			
 		} catch (Exception e) {
@@ -171,7 +247,7 @@ public class CS_WriteDAO {
 			pstmt=conn.prepareStatement(DataBase_query.SQL_WRITE_SELECT_BY_UID);
 			pstmt.setInt(1, uid);
 			rs=pstmt.executeQuery();
-			arr=createArray(rs);
+			arr=createArrayView(rs);
 			
 		}finally {
 			close();
@@ -223,9 +299,8 @@ public class CS_WriteDAO {
 		
 		try {
 		pstmt=conn.prepareStatement(DataBase_query.SQL_SELECT_UID);
-		pstmt.setInt(1, uid);
 		rs=pstmt.executeQuery();
-		arr=createArray(rs);
+		arr=createArraylist(rs);
 		} finally {
 			close();
 		}
