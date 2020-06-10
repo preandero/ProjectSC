@@ -164,7 +164,7 @@ public CS_WriteDTO[] createArrayView(ResultSet rs) throws SQLException {
 		Date d = rs.getDate("cs_regdate");
 		Time t = rs.getTime("cs_regdate");
 		String mem_id = rs.getString("mem_id");
-//		int m_uid=rs.getInt("mem_uid");
+		int mem_uid=rs.getInt("mem_uid");
 //		String name = rs.getString("cs_name");
 		//위에 Date, Time 은  java.sql 걸로 돌아감
 		
@@ -174,7 +174,7 @@ public CS_WriteDTO[] createArrayView(ResultSet rs) throws SQLException {
 						new SimpleDateFormat("hhmmss").format(t);
 		}
 
-		CS_WriteDTO dto = new CS_WriteDTO(uid, subject, content, mem_id);
+		CS_WriteDTO dto = new CS_WriteDTO(uid, subject, content, mem_id, mem_uid);
 		dto.setRegDate(regDate);
 		list.add(dto);
 	}//end while
