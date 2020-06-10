@@ -16,6 +16,9 @@
 </head>
 
 <body>
+ <video id="video" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
+        <source src="../images/banner.mp4">
+  </video>
 <header>
         <div class="logo">
             <img src="../images/logo.png" id="logoimg">
@@ -26,7 +29,7 @@
     <div class="form-container sign-in-container">
       <form action="kakaopay.jsp" method="post">
         <h1>PAY INFO</h1>
-        <span>Please fill in this registration form</span>
+        <span id = "please">Please fill in this registration form</span>
         <label class="label" for="name">이용권</label>
 
         <div class="controls">
@@ -61,17 +64,20 @@
       </form>
     </div>
 
-    <div class="overlay-container">
-      <div class="sub-cont">
-        <div class="img">
-          <div class="img__text m--up">
-            <h2>New here?</h2>
-            <p>Sign up and discover great amount of new opportunities!</p>
-          </div>
-        </div>
-      </div>
+   <div class="overlay-container">
+			<div class="overlay">
+				<div class="overlay-panel overlay-left">
+					<h1>Store Registration</h1>
+					<p>We Require Store Information</p>
+					<button class="ghost" id="signIn">Back to Member Registration</button>
+				</div>
+				<div class="overlay-panel overlay-right">
+					<h1>Welcome Asangbinsi POS</h1>
+					<br>
 
-    </div>
+				</div>
+			</div>
+		</div>
   </div>
 </body>
 
