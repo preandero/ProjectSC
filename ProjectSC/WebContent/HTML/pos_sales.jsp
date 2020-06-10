@@ -105,7 +105,7 @@
 				<span class="price"> <%= arr[i].getMenu_price() %></span>
 				</li>
 		<% 
-				}//end forㅇㅇ
+				}//end for
 			}
 		%>
                    
