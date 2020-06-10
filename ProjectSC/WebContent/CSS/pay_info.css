@@ -1,17 +1,5 @@
 @charset "UTF-8";
-@import url(https://fonts.googleapis.com/css?family=Raleway);
-video {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	min-width: 100%;
-	min-height: 100%;
-	width: auto;
-	height: auto;
-	z-index: -1;
-	overflow: hidden;
-}
-/*
+
 .img {
 	position: absolute;
 	left: 0;
@@ -65,43 +53,7 @@ video {
 	font-size: 14px;
 	line-height: 1.5;
 }
-*/
 
-.overlay-container {
-	position: absolute;
-	top: 0;
-	left: 50%;
-	width: 50%;
-	height: 100%;
-	overflow: hidden;
-	transition: transform 0.6s ease-in-out;
-	z-index: 100;
-}
-
-.container.right-panel-active .overlay-container{
-	transform: translateX(-100%);
-}
-
-.overlay {
-    opacity: 0.9;
-	background: rgb(22, 26, 51);
-	/* background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-	background: linear-gradient(to right, #FF4B2B, #FF416C); */
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: 0 0;
-	color: #FFFFFF;
-	position: relative;
-	left: -100%;
-	height: 100%;
-	width: 200%;
-  	transform: translateX(0);
-	transition: transform 0.6s ease-in-out;
-}
-
-.container.right-panel-active .overlay {
-  	transform: translateX(50%);
-}
 .controls input[type="text"],
 .controls input[type="email"],
 .controls input[type="tel"],
@@ -117,7 +69,6 @@ video {
 }
 
 * {
-	font-family: Raleway;
 	box-sizing: border-box;
 }
 
@@ -162,10 +113,7 @@ p {
 	letter-spacing: 0.5px;
 	margin: 20px 0 30px;
 }
-#please {
-    color: black;
-    font-size: 20px;
-}
+
 span {
 	font-size: 12px;
 	margin: 20px 0px;
@@ -246,17 +194,16 @@ input {
 }
 
 .container {
- opacity: 0.9;
-	background-color: #fff;
+
 	margin-top: 100px;
-	
+	background-color: #fff;
 	border-radius: 10px;
 	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
 		0 10px 10px rgba(8, 8, 8, 0.22);
 	position: relative;
 	overflow: hidden;
-	width: 1188px;
-    height: 783px;
+	width: 908px;
+	height: 600px;
 
 	max-width: 100%;
 	min-height: 480px;
@@ -312,76 +259,7 @@ header{
 #slogo{
    font-size: 30px;
    color: white;
-   cursor: pointer;
 }
-.overlay-container {
-	position: absolute;
-	top: 0;
-	left: 50%;
-	width: 50%;
-	height: 100%;
-	overflow: hidden;
-	transition: transform 0.6s ease-in-out;
-	z-index: 100;
-}
-
-.container.right-panel-active .overlay-container{
-	transform: translateX(-100%);
-}
-
-.overlay {
-    opacity: 0.9;
-	background: rgb(22, 26, 51);
-	/* background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-	background: linear-gradient(to right, #FF4B2B, #FF416C); */
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: 0 0;
-	color: #FFFFFF;
-	position: relative;
-	left: -100%;
-	height: 100%;
-	width: 200%;
-  	transform: translateX(0);
-	transition: transform 0.6s ease-in-out;
-}
-
-.container.right-panel-active .overlay {
-  	transform: translateX(50%);
-}
-
-.overlay-panel {
-	position: absolute;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	padding: 0 40px;
-	text-align: center;
-	top: 0;
-	height: 100%;
-	width: 50%;
-	transform: translateX(0);
-	transition: transform 0.6s ease-in-out;
-}
-
-.overlay-left {
-	transform: translateX(-20%);
-}
-
-.container.right-panel-active .overlay-left {
-	transform: translateX(0);
-}
-
-.overlay-right {
-	right: 0;
-	transform: translateX(0);
-}
-
-.container.right-panel-active .overlay-right {
-	transform: translateX(20%);
-}
-
 b{
 	font-family: "Avenir Next", "Century Gothic", "Franklin Gothic Medium", "Helvetica Neue", Helvetica, Arial, sans-serif, 'Nanum Gothic Coding', monospace;
 	color: white;
