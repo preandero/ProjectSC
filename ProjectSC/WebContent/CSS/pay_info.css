@@ -312,6 +312,7 @@ header{
 #slogo{
    font-size: 30px;
    color: white;
+   cursor: pointer;
 }
 .overlay-container {
 	position: absolute;

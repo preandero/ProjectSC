@@ -25,7 +25,9 @@ button{
 
 
 
-
+.logo2{
+	cursor:pointer;
+}
 
 a#jump{
 	display:block;
