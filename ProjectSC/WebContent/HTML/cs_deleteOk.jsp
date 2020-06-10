@@ -5,7 +5,7 @@
    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
    crossorigin="anonymous"></script>
 <%  // Controller 로부터 결과 데이터 받음
-   int cnt = (Integer)request.getAttribute("result");
+   int cnt = (Integer)request.getAttribute("delete");
 %>
 
 <% if(cnt == 0){ %>
