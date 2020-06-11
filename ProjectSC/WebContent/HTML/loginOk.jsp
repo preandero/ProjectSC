@@ -8,14 +8,18 @@
 
 <%
 	int paydate = -5;
-	MemberDTO[] arr = (MemberDTO[]) request.getAttribute("list"); //형을 맞춰줘야한다.
+	SessionDTO[] arr = (SessionDTO[]) request.getAttribute("list"); //형을 맞춰줘야한다.
 	session.removeAttribute("mem_uid");
 
 	if (arr != null) {
-		int mem_uid = arr[0].getUid();
-		String mem_id=arr[0].getId();
+		int mem_uid = arr[0].getMem_uid();
+		String mem_id = arr[0].getMem_id();
+		int store_uid = arr[0].getStore_uid();
+		System.out.println("" + mem_uid + mem_id + store_uid + arr[0].getPeriod());
+		
 		session.setAttribute("mem_uid", mem_uid);
 		session.setAttribute("mem_id", mem_id);
+		session.setAttribute("store_uid", store_uid);
 		if (arr[0].getPeriod() != 0) {
 			paydate = (Integer) request.getAttribute("compare");
 

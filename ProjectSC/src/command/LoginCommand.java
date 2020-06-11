@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import pos.beans.MemberDAO;
-import pos.beans.MemberDTO;
+import pos.beans.SessionDTO;
 
 public class LoginCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		MemberDAO mdao = new MemberDAO();
-		MemberDTO[] arr = null;
+		SessionDTO[] arr = null;
 		HttpSession session = null;
 		
 		String id = request.getParameter("Id");

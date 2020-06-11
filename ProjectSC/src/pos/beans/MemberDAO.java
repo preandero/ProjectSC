@@ -40,29 +40,6 @@ public class MemberDAO {
 		} // end close()
 		
 		
-//		// 회원가입해서 DB 에 INSERT
-//		public int insert(String id, String pw, String name, String email, int phonenum) throws SQLException{
-//			int cnt = 0;
-//			
-//			try {
-//				pstmt = conn.prepareStatement(DataBase_query.SQL_MEM_INSERT);
-//				pstmt.setString(1, id);
-//				pstmt.setString(2, pw);
-//				pstmt.setString(3, name);
-//				pstmt.setString(4, email);
-//				pstmt.setInt(5,phonenum);
-//				cnt = pstmt.executeUpdate();
-//				
-//			} catch(Exception e) {
-//				e.printStackTrace();
-//			} finally {
-//				close();
-//			}
-//			return cnt;
-//
-//
-//	} 
-
 
 	// 회원 가입 INSERT
 	public int insertJoin(String id, String pw, String email, String phoneNum,
@@ -99,9 +76,7 @@ public class MemberDAO {
 			pstmt.setInt(4, mem_uid);
 			cnt = pstmt.executeUpdate();
 			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
+		}finally {
 			close();
 		}
 		return cnt;
@@ -109,15 +84,15 @@ public class MemberDAO {
 
 
 	// 로그인 했을때 DB에서 mem_uid를 SELECT
-	public MemberDTO[] selectByIdPw(String id, String pw) throws SQLException{
-		MemberDTO[] arr = null;
+	public SessionDTO[] selectByIdPw(String id, String pw) throws SQLException{
+		SessionDTO[] arr = null;
 		
 		try {
 		pstmt = conn.prepareStatement(DataBase_query.SQL_MEM_CHK);
 		pstmt.setString(1, id);
 		pstmt.setString(2, pw);
 		rs = pstmt.executeQuery();
-		arr = createArray(rs);
+		arr = createSession(rs);
 		}finally {
 			close();
 		}
@@ -142,6 +117,7 @@ public class MemberDAO {
 		
 		return cnt;
 	}
+	
 	
 	public MemberDTO[] createArray(ResultSet rs) throws SQLException {
 		MemberDTO[] arr = null; // DTO 배열
@@ -172,6 +148,31 @@ public class MemberDAO {
 		list.toArray(arr); // List -> 배열
 		return arr;
 
+	}
+	
+	// session에 저장할 데이터들을 가져올 도우미 함수
+	public SessionDTO[] createSession(ResultSet rs) throws SQLException{
+		SessionDTO[] arr = null;
+		ArrayList<SessionDTO> list = new ArrayList<SessionDTO>();
+
+		while (rs.next()) {
+			int mem_uid = rs.getInt("mem_uid");
+			String mem_id = rs.getString("mem_id");
+			int store_uid = rs.getInt("mem_uid");
+			int period = rs.getInt("mem_sub_period");
+			
+			SessionDTO dto = new SessionDTO(mem_uid, mem_id, store_uid, period);
+			list.add(dto);
+
+		} // while
+		int size = list.size();
+
+		if (size == 0)
+			return null;
+
+		arr = new SessionDTO[size];
+		list.toArray(arr); // List -> 배열
+		return arr;
 	}
 	
 	public MemberDTO[] select() throws SQLException{

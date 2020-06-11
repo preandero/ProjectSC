@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="pos_mgmt.beans.*"%>
     
-    
+<script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>   
     <%
 	//controller 로 부터 결과 데이터를 받는다.
 	WriteDTO[] arr = (WriteDTO[]) request.getAttribute("pos_mgmt_list");
@@ -72,19 +72,19 @@
     <div class="register">
         <div class="left">
             <div class="order-window">
-             <form id="insertorder" action="order.do" method="post">
+             <form id="insertorder" name="insertorder">
                 <table>
                
                     <tbody id="addable">
-                        <tr>
+                        <tr id="menu-col">
                             <td>Item</td>
                             <td>Quantity</td>
                             <td>Price</td>
                         </tr>
                     </tbody>
-                   
+                    
                 </table>
-                <input id="totalPriceSend" type="hidden" name="totalPrice" value="0">
+                <input id="totalPriceSend" type="hidden" name="totalPrice" >
                  </form>
             </div>
 
@@ -103,6 +103,7 @@
 				<li>
 				<span class="item"><%= arr[i].getMenu_name() %></span>
 				<span class="price"> <%= arr[i].getMenu_price() %></span>
+				<input type="hidden" name="menu_uid" value="<%= arr[i].getUid() %>">
 				</li>
 		<% 
 				}//end for
