@@ -14,6 +14,7 @@ header{
 span{
    font-size: 30px;
    color: white;
+   cursor: pointer;
 }
 b{
     
@@ -91,6 +92,7 @@ button {
 	text-transform: uppercase;
 	transition: transform 80ms ease-in;
 	margin: 10px 0px;
+	cursor: pointer;
 }
 
 button:active {

@@ -64,7 +64,7 @@ function writeChk(){
 
     <div class="form-container sign-in-container">
       <form action="cs_writeOk.do" id="formwrite" method="POST" onsubmit="return writeChk();">
-        <h1>글작성</h1>
+        <h1>Customer Service</h1>
        <br>
         <label class="label" for="name" id="txt">작성자</label>
         <span id="name-format-txt">Incorrect Name format</span>
@@ -77,16 +77,16 @@ function writeChk(){
         <script>
         $('#summernote').summernote({
             tabsize: 2,
-            height: 200
+            height: 300
           });            // set focus to editable area after initializing summernote
            
 </script>
-        <div id="btn">
+       <div id="btn">
         <button type="submit" class="ghost" id="signUp" onclick="writeChk();">등록</button>
         <button type="button" onclick="location.href='cs_list.do'" id="btn">목록</button>
         </div>
       </form>
-
+ 
     </div>
   </div>
 </body>
