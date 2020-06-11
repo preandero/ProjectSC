@@ -79,7 +79,13 @@ function writeChk(){
             tabsize: 2,
             height: 300
           });            // set focus to editable area after initializing summernote
-           
+		
+        /* $("#summernote").on("summernote.enter", function(we, e){
+        	$(this).summernote("pasteHTML", "<t><t>");
+        	e.preventDefault();
+        }); */
+        
+        
 </script>
        <div id="btn">
         <button type="submit" class="ghost" id="signUp" onclick="writeChk();">등록</button>
