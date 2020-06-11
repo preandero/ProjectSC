@@ -124,6 +124,7 @@ public CS_WriteDTO[] createArraylist(ResultSet rs) throws SQLException {
 			int uid = rs.getInt("cs_uid");
 			String subject = rs.getString("cs_subject");
 			String mem_id = rs.getString("mem_id");
+			String content = rs.getString("cs_content"); //테스트
 			Date d = rs.getDate("cs_regdate");
 			Time t = rs.getTime("cs_regdate");
 //			int m_uid=rs.getInt("mem_uid");
@@ -149,6 +150,8 @@ public CS_WriteDTO[] createArraylist(ResultSet rs) throws SQLException {
 		return arr;
 	
 	}// end createArray
+
+
 
 
 public CS_WriteDTO[] createArrayView(ResultSet rs) throws SQLException {
@@ -307,6 +310,42 @@ public CS_WriteDTO[] createArrayView(ResultSet rs) throws SQLException {
 		
 		return arr;
 	} 
+	
+	
+	//-------------------------pagination ---------------------------
+	//페이징관련 
+		//몇번째 from부터 몇개 rows를 select 
+		public CS_WriteDTO[] selectFromRow(int from, int rows) throws SQLException{
+			CS_WriteDTO[] arr = null;
+			
+			try {
+				pstmt = conn.prepareStatement(DataBase_query.SQL_WRITE_SELECT_FROM_ROW);
+				pstmt.setInt(1, from);
+				pstmt.setInt(2, from+rows);
+				rs= pstmt.executeQuery();
+				arr = createArray(rs);
+			}finally {
+				close();
+			}
+			
+			return arr;
+		}// end selectFromRow()
+		
+		//전체 글의 개수
+		public int countAll() throws SQLException{
+			int cnt = 0 ;
+			try {
+				pstmt=conn.prepareStatement(DataBase_query.SQL_WRITE_COUNT_ALL);
+				rs = pstmt.executeQuery();
+				rs.next();
+				cnt = rs.getInt(1);
+			} finally {
+				close();
+			}
+			return cnt;
+		}//end countAll
+		
+	
 	
 	
 	
