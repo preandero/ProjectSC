@@ -209,13 +209,13 @@ function chkSubmit2(){
 <script>
 $('#deleteTrigger').click(function(){
 	var formData = $('#menuInfo').serialize();
-	
+	var formData2 = $('button.mi[aria-pressed="true"]');
 	console.log(formData );
 	$.ajax({
 		type : "POST",
 		url : "pos_mgmt_deleteOk.do",
 		cache : false,
-		data : formData,
+		data : formData2,
 		success : onDeleteSuccess,
 		error : onDeleteError
 	})	
