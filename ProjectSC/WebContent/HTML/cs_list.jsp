@@ -30,8 +30,7 @@
 			<img src="../images/logo.png" id="logoimg"> <span id="slogo"><b>Asangbinsi</b></span>
 		</div>
 	</header>
-	<script
-		src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<div class="container" id="container">
 		<div class="form-container sign-in-container">
 			<div id="formsignup">
@@ -74,14 +73,33 @@
 						<button onclick="location.href='cs_write.do'">신규등록</button>
 					</div>
 					<div class="center">
-			<ul class="pagination"></ul>
-		</div>
+						<ul class="pagination"></ul>
+					</div>
 				</div>
 			</div>
-			
 		</div>
-		<%-- 페이징 --%>
-		
+<!-- 		테스트 -->
+		<div id="hiddenDiv" style="visibility:hidden; z-index:5; position:absolute; top:0; left:25%;">
+			<div id="progg"><img src="../images/01_progress.gif"/></div>
+		</div>
+		<script>
+			$(document).ready(function(){
+				var hiddenDiv = document.all.hiddenDiv;
+				hiddenDiv.style.visibility = "visible";
+				
+				$(document).ajaxStart(function(){
+					$('#progg').show();
+					$('#hiddenDiv').show().css({
+						bottom:'0px',
+						left:'0px'
+					});
+				}).ajaxStop(function(){
+					$('#progg').hide();
+					$('#hiddenDiv').hide();
+				});
+			});
+		</script>
+<!-- 		테스트 -->
 	</div>
 </body>
 </html>
