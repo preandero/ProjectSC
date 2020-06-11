@@ -24,6 +24,28 @@
 </head>
 <script src="../JS/board.js"></script>
 <body>
+<!-- 		테스트 -->
+		<div id="hiddenDiv" style="visibility:hidden; z-index:5; position:absolute; top:0; left:0; width:100%; height:50%">
+			<div id="progg"><img style="width:100%;" src="../images/01_progress.gif"/></div>
+		</div>
+		<script>
+			$(document).ready(function(){
+				var hiddenDiv = document.all.hiddenDiv;
+				hiddenDiv.style.visibility = "visible";
+				
+				$(document).ajaxStart(function(){
+					$('#progg').show();
+					$('#hiddenDiv').show().css({
+						bottom:'0px',
+						left:'0px'
+					});
+				}).ajaxStop(function(){
+					$('#progg').hide();
+					$('#hiddenDiv').hide();
+				});
+			});
+		</script>
+<!-- 		테스트 -->
 
 	<header>
 		<div class="logo">
@@ -78,28 +100,6 @@
 				</div>
 			</div>
 		</div>
-<!-- 		테스트 -->
-		<div id="hiddenDiv" style="visibility:hidden; z-index:5; position:absolute; top:0; left:25%;">
-			<div id="progg"><img src="../images/01_progress.gif"/></div>
-		</div>
-		<script>
-			$(document).ready(function(){
-				var hiddenDiv = document.all.hiddenDiv;
-				hiddenDiv.style.visibility = "visible";
-				
-				$(document).ajaxStart(function(){
-					$('#progg').show();
-					$('#hiddenDiv').show().css({
-						bottom:'0px',
-						left:'0px'
-					});
-				}).ajaxStop(function(){
-					$('#progg').hide();
-					$('#hiddenDiv').hide();
-				});
-			});
-		</script>
-<!-- 		테스트 -->
 	</div>
 </body>
 </html>
