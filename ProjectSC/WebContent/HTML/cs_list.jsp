@@ -34,7 +34,7 @@
 		src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<div class="container" id="container">
 		<div class="form-container sign-in-container">
-			<form id="formsignup">
+			<div id="formsignup">
 
 				<div id="list">
 
@@ -71,15 +71,17 @@
 					<br>
 					<div id="btn">
 						<!--btn 눌렀을시 cs_write.do 로 이동안함-->
+						<button onclick="location.href='cs_write.do'">신규등록</button>
 					</div>
-				</div>
-			</form>
-			<button onclick="location.href='cs_write.do'">신규등록</button>
-		</div>
-		<%-- 페이징 --%>
-		<div class="center">
+					<div class="center">
 			<ul class="pagination"></ul>
 		</div>
+				</div>
+			</div>
+			
+		</div>
+		<%-- 페이징 --%>
+		
 	</div>
 </body>
 </html>

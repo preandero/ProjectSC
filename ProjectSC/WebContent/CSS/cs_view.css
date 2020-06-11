@@ -106,18 +106,17 @@ input {
     
 }
 .container {
-    margin-top: 110px;
-   background-color: #fff;
-   border-radius: 10px;
-     /*box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-         0 10px 10px rgba(8, 8, 8, 0.22);*/
-   position: relative;
-   overflow: hidden;
-    width: 908px;
-    height: 600px;
-    
-   max-width: 100%;
-   min-height: 480px;
+   position: sticky;
+    margin-top: 52px;
+    background-color: #fff;
+    /*border-radius: 10px;*/
+    /* box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(8, 8, 8, 0.22); */
+    width: 1666px;
+    height: 848px;
+    max-width: 100%;
+    min-height: 523px;
+    padding: 10px 10px;
+    border: 1px solid black;
 }
 
 .form-container {
