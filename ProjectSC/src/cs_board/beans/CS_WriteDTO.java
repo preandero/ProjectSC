@@ -8,12 +8,6 @@ public class CS_WriteDTO {
 	private String regDate;
 	private int mem_uid;
 	private String mem_id;
-	
-
-
-
-
-
 
 
 	public CS_WriteDTO() {
