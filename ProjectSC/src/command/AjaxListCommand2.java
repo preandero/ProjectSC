@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import pos.beans.OrderDetailDTO;
 
-public class AjaxListCommand implements Command {
+public class AjaxListCommand2 implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {

@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import command.*;
 
 @WebServlet("*.ajax")
-public class AjaxController extends HttpServlet {
+public class AjaxController2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public AjaxController() {
+    public AjaxController2() {
         super();
     }
 
@@ -38,7 +38,7 @@ public class AjaxController extends HttpServlet {
 		switch (com) {
 		case "/HTML/orderInsert.ajax":
 			new OrderInsertCommand().execute(request, response);
-			new AjaxResultCommand().execute(request, response);
+			new AjaxResultCommand2().execute(request, response);
 			break;
 
 		}

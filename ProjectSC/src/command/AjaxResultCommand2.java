@@ -10,7 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import pos.beans.AjaxPOSResult;
 
-public class AjaxResultCommand implements Command {
+public class AjaxResultCommand2 implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
