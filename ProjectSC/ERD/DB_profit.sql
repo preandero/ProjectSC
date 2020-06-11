@@ -3,7 +3,7 @@
 /***************/
 
 DROP TABLE cs_tb CASCADE CONSTRAINTS;
-DROP TABLE order_detail CASCADE CONSTRAINTS;
+DROP TABLE order_detail_tb CASCADE CONSTRAINTS;
 DROP TABLE menu_tb CASCADE CONSTRAINTS;
 DROP TABLE order_tb CASCADE CONSTRAINTS;
 DROP TABLE storeinfo_tb CASCADE CONSTRAINTS;
@@ -89,20 +89,20 @@ CREATE TABLE menu_tb
 SELECT * FROM MENU_TB;
 
 /* OrderDetail Table */
-CREATE TABLE order_detail
+CREATE TABLE order_detail_tb
 (
 	order_uid number NOT NULL,
 	menu_uid number NOT NULL,
 	menu_quantity number NOT NULL
 );
 
-SELECT * FROM ORDER_DETAIL od ;
+SELECT * FROM ORDER_DETAIL_TB od ;
 
 /* Order Table */
 CREATE TABLE order_tb
 (
 	order_uid number NOT NULL,
-	order_regdate date,
+	order_regdate DATE DEFAULT sysdate,
 	order_totalprice number,
 	store_uid number NOT NULL,
 	PRIMARY KEY (order_uid)
@@ -144,3 +144,14 @@ ALTER TABLE order_tb
 	ADD FOREIGN KEY (store_uid)
 	REFERENCES storeinfo_tb (store_uid)
 ;
+
+SELECT s.store_uid, m.MEM_ID , s.MEM_UID , m.MEM_SUB_PERIOD 
+FROM MEMBER_TB m, STOREINFO_TB s
+WHERE s.MEM_UID = 
+(SELECT MEM_UID FROM MEMBER_TB WHERE MEM_ID ='skuley12' AND MEM_PW = 'qwerty1234')
+AND m.MEM_UID = s.MEM_UID;
+
+
+SELECT * FROM STOREINFO_TB st  WHERE MEM_UID = 1;
+
+SELECT * FROM MEMBER_TB;

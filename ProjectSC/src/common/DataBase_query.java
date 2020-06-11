@@ -27,7 +27,11 @@ public class DataBase_query {
 	
 	// 로그인시 확인할 id & pw 확인하기
 	public static final String SQL_MEM_CHK = 
-			"SELECT * FROM member_tb WHERE mem_id = ? AND mem_pw = ?";
+			"SELECT s.store_uid, m.MEM_ID , s.MEM_UID , m.MEM_SUB_PERIOD " +
+			"FROM MEMBER_TB m, STOREINFO_TB s " +
+			"WHERE s.MEM_UID = " +
+			"(SELECT MEM_UID FROM MEMBER_TB WHERE MEM_ID =? AND MEM_PW = ?) " +
+			"AND m.MEM_UID = s.MEM_UID";
 	
 	public static final String SQL_PAYINFO_INSERT = 
 			"UPDATE member_tb SET "
@@ -36,42 +40,10 @@ public class DataBase_query {
 			+ "(SELECT SYSDATE, ?, ?, ? FROM DUAL) "
 			+ "where mem_uid = ?"
 			;
-	
-	public static final String SQL_ORDER_INSERT = "INSERT INTO order_tb"
-			+ "(order_uid, order_regdate, order_totalprice, store_uid)"
-			+ "VALUES"
-			+ "(SEQ_ORDER_UID.nextval, SYSDATE, ?, ?)";
-	
-	public static final String SQL_ORDER_DETAIL_INSERT = "INSERT INTO order_detail"
-			+ "(orderdetail_uid, orderdetail_price, order_menuname, orderdetail_quantity, ?, ?)"
-			+ "VALUES"
-			+ "(SEQ_ORDER_UID.nextval, SYSDATE, ?, ?)";
-	
-//	CREATE TABLE order_detail
-//	(
-//		orderdetail_uid number NOT NULL,
-//		orderdetail_price number NOT NULL,
-//		orderdetail_menuname varchar2(40) NOT NULL,
-//		orderdetail_quantity number NOT NULL,
-//		order_uid number NOT NULL,
-//		menu_uid number NOT NULL,
-//		PRIMARY KEY (orderdetail_uid)
-//	);
-//
-//
-//	CREATE TABLE order_tb
-//	(
-//		order_uid number NOT NULL,
-//		order_regdate date,
-//		order_totalprice number,
-//		store_uid number NOT NULL,
-//		PRIMARY KEY (order_uid)
-//	);
 
 	// -------       pos_mgmt_query    start ---------------
 	public static String SQL_MENU_INSERT = "insert into menu_tb values (SEQ_menu_uid.nextval, ?, ?, ?)";
 	
-//	public static String SQL_MENU_SELECT_ALL ="SELECT menu_name, menu_price FROM menu_tb WHERE store_uid = ?";
 	public static String SQL_MENU_SELECT_ALL ="select * from menu_tb WHERE store_uid = ?";
 	
 	public static String SQL_MENU_DELETE = "delete from menu_tb where menu_uid = ?";
@@ -84,6 +56,23 @@ public class DataBase_query {
 	
 	// -------       pos_mgmt_query     end ---------------
 	
+	
+	//---------------- POS 결제 후 ORDER TABLE에 저장 *시작점* ------------------
+	
+	// order table에 데이터 넣기
+	public static String SQL_ORDER_INSERT = 
+		"INSERT INTO order_tb (order_uid, order_regdate, order_totalprice, store_uid) " + 
+		"VALUES " + 
+		"(SEQ_order_uid.nextval, SYSDATE, ?, ?)";
+	
+	// order detail table 에 넣기
+	public static String SQL_ORDER_DETAIL_INSERT = 
+		"INSERT INTO order_detail_tb (order_uid, menu_uid, menu_quantity) " +
+		"VALUES " + 
+		"(?, ?, ?)";
+	
+	
+	//---------------- POS 결제 후 ORDER TABLE에 저장 *끝점* ------------------
 	
 	
 	// -------	cs_tb_query	 start ---------------

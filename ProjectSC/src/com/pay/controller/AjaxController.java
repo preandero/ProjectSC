@@ -36,9 +36,9 @@ public class AjaxController extends HttpServlet {
 		String com = uri.substring(conPath.length());
 		
 		switch (com) {
-		case "/HTML/order.ajax":
-			new OrderDInsertCommand().execute(request, response);
-			new AjaxListCommand().execute(request, response);
+		case "/HTML/orderInsert.ajax":
+			new OrderInsertCommand().execute(request, response);
+			new AjaxResultCommand().execute(request, response);
 			break;
 
 		}

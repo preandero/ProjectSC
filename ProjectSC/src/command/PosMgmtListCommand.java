@@ -18,7 +18,11 @@ public class PosMgmtListCommand implements Command {
 		
 		HttpSession session = request.getSession(false);
 		
-		int uid = (Integer)session.getAttribute("mem_uid");
+		// int uid = (Integer)session.getAttribute("mem_uid");
+		// 여기에 mem_uid 값이 파라미터로 보내지면 안돼고 store_uid 값이 session
+		// 에 저장되어 파라미터로 보내져야 한다.
+		// TODO
+		int uid = 0;
 		
 		try {
 			//트랜잭션수행
