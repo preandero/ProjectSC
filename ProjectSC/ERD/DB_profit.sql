@@ -1,3 +1,10 @@
+
+
+SELECT c.CS_UID, c.CS_SUBJECT, c.CS_CONTENT, m.MEM_ID, c.CS_REGDATE FROM cs_tb c, member_tb m WHERE c.mem_uid = m.mem_uid  						
+AND c.CS_UID >= 1 
+AND c.CS_UID < 5
+						;
+
 /***************/
 /* Drop Tables */
 /***************/

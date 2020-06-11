@@ -95,7 +95,7 @@ public class DataBase_query {
 	
 	// 1명 게시글 읽어오기(R)
 	public static final String SQL_WRITE_SELECT_BY_UID = 
-			"SELECT c.cs_uid, c.cs_subject, c.cs_content, c.cs_regdate, m.mem_id "+ 
+			"SELECT c.cs_uid, c.cs_subject, c.cs_content, c.cs_regdate, m.mem_id, m.mem_uid "+ 
 			"FROM cs_tb c , member_tb m " + 
 			"WHERE c.mem_uid = m.mem_uid AND c.cs_uid=?";
 	
@@ -142,9 +142,9 @@ public class DataBase_query {
 				"WHERE RNUM >= ? AND RNUM < ?";
 		
 		public static final String SQL_WRITE_SELECT_FROM_ROW2 =  
-				"SELECT * FROM " + 
-						"(SELECT ROWNUM AS RNUM, T.* FROM (SELECT c.CS_UID, c.CS_SUBJECT, c.CS_CONTENT, m.MEM_ID, c.CS_REGDATE FROM cs_tb c, member_tb m WHERE c.mem_uid = m.mem_uid) T) " + 
-						"WHERE RNUM >= ? AND RNUM < ?";
+//						"SELECT * FROM "+
+						"SELECT c.CS_UID, c.CS_SUBJECT, c.CS_CONTENT, c.CS_REGDATE, c.MEM_UID, m.MEM_ID FROM cs_tb c, member_tb m WHERE c.mem_uid = m.mem_uid " + 
+						"AND c.CS_UID >= ? AND c.CS_UID < ? order by c.cs_uid desc";
 
 	
 	

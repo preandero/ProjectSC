@@ -15,7 +15,7 @@ public class CSListCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		HttpSession session = request.getSession(false);
+		HttpSession session = request.getSession();
 		CS_WriteDAO dao = new CS_WriteDAO();
 		CS_WriteDTO[] arr = null;  //초기값
 		int mem_uid = (int) session.getAttribute("mem_uid");
