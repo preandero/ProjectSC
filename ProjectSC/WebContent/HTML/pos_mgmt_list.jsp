@@ -33,6 +33,8 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"
 	integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd"
 	crossorigin="anonymous">
+<script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 	
 </script>
 <link href="../CSS/pos_mgmt.css" rel="stylesheet" type="text/css">
@@ -69,9 +71,9 @@
 					Side Menu</button>
 				<div class="dropdown-menu dropdown-menu-right ">
 					<button class="dropdown-item" type="button" onclick="location.href='my_page.html'">My page</button>
-					<button class="dropdown-item" type="button" onclick="location.href='cs_list.do'">CS Board</button>
+					<button class="dropdown-item" type="button" onclick="location.href='cs_list.jsp'">CS Board</button>
 					<div class="dropdown-divider"></div>
-					<button class="dropdown-item" type="button" onclick="location.href='logout.jsp'">LogOut</button>
+					<button class="dropdown-item" type="button" onclick="location.href='#'">LogOut</button>
 				</div>
 			</div>
 		</div>
@@ -116,7 +118,7 @@
                <label class="label" for="name">NAME</label>
                <input type="text" placeholder="이름을 입력하세요" name="menu_name"/>
                <label class="label" for="name">PRICE</label>
-               <input placeholder="가격을 입력하세요" name="menu_price"/>
+               <input type="number" placeholder="가격을 입력하세요" name="menu_price"/>
 	            <div class="modal-footer">
 	              <button type="submit" class="btn btn-primary ">Add</button>
 	              <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
@@ -147,7 +149,7 @@
 <!-- 				<script src="JS/chkSubmit"></script> -->
             <form action="pos_mgmt_updateOk.do" id="formUpdate" method="post" onsubmit="return chkSubmit()">
                <label class="label" for="name">Menu_NAME</label>
-               <input type="text" placeholder="수정할 메뉴이름을 입력하세요" name="menu_update_name"/>
+               <input type="text" placeholder="수정할 메뉴이름을 입력하세요" name="menu_update_name" id="menu_update_name"/>
                <label class="label" for="name">Menu_PRICE</label>
                <input text="number" placeholder="수정할 가격을 입력하세요" name="menu_update_price"/>
 	            <div class="modal-footer">
@@ -172,13 +174,33 @@ function chkSubmit(){
 	var menu_update_price = frm.menu_update_price.value.trim();		//제목
 	
 	if(menu_update_name == ""){
-		alert("작성자 란은 반드시 입력해야 합니다.");
+		$(document).ready(function () {
+            swal({
+                title: 'Failed',
+                text: 'required please fill out Menu Name.',
+                icon: 'warning',
+                button:{
+                		text : 'back',
+                		value : true,
+                }
+            })
+      });
 		frm.menu_update_name.focus();
 		return false;
 	}
 	
 	if(menu_update_price == ""){
-		alert("제목은 반드시 작성해야합니다");
+		$(document).ready(function () {
+            swal({
+                title: 'Failed',
+                text: 'required please fill out Price.',
+                icon: 'warning',
+                button:{
+                		text : 'back',
+                		value : true,
+                }
+            })
+      });
 		frm.menu_update_price.focus();
 		return false;
 	}
@@ -193,13 +215,33 @@ function chkSubmit2(){
 	var menu_price = frm.menu_price.value.trim();		//제목
 	
 	if(menu_name == ""){
-		alert("작성자 란은 반드시 입력해야 합니다.");
+		$(document).ready(function () {
+            swal({
+                title: 'Failed',
+                text: 'required please fill out Menu Name.',
+                icon: 'warning',
+                button:{
+                		text : 'back',
+                		value : true,
+                }
+            })
+      });
 		frm.menu_name.focus();
 		return false;
 	}
 	
 	if(menu_price == ""){
-		alert("제목은 반드시 작성해야합니다");
+		$(document).ready(function () {
+            swal({
+                title: 'Failed',
+                text: 'required please fill out Price.',
+                icon: 'warning',
+                button:{
+                		text : 'back',
+                		value : true,
+                }
+            })
+      });
 		frm.menu_price.focus();
 		return false;
 	}
@@ -208,17 +250,19 @@ function chkSubmit2(){
 </script>
 <script>
 $('#deleteTrigger').click(function(){
-	var formData = $('#menuInfo').serialize();
-	var formData2 = $('button.mi[aria-pressed="true"]');
-	console.log(formData );
-	$.ajax({
-		type : "POST",
-		url : "pos_mgmt_deleteOk.do",
-		cache : false,
-		data : formData2,
-		success : onDeleteSuccess,
-		error : onDeleteError
-	})	
+//    var formData = $('#menuInfo').serialize();
+   var formData2 = $('button.mi[aria-pressed="true"]').find('input[type="hidden"]').val();
+   console.log(formData2); // uid 값이 찍힘
+   var formData3 = "uid="+formData2;
+   console.log(formData3);
+   $.ajax({
+      type : "POST",
+      url : "pos_mgmt_deleteOk.do",
+      cache : false,
+      data : formData3,
+      success : onDeleteSuccess,
+      error : onDeleteError
+   })   
 })
 function onDeleteSuccess(json, status){
 //  alert($.trim(json));

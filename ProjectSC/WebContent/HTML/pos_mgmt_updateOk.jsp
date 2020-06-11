@@ -11,11 +11,11 @@
 <script>
 $(document).ready(function () {
     swal({
-        title: '....ㅠㅠ',
-        text: '안됬다리',
+        title: 'Failed!',
+        text: 'Update Failed',
         icon: 'warning',
         button:{
-        		text : '돌아간다리..',
+        		text : 'back',
         		value : true,
         }
     }).then((result) => {
@@ -31,11 +31,11 @@ $(document).ready(function () {
 <script>
 $(document).ready(function () {
     swal({
-        title: '기모기모찌',
-        text: '수정됬다리',
+        title: 'Success!',
+        text: 'Update Success',
         icon: 'success',
         button:{
-        		text : 'list출력한다리',
+        		text : 'Go to List',
         		value : true,
         }
     }).then((result) => {
