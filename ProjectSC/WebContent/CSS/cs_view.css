@@ -58,7 +58,9 @@ a {
 #buttons{
     display: flex;
     justify-content: flex-end;
-	
+	position: absolute;
+    bottom: 40;
+    left: 45%;
 }
 
 button {
@@ -72,9 +74,7 @@ button {
    letter-spacing: 1px;
    text-transform: uppercase;
    transition: transform 80ms ease-in;
-   position: absolute;
-    bottom: 40;
-    left: 45%;
+   
 }
 
 button.ghost {
