@@ -33,8 +33,6 @@ CREATE SEQUENCE SEQ_store_uid INCREMENT BY 1 START WITH 1;
 /* Create Tables */
 /***************/
 
-SELECT c.cs_uid, c.cs_subject, c.cs_content, c.cs_regdate, m.mem_id, c.mem_uid FROM cs_tb c , member_tb m WHERE c.mem_uid = m.mem_uid AND c.cs_uid=2;
-
 /* Customer Table */
 CREATE TABLE cs_tb
 (
