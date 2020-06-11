@@ -1,8 +1,10 @@
 @charset "UTF-8";
-* {
-    
-   box-sizing: border-box;
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+* {font-family: Raleway;
+	box-sizing: border-box;
+	background-image:url("../images/background.jpg");
 }
+
 
 ul li{
     float: left;
@@ -241,7 +243,8 @@ h2{
 	    font-size: 34px;
 }
 /*ul.pagination a:hover:not(.active) {background-color: #ddd;}*/
-th{padding: 2% 0;}
+th{padding: 2% 0;
+background-color: #e2e2e28c;}
 td{padding: 1% 1%;}
  ul {
     margin-left: 423px;
