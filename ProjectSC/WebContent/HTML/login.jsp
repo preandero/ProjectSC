@@ -55,11 +55,13 @@
     </head>
 
 <body>
-
+<video id="video" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
+        <source src="../images/banner.mp4">
+  </video>
     <header>
         <div class="logo">
             <img src="../images/logo.png" id="logoimg">
-            <span id="slogo"><b>Asangbinsi</b></span>
+            <span id="slogo" onclick="location.href='index.jsp'"><b>Asangbinsi</b></span>
         </div>
     </header>
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -68,12 +70,12 @@
 	<div class="form-container sign-in-container">
 		<form action="loginOk.do" id="formsignup" method="POST" onsubmit="return loginChk();">
 			<h1>Login</h1>
-            <span>Please fill in login form</span>
+            <span id="please">Please fill in login form</span>
             <label class="label" for="name">ID</label>
-            <span id="id-format-txt">Incorrect ID format</span>
+            <span id="id-format-txt">아이디를 입력해 주세요</span>
             <input type="text" placeholder="ID" id="Id" name="Id"/>
             <label class="label" for="name">Password</label>
-            <span id="pw-format-txt">Incorrect Password format</span>
+            <span id="pw-format-txt">비밀번호를 입력해 주세요</span>
             <input type="password" placeholder="Password" id="Password" name="Password" />
             <span id="id-pw-backChk">Incorrect ID or Password</span>
             <button type="button" class="ghost" id="signUp" onclick="loginChk();">login</button>
@@ -83,6 +85,12 @@
 
 <div class="overlay-container">
     <div class="overlay">
+    <div class="overlay-panel overlay-right">
+					<h1>Welcome Asangbinsi POS</h1>
+					<br>
+					
+
+				</div>
 	</div>
 </div>
 </div>

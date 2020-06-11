@@ -25,7 +25,7 @@
     <header>
         <div class="logo">
             <img src="../images/logo.png" id="logoimg">
-            <span><b>Asangbinsi</b></span>
+            <span onclick="location.href='index.jsp'"><b>Asangbinsi</b></span>
         </div>
     </header>
 
@@ -52,7 +52,7 @@
 			</div>
 			<div class="form-container sign-in-container">
 				<h1>JOIN US</h1>
-				<span>Please fill in this registration form</span> <br><br>
+				<span id = "please">Please fill in this registration form</span> <br><br>
 				<label class="label" for="name">ID</label> 
 				<input type="text" placeholder="ID" id="Id" name="Id" />  
 				<br><br>
