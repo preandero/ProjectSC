@@ -26,6 +26,9 @@ public class CSViewCommand implements Command {
 		try {
 			arr = dao.readByUid(uid);
 			request.setAttribute("view", arr);
+			
+			System.out.println(uid);
+			System.out.println((int)session.getAttribute("mem_uid"));
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

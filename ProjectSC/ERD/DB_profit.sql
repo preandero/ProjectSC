@@ -1,3 +1,10 @@
+
+
+SELECT c.CS_UID, c.CS_SUBJECT, c.CS_CONTENT, m.MEM_ID, c.CS_REGDATE FROM cs_tb c, member_tb m WHERE c.mem_uid = m.mem_uid  						
+AND c.CS_UID >= 1 
+AND c.CS_UID < 5
+						;
+
 /***************/
 /* Drop Tables */
 /***************/
@@ -45,6 +52,20 @@ CREATE TABLE cs_tb
 );
 
 SELECT * FROM CS_TB;
+
+INSERT INTO cs_tb (cs_uid, cs_subject, cs_content, cs_regdate, mem_uid)
+VALUES(SEQ_cs_uid.nextval, '음 이건 더미 subject','이건 더미content', sysdate, 5);
+INSERT INTO cs_tb (cs_uid, cs_subject, cs_content, cs_regdate, mem_uid)
+VALUES(SEQ_cs_uid.nextval, '보겸이의 의견','겸보겸보', sysdate, 5);
+INSERT INTO cs_tb (cs_uid, cs_subject, cs_content, cs_regdate, mem_uid)
+VALUES(SEQ_cs_uid.nextval, '상빈이의 의견','비니천사', sysdate, 1);
+INSERT INTO cs_tb (cs_uid, cs_subject, cs_content, cs_regdate, mem_uid)
+VALUES(SEQ_cs_uid.nextval, '수영이의 의견','깃깃깃깃깃', sysdate, 2);
+INSERT INTO cs_tb (cs_uid, cs_subject, cs_content, cs_regdate, mem_uid)
+VALUES(SEQ_cs_uid.nextval, '성용이의 의견','순모순모 순모', sysdate, 3);
+INSERT INTO cs_tb (cs_uid, cs_subject, cs_content, cs_regdate, mem_uid)
+VALUES(SEQ_cs_uid.nextval, '현주의 의견','현주현주 쥬쥬', sysdate, 4);
+
 
 /* Member Table */
 CREATE TABLE member_tb

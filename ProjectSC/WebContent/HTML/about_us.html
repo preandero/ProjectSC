@@ -1,81 +1,111 @@
 <!DOCTYPE HTML>
 
 <html>
-	<head>
-		<title>about us</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="../CSS/about_us.css" />
-	</head>
-	<body>
-		
-		<!-- Banner -->
-		<!--
-			To use a video as your background, set data-video to the name of your video without
-			its extension (eg. images/banner). Your video must be available in both .mp4 and .webm
-			formats to work correctly.
-		-->
-			<section id="banner" data-video="../images/banner">
-				<header id="logo1">
-					<div class="logo2">
-						<img src="../images/logo.png" id="logoimg">
-						<span id="logo_s"><b id="logo_b">Asangbinsi</b></span>
-					</div>
-				</header>
-				<div class="inner">
-					<h1>About us</h1>
-					<p>이상 그 이상을 담다<br /></p>
-				</div>
-			</section>
-		<!-- Three -->
-			<section id="three" class="wrapper style2">
-				<div class="inner">
-					<div class="grid-style">
+   <head>
+      <title>about us</title>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="stylesheet" href="../CSS/about_us.css" />
+   </head>
+   <body>
 
-						<div>
-							<div class="box" onclick="location.href='joinUs.jsp'">
-								<div class="image fit">
-									<img src="../images/pic2.jpg" alt="" />
-								</div>
-								<div class="content">
-									<header class="align-center">
-										<h2>User Friendly</h2>
-										<p>Compact design Usability Identity</p>
-									</header>
-									<hr />
-									<p>Shopify’s mission is to make commerce better for everyone. But Shopify can’t be all things to all people. Instead, we empower third-party developers, known as Shopify Partners, to create apps, themes, and other integrations that build on Shopify’s platform. That way, merchants can tailor their experience however they need, and developers can build their own businesses supporting those entrepreneurs. This virtuous circle creates new business opportunities and benefits merchants, partners, and Shopify.</p>
-								</div>
-							</div>
-						</div>
+        <video id="video" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
+            <source src="../images/banner.mp4">
+        </video>
 
-						<div>
-							<div class="box" onclick="location.href='joinUs.jsp'">
-								<div class="image fit">
-									<img src="../images/pic3.jpg" alt="" />
-								</div>
-								<div class="content">
-									<header class="align-center">
-										<h2>Reasonable price</h2>
-										<p>Stable Management processing properly</p>
-									</header>
-									<hr />
-									<p>More than 1,000,000 merchants use Shopify to run their businesses.  Shopify solves many of their hardest commerce problems out of the box—but every business has unique needs. That’s where you come in.More than 1,000,000 merchants use Shopify to run their businesses. They come in all sizes, from all around the world, and each one is different. Shopify solves many of their hardest commerce problems out of the box—but every business has unique needs. That’s where you come in.</p>
-								</div>
-							</div>
-						</div>
+         <section id="banner" >
 
-					</div>
-				</div>
-			</section>
+            <header id="logo1">
+               <div class="logo2" onclick="location.href='index.jsp'">
+                  <img src="../images/logo.png" id="logoimg">
+                  <span id="logo_s"><b id="logo_b">Asangbinsi</b></span>
+               </div>
+            </header>
 
-		
-		<!-- Scripts -->
-			<script src="../JS/jquery.min.js"></script>
-			<script src="../JS/jquery.scrolly.min.js"></script>
-			<script src="../JS/jquery.scrollex.min.js"></script>
-			<script src="../JS/skel.min.js"></script>
-			<script src="../JS/util.js"></script>
-			<script src="../JS/main.js"></script>
+            <div class="inner">
+                <h1>About us</h1>
+                <p>More than ideal<br /></p>
 
-	</body>
+                <button type="button" class="ghost" id="joinus" onclick="location.href='joinUs.jsp'">Join?</button>
+    
+             </div>
+    
+    
+             <div class="content1">
+                 <header class="align-center1">
+                 <h2>User Friendly</h2>
+                 <p>Compact design Usability Identity</p>
+                 </header>
+                 <hr/>
+                 <p>Asangbinsi’s mission is to make commerce better for everyone. But Shopify can’t be all things to all people. Instead, we empower third-party developers, known as Shopify Partners, to create apps, themes, and other integrations that build on Shopify’s platform. That way, merchants can tailor their experience however they need, and developers can build their own businesses supporting those entrepreneurs. This virtuous circle creates new business opportunities and benefits merchants, partners, and Shopify.</p>
+
+                </div>
+
+    
+         </section>
+
+
+
+
+
+
+
+
+      <!-- Three -->
+         <!-- <section id="three" class="wrapper style2">
+            <div class="inner">
+               <div class="grid-style">
+                  <div>
+                     <div class="box" >
+                        <div class="image fit">
+                           <img src="images/pic2.jpg" alt="" />
+                        </div>
+                        <div class="content">
+                           <header class="align-center">
+                              <h2>User Friendly</h2>
+                              <p>Compact design Usability Identity</p>
+                           </header>
+                           <hr />
+                           <p>Shopify’s mission is to make commerce better for everyone. But Shopify can’t be all things to all people. Instead, we empower third-party developers, known as Shopify Partners, to create apps, themes, and other integrations that build on Shopify’s platform. That way, merchants can tailor their experience however they need, and developers can build their own businesses supporting those entrepreneurs. This virtuous circle creates new business opportunities and benefits merchants, partners, and Shopify.</p>
+                           <button onclick="location.href='joinUs.jsp'">
+                           <p>Join?</p>
+                           </button>
+                        </div>
+                        
+                     </div>
+                  </div>
+
+                  <div>
+                     <div class="box">
+                        <div class="image fit">
+                           <img src="images/pic3.jpg" alt="" />
+                        </div>
+                        <div class="content">
+                           <header class="align-center">
+                              <h2>Reasonable price</h2>
+                              <p>Stable Management processing properly</p>
+                           </header>
+                           <hr />
+                           <p>More than 1,000,000 merchants use Shopify to run their businesses.  Shopify solves many of their hardest commerce problems out of the box—but every business has unique needs. That’s where you come in.More than 1,000,000 merchants use Shopify to run their businesses. They come in all sizes, from all around the world, and each one is different. Shopify solves many of their hardest commerce problems out of the box—but every business has unique needs. That’s where you come in.</p>
+                           <button onclick="location.href='joinUs.jsp'">
+                           <p>Join?</p>
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+
+               </div>
+            </div>
+         </section> -->
+
+      
+      <!-- Scripts -->
+         <script src="../JS/jquery.min.js"></script>
+         <script src="../JS/jquery.scrolly.min.js"></script>
+         <script src="../JS/jquery.scrollex.min.js"></script>
+         <script src="../JS/skel.min.js"></script>
+         <script src="../JS/util.js"></script>
+         <script src="../JS/main.js"></script>
+ 
+   </body>
 </html>

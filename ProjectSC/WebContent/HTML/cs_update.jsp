@@ -35,7 +35,7 @@
 
 
    int mem_uid = arr[0].getMem_uid();
-	String mem_id= (String)session.getAttribute("mem_id");
+	String mem_id= arr[0].getMem_id();
    String subject = arr[0].getSubject();
    String content = arr[0].getContent();
    String regDate = arr[0].getRegDate();
@@ -71,7 +71,7 @@ function chkSubmit(){
 <header>
     <div class="logo">
       <img src="../images/logo.png" id="logoimg">
-      <span id="slogo"><b>Asangbinsi</b></span>
+      <span id="slogo" onclick="location.href='index.jsp'"><b>Asangbinsi</b></span>
     </div>
   </header>
   <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

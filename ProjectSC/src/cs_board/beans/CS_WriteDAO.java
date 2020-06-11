@@ -90,6 +90,7 @@ public class CS_WriteDAO {
 			Date d = rs.getDate("cs_regdate");
 			Time t = rs.getTime("cs_regdate");
 			int mem_uid = rs.getInt("mem_uid");
+			String mem_id = rs.getString("mem_id");
 //			int m_uid=rs.getInt("mem_uid");
 //			String name = rs.getString("cs_name");
 			//위에 Date, Time 은  java.sql 걸로 돌아감
@@ -100,7 +101,7 @@ public class CS_WriteDAO {
 							new SimpleDateFormat("hhmmss").format(t);
 			}
 	
-			CS_WriteDTO dto = new CS_WriteDTO(uid, subject, content, mem_uid);
+			CS_WriteDTO dto = new CS_WriteDTO(uid, subject,regDate, content, mem_uid, mem_id);
 			dto.setRegDate(regDate);
 			list.add(dto);
 		}//end while
@@ -124,6 +125,7 @@ public CS_WriteDTO[] createArraylist(ResultSet rs) throws SQLException {
 			int uid = rs.getInt("cs_uid");
 			String subject = rs.getString("cs_subject");
 			String mem_id = rs.getString("mem_id");
+			String content = rs.getString("cs_content"); //테스트
 			Date d = rs.getDate("cs_regdate");
 			Time t = rs.getTime("cs_regdate");
 //			int m_uid=rs.getInt("mem_uid");
@@ -151,6 +153,8 @@ public CS_WriteDTO[] createArraylist(ResultSet rs) throws SQLException {
 	}// end createArray
 
 
+
+
 public CS_WriteDTO[] createArrayView(ResultSet rs) throws SQLException {
 	
 	CS_WriteDTO[] arr = null;   //DTO 배열 초기화
@@ -164,7 +168,7 @@ public CS_WriteDTO[] createArrayView(ResultSet rs) throws SQLException {
 		Date d = rs.getDate("cs_regdate");
 		Time t = rs.getTime("cs_regdate");
 		String mem_id = rs.getString("mem_id");
-//		int m_uid=rs.getInt("mem_uid");
+		int mem_uid=rs.getInt("mem_uid");
 //		String name = rs.getString("cs_name");
 		//위에 Date, Time 은  java.sql 걸로 돌아감
 		
@@ -174,7 +178,7 @@ public CS_WriteDTO[] createArrayView(ResultSet rs) throws SQLException {
 						new SimpleDateFormat("hhmmss").format(t);
 		}
 
-		CS_WriteDTO dto = new CS_WriteDTO(uid, subject, content, mem_id);
+		CS_WriteDTO dto = new CS_WriteDTO(uid, subject, content, mem_id, mem_uid);
 		dto.setRegDate(regDate);
 		list.add(dto);
 	}//end while
@@ -259,7 +263,7 @@ public CS_WriteDTO[] createArrayView(ResultSet rs) throws SQLException {
 	
 	
 	//특정 uid의 글 수정(제목 , 내용)
-	public int update(int uid, String subject, String content) throws SQLException{
+	public int update(String subject, String content, int uid) throws SQLException{
 		
 		int cnt = 0;
 		try {
@@ -307,6 +311,42 @@ public CS_WriteDTO[] createArrayView(ResultSet rs) throws SQLException {
 		
 		return arr;
 	} 
+	
+	
+	//-------------------------pagination ---------------------------
+	//페이징관련 
+		//몇번째 from부터 몇개 rows를 select 
+		public CS_WriteDTO[] selectFromRow(int from, int rows) throws SQLException{
+			CS_WriteDTO[] arr = null;
+			
+			try {
+				pstmt = conn.prepareStatement(DataBase_query.SQL_WRITE_SELECT_FROM_ROW2);
+				pstmt.setInt(1, from);
+				pstmt.setInt(2, from+rows);
+				rs= pstmt.executeQuery();
+				arr = createArray(rs);
+			}finally {
+				close();
+			}
+			
+			return arr;
+		}// end selectFromRow()
+		
+		//전체 글의 개수
+		public int countAll() throws SQLException{
+			int cnt = 0 ;
+			try {
+				pstmt=conn.prepareStatement(DataBase_query.SQL_WRITE_COUNT_ALL);
+				rs = pstmt.executeQuery();
+				rs.next();
+				cnt = rs.getInt(1);
+			} finally {
+				close();
+			}
+			return cnt;
+		}//end countAll
+		
+	
 	
 	
 	

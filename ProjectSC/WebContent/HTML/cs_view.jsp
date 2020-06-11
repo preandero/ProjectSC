@@ -7,9 +7,10 @@
 <%@ page import="cs_board.beans.*" %>
 
 <% // Controller 로부터 결과 데이터 받음
-   CS_WriteDTO [] arr = (CS_WriteDTO [])request.getAttribute("view");
-
-	String mem_id=(String)session.getAttribute("mem_id");
+	CS_WriteDTO [] arr = (CS_WriteDTO [])request.getAttribute("view");
+	String mem_id=arr[0].getMem_id();
+	int mem_uid=arr[0].getMem_uid();
+	
 %>
 
 <%
@@ -18,11 +19,11 @@
          <script>
           $(document).ready(function () {
                   swal({
-                      title: '....ㅠㅠ',
-                      text: '이제 없다리',
+                      title: 'No posts',
+                      text: 'There are no posts',
                       icon: 'warning',
                       button:{
-                            text : '돌아간다리..',
+                            text : 'back',
                             value : true,
                       }
                   }).then((result) => {
@@ -38,11 +39,10 @@
 %>
 <%
    int uid = Integer.parseInt(request.getParameter("uid"));
- 
    String subject = arr[0].getSubject();
    String content = arr[0].getContent();
    String regDate = arr[0].getRegDate();
-   /*int viewCnt = arr[0].getViewCnt();*/
+   int chk_uid = (int)session.getAttribute("mem_uid");
 %>
 
 
@@ -59,8 +59,8 @@
 function chkDelete(uid){
    // 삭제 여부, 다시 확인 하고 진행하기
    swal({
-        title: "진짜 지울꺼냐리?",
-        text: "한번 지우면 복구 못한다리",
+        title: "Are you sure you want to delete?",
+        text: "it cannot be recovered",
         icon: "warning",
         buttons: true,
         dangerMode: true,
@@ -82,7 +82,7 @@ function chkDelete(uid){
   <header>
     <div class="logo">
       <img src="../images/logo.png" id="logoimg">
-      <span id="slogo"><b>Asangbinsi</b></span>
+      <span id="slogo" onclick="location.href='index.jsp'"><b>Asangbinsi</b></span>
     </div>
   </header>
 
@@ -93,24 +93,42 @@ function chkDelete(uid){
     <div class="form-container sign-in-container">
       <div  id="formwrite" method="POST">
       
-<h2><%= subject %></h2>
+<h1>Customer Service</h2>
 <br>
-작성자 : <%= mem_id %><br>
-제목 : <%= subject %><br>
-등록일 : <%= regDate %><br>
-내용: <br>
-<div>
-<%= content %>
+<h4>작성자  <br>
+ <input type="text" value="<%= mem_id %>" readonly>  </h4>
+
+<h4>등록일 <br> <input type="text" value="<%= regDate %>" readonly> </h4>
+<h4 >제목 <br><input id="subject" type="text"value="<%= subject %>" readonly> </h4>
+내용  <br>
+<div id ="contentbox">
+<input id="contentin" type="text" value="<%= content %>" readonly>
 </div>
 
+
+<input type="hidden" id="mem_uid" name="mem_uid" value="<%= mem_uid %>">
+<input type="hidden" id="chk_uid" name="chk_uid" value = "<%= chk_uid %>">
+
+
+
+</div>
+<div id="buttons">
 <br>
-<button onclick="location.href='cs_update.do?uid=<%= uid%>'">수정</button>
+<button onclick="location.href='cs_update.do?uid=<%= uid%>'" id="udt">수정</button>
+<button onclick="chkDelete(<%= uid %>)" id="dlt">삭제</button>
+<button onclick="location.href = 'cs_write.do'" id="new">신규</button>
 <button onclick="location.href = 'cs_list.do'">목록</button>
-<button onclick="chkDelete(<%= uid %>)">삭제</button>
-<button onclick="location.href = 'cs_write.do'">신규</button>
-
 </div>
 
+
+
+<%if(mem_uid!=chk_uid){%>
+<script>	
+	$("#udt").hide();
+	$("#dlt").hide();
+	$("#new").hide();
+</script>
+<%}%>
     </div>
   </div>
 </body>

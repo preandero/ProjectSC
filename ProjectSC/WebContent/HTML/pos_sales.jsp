@@ -51,7 +51,7 @@
             </ul>
 
             <div class="btn-group">
-                <a class="nav-link h3 mr-2 text-white" href="#"> <i class="fas fa-home"></i></a>
+                <a class="nav-link h3 mr-2 text-white" href="#"> <i class="fas fa-home" onclick="location.href='index.jsp'"></i></a>
                 <button type="button" class="btn btn-secondary dropdown-toggle bg-dark border-dark"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Side Menu
@@ -60,7 +60,7 @@
                     <button class="dropdown-item" type="button">My page</button>
                     <button class="dropdown-item" type="button" onclick="location.href='cs_list.do'">CS Board</button>
                     <div class="dropdown-divider"></div>
-                    <button class="dropdown-item" type="button">LogOut</button>
+                    <button class="dropdown-item" type="button" onclick="location.href='logout.jsp'">LogOut</button>
                 </div>
             </div>
 

@@ -4,7 +4,6 @@
 	//controller 로 부터 결과 데이터를 받는다.
 	WriteDTO[] arr = (WriteDTO[]) request.getAttribute("pos_mgmt_list");
 %>
-
 <%
 // 	int cnt = (Integer) request.getAttribute("result");
 // int mem_uid = (Integer)session.getAttribute("mem_uid");
@@ -18,6 +17,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>메뉴 관리창</title>
+
+
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
 	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
@@ -32,9 +33,11 @@
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"
 	integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd"
-	crossorigin="anonymous">
-	
-</script>
+	crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+
 <link href="../CSS/pos_mgmt.css" rel="stylesheet" type="text/css">
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
@@ -54,52 +57,60 @@
 				<li class="nav-item active"><a class="nav-link h3 px-4"
 					href="#"><i class="fas fa-arrow-circle-left icon-2x"></i></a></li>
 				<li class="nav-item"><a class="nav-link h3 px-2" href="pos_sales.do">ORDER</a></li>
-				<li class="nav-item"><a class="nav-link h3 px-4" href="#">SALES</a>
-				</li>
-				<li class="nav-item"><a
-					class="nav-link bg-white text-dark h3 px-4">MENU CUSTOM</a></li>
+				<li class="nav-item"><a class="nav-link h3 px-4" href="#">SALES</a></li>
+				<li class="nav-item"><a class="nav-link bg-white text-dark h3 px-4">MENU CUSTOM</a></li>
 			</ul>
 
-			<div class="btn-group">
-				<a class="nav-link h3 mr-2 text-white" href="#"> <i
-					class="fas fa-home"></i></a>
+		<div class="btn-group">
+			<a class="nav-link h3 mr-2 text-white" href="#"><i class="fas fa-home"></i></a>
 				<button type="button"
 					class="btn btn-secondary dropdown-toggle bg-dark border-dark"
 					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Side Menu</button>
-				<div class="dropdown-menu dropdown-menu-right ">
-					<button class="dropdown-item" type="button" onclick="location.href='my_page.html'">My page</button>
-					<button class="dropdown-item" type="button" onclick="location.href='cs_list.jsp'">CS Board</button>
-					<div class="dropdown-divider"></div>
-					<button class="dropdown-item" type="button" onclick="location.href='#'">LogOut</button>
-				</div>
+					Side Menu
+				</button>
+			<div class="dropdown-menu dropdown-menu-right ">
+				<button class="dropdown-item" type="button" onclick="location.href='my_page.html'">My page</button>
+				<button class="dropdown-item" type="button" onclick="location.href='cs_list.do'">CS Board</button>
+				<div class="dropdown-divider"></div>
+				<button class="dropdown-item" type="button" onclick="location.href='logout.jsp'">LogOut</button>
 			</div>
 		</div>
+		</div>
 	</nav>
-	
 	<!-- 포스 메뉴 화면 틀 끝-->
+	
+	
+	
+	
 	<div class="left">
-		<div class="menu-items">
-<!-- 			더미용 -->
-<!-- 				<button type="button" class="btn btn-outline-secondary btn-lg mi" data-toggle="button" aria-pressed="false"> -->
-<!-- 				<br><span>Water</span><br><br><hr>2000</button> -->
+		<div class="product">
+			<!--더미용 -->
+			<!--<button type="button" class="btn btn-outline-secondary btn-lg mi" data-toggle="button" aria-pressed="false"> -->
+			<!--<br><span>Water</span><br><br><hr>2000</button> -->
 		<form id="menuInfo" action="pos_mgmt_deleteOk.do" method="post">
 		<%
 			if(arr != null){
 				for (int i =0; i<arr.length; i++){
 		%>
-				<button type="button" class="btn btn-outline-secondary btn-lg mi pressed" data-toggle="button" aria-pressed="false">
+
+				<button type="button" class="btn btn-outline-secondary btn-lg mi pressed product-image" data-toggle="button" aria-pressed="false">
+				
+				<span class="onsale-section"><span class="onsale">drink</span></span>
 				<br><input type="hidden" name="uid" value="<%=arr[i].getUid() %>">
-				<span><%= arr[i].getMenu_name() %></span><br><br><hr><%= arr[i].getMenu_price() %></button>
-		<% 
-				}//end for 
+				<span><%= arr[i].getMenu_name() %></span><br><br><hr><%= arr[i].getMenu_price() %>
+				
+	
+		<% }//end for 
 		 } %>
 		 </form>
 		</div>
 	</div>
+	
+	
+	
 	<div class="right1">
-		<!-- 모달을 띄울 공간 -->
-		 <!-- Modal -->
+	<!-- 모달을 띄울 공간 -->
+	 <!-- Modal -->
       <div class="modal fade" id="addmenu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog .modal-lg modal-right"> 
           <div class="modal-content">
@@ -110,27 +121,27 @@
               </button>
             </div>
            <div class="form-container sign-in-container">
-				<!-- 폼 시작 -->
-<!-- 				<script src="JS/chkSubmit"></script> -->
+			<!-- 폼 시작 -->
+			<!--<script src="JS/chkSubmit"></script> -->
             <form action="pos_mgmt_writeOk.do" id="formsignup" method="post" onsubmit="return chkSubmit2()">
                <label class="label" for="name">NAME</label>
                <input type="text" placeholder="이름을 입력하세요" name="menu_name"/>
                <label class="label" for="name">PRICE</label>
-               <input placeholder="가격을 입력하세요" name="menu_price"/>
+               <input type="number" placeholder="가격을 입력하세요" name="menu_price"/>
 	            <div class="modal-footer">
 	              <button type="submit" class="btn btn-primary ">Add</button>
 	              <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
 	            </div>
-            </form>
-				<!-- 폼 끝 -->            
-         </div>
+            </form><!-- 폼 끝 -->            
+           </div>
           </div>
         </div>
-      </div>
-		<!-- 모달을 띄울 공간 -->
-		<button type="button" class="btn btn-outline-primary btn-lg mi" data-toggle="modal" data-target="#addmenu">Add</button>
-		<button type="button" class="btn btn-outline-primary btn-lg mi" id="deleteTrigger">Delete</button>
+      </div><!-- 모달을 띄울 공간 끝 -->
+		<button type="button" class="btn btn-outline-primary btn-lg mim" data-toggle="modal" data-target="#addmenu">Add</button>
+		<button type="button" class="btn btn-outline-primary btn-lg mim" id="deleteTrigger">Delete</button>
 	</div>
+	
+	
 	
 	<!-- 수정을 위해 더블클릭하면 나오는 모달 -->
 	<div class="modal fade" id="updatemenu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -147,21 +158,22 @@
 <!-- 				<script src="JS/chkSubmit"></script> -->
             <form action="pos_mgmt_updateOk.do" id="formUpdate" method="post" onsubmit="return chkSubmit()">
                <label class="label" for="name">Menu_NAME</label>
-               <input type="text" placeholder="수정할 메뉴이름을 입력하세요" name="menu_update_name"/>
+               <input type="text" placeholder="수정할 메뉴이름을 입력하세요" name="menu_update_name" id="menu_update_name"/>
                <label class="label" for="name">Menu_PRICE</label>
                <input text="number" placeholder="수정할 가격을 입력하세요" name="menu_update_price"/>
 	            <div class="modal-footer">
 	              <button id="updateTrigger" type="submit" class="btn btn-primary ">Update</button>
 	              <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
 	            </div>
-            </form>
-				<!-- 폼 끝 -->            
+            </form><!-- 폼 끝 -->            
          </div>
           </div>
         </div>
       </div>
-
-	<!-- 수정을 위해 더블클릭하면 나오는 모달 -->
+     <!-- 수정을 위해 더블클릭하면 나오는 모달 끝 -->
+	
+	
+	
 	
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script>
@@ -172,13 +184,33 @@ function chkSubmit(){
 	var menu_update_price = frm.menu_update_price.value.trim();		//제목
 	
 	if(menu_update_name == ""){
-		alert("작성자 란은 반드시 입력해야 합니다.");
+		$(document).ready(function () {
+            swal({
+                title: 'Failed',
+                text: 'required please fill out Menu Name.',
+                icon: 'warning',
+                button:{
+                		text : 'back',
+                		value : true,
+                }
+            })
+      });
 		frm.menu_update_name.focus();
 		return false;
 	}
 	
 	if(menu_update_price == ""){
-		alert("제목은 반드시 작성해야합니다");
+		$(document).ready(function () {
+            swal({
+                title: 'Failed',
+                text: 'required please fill out Price.',
+                icon: 'warning',
+                button:{
+                		text : 'back',
+                		value : true,
+                }
+            })
+      });
 		frm.menu_update_price.focus();
 		return false;
 	}
@@ -189,17 +221,37 @@ function chkSubmit(){
 function chkSubmit2(){
 	frm = document.forms["formsignup"];	   //form 객체 가져오기
 	
-	var menu_name = frm.menu_name.value.trim();  			//작성자
-	var menu_price = frm.menu_price.value.trim();		//제목
+	var menu_name = frm.menu_name.value.trim(); //작성자
+	var menu_price = frm.menu_price.value.trim(); //제목
 	
 	if(menu_name == ""){
-		alert("작성자 란은 반드시 입력해야 합니다.");
+		$(document).ready(function () {
+            swal({
+                title: 'Failed',
+                text: 'required please fill out Menu Name.',
+                icon: 'warning',
+                button:{
+                		text : 'back',
+                		value : true,
+                }
+            })
+      });
 		frm.menu_name.focus();
 		return false;
 	}
 	
 	if(menu_price == ""){
-		alert("제목은 반드시 작성해야합니다");
+		$(document).ready(function () {
+            swal({
+                title: 'Failed',
+                text: 'required please fill out Price.',
+                icon: 'warning',
+                button:{
+                		text : 'back',
+                		value : true,
+                }
+            })
+      });
 		frm.menu_price.focus();
 		return false;
 	}
@@ -208,28 +260,56 @@ function chkSubmit2(){
 </script>
 <script>
 $('#deleteTrigger').click(function(){
-	var formData = $('#menuInfo').serialize();
-	
-	console.log(formData );
-	$.ajax({
-		type : "POST",
-		url : "pos_mgmt_deleteOk.do",
-		cache : false,
-		data : formData,
-		success : onDeleteSuccess,
-		error : onDeleteError
-	})	
+//    var formData = $('#menuInfo').serialize();
+   var formData2 = $('button.mi[aria-pressed="true"]').find('input[type="hidden"]').val();
+   console.log(formData2); // uid 값이 찍힘
+   var formData3 = "uid="+formData2;
+   console.log(formData3);
+   $.ajax({
+      type : "POST",
+      url : "pos_mgmt_deleteOk.do",
+      cache : false,
+      data : formData3,
+      success : onDeleteSuccess,
+      error : onDeleteError
+   })   
 })
+
+
 function onDeleteSuccess(json, status){
 //  alert($.trim(json));
 // alert("삭제 성공!");
 
- location.href="pos_mgmt_list.do";
+ //location.href="pos_mgmt_list.do";
+	 $(document).ready(function () {
+         swal({
+             title: 'Success',
+             text: 'Success Delete Menu',
+             icon: 'success',
+             button:{
+             		text : 'Go to List',
+             		value : true,
+             }
+         }).then((result) => {
+         	if(result){
+         		location.href='./pos_mgmt_list.do';
+         	}
+         });
+   });
 }
 function onDeleteError(data, status){ 
- alert("error");
+	swal({
+		title: 'Inappropriate action',
+     	text: 'Please check out menu first',
+     	icon: 'warning',
+     	button:{
+	      text : 'back',
+	      value : true,
+     }
+    })
 }
 </script>
+
 
 <!-- 더블 클릭 -->
 <script>
@@ -241,11 +321,10 @@ $('button.mi').dblclick(function(){
 	console.log(passdata);
 	$('#formUpdate').prepend("<input type='hidden' name='uid' value='"+passdata+"'>");
 // 	$('#formUpdate').append("<input type='hidden' name='uid' value='"+passdata+"'>"); 이거 쓰면 안돼여
-	$('#updatemenu').modal('show');
-	
+	$('#updatemenu').modal('show');	
 })
 </script>
-<!-- 더블 클릭 -->
+<!-- 더블 클릭 끝 -->
 <script>
 // $('#updateTrigger').click(function(){
 // 	var updateData = $('formUpdate').serialize();
