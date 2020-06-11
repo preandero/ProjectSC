@@ -10,6 +10,7 @@
 	CS_WriteDTO [] arr = (CS_WriteDTO [])request.getAttribute("view");
 	String mem_id=arr[0].getMem_id();
 	int mem_uid=arr[0].getMem_uid();
+	
 %>
 
 <%

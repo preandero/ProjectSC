@@ -90,6 +90,7 @@ public class CS_WriteDAO {
 			Date d = rs.getDate("cs_regdate");
 			Time t = rs.getTime("cs_regdate");
 			int mem_uid = rs.getInt("mem_uid");
+			String mem_id = rs.getString("mem_id");
 //			int m_uid=rs.getInt("mem_uid");
 //			String name = rs.getString("cs_name");
 			//위에 Date, Time 은  java.sql 걸로 돌아감
@@ -100,7 +101,7 @@ public class CS_WriteDAO {
 							new SimpleDateFormat("hhmmss").format(t);
 			}
 	
-			CS_WriteDTO dto = new CS_WriteDTO(uid, subject, content, mem_uid);
+			CS_WriteDTO dto = new CS_WriteDTO(uid, subject,regDate, content, mem_uid, mem_id);
 			dto.setRegDate(regDate);
 			list.add(dto);
 		}//end while
@@ -167,7 +168,7 @@ public CS_WriteDTO[] createArrayView(ResultSet rs) throws SQLException {
 		Date d = rs.getDate("cs_regdate");
 		Time t = rs.getTime("cs_regdate");
 		String mem_id = rs.getString("mem_id");
-//		int m_uid=rs.getInt("mem_uid");
+		int mem_uid=rs.getInt("mem_uid");
 //		String name = rs.getString("cs_name");
 		//위에 Date, Time 은  java.sql 걸로 돌아감
 		
@@ -177,7 +178,7 @@ public CS_WriteDTO[] createArrayView(ResultSet rs) throws SQLException {
 						new SimpleDateFormat("hhmmss").format(t);
 		}
 
-		CS_WriteDTO dto = new CS_WriteDTO(uid, subject, content, mem_id);
+		CS_WriteDTO dto = new CS_WriteDTO(uid, subject, content, mem_id, mem_uid);
 		dto.setRegDate(regDate);
 		list.add(dto);
 	}//end while
@@ -319,7 +320,7 @@ public CS_WriteDTO[] createArrayView(ResultSet rs) throws SQLException {
 			CS_WriteDTO[] arr = null;
 			
 			try {
-				pstmt = conn.prepareStatement(DataBase_query.SQL_WRITE_SELECT_FROM_ROW);
+				pstmt = conn.prepareStatement(DataBase_query.SQL_WRITE_SELECT_FROM_ROW2);
 				pstmt.setInt(1, from);
 				pstmt.setInt(2, from+rows);
 				rs= pstmt.executeQuery();
