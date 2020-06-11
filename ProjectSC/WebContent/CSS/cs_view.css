@@ -14,9 +14,25 @@ body {
    animation: tuv 2s ;
 }
 
-h1 {
-   font-weight: bold;
-   margin: 0;
+
+
+#contentbox {
+    
+    width: 60%;
+    height : 40%;
+    
+}
+
+#contentin {
+	width : 100%;
+    height : 100%;
+    display: flex;
+}
+
+h4 {
+   font-weight: lighter;
+   margin: 2px 0px;
+   width: 60%;
 }
 
 span {
@@ -39,6 +55,12 @@ a {
     margin-right: 95%;
 }
 
+#buttons{
+    display: flex;
+    justify-content: flex-end;
+	
+}
+
 button {
    border-radius: 20px;
    border: 1px solid aliceblue;
@@ -46,10 +68,13 @@ button {
    color: #FFFFFF;
    font-size: 12px;
    font-weight: bold;
-   padding: 12px 45px;
+   padding: 15px 50px;
    letter-spacing: 1px;
    text-transform: uppercase;
    transition: transform 80ms ease-in;
+   position: absolute;
+    bottom: 40;
+    left: 45%;
 }
 
 button.ghost {
@@ -69,14 +94,17 @@ button:hover{
 }
 
 #formwrite {
+	margin-left : 18%;
     opacity: 0.85;
     z-index: 3;
     background-color: #FFFFFF;
-    /* display: flex; */
+     display: flex;  
+     align-items: flex-start; 
     justify-content: center;
     flex-direction: column;
     padding: 0px 50px;
     height: 100%;
+    width: 100%;
 }
 
 #formwrite label{
@@ -95,14 +123,14 @@ height: 30px;
 #subject {
     margin-right: 0%;
     width: 100%;
-    height: 30px;
+    
 }
 input {
     background-color: #eee;
     border: none;
     padding: 12px 15px;
     /*margin: 0px 0;*/
-    margin-right: 91%;
+    /* margin-right: 91%; */
     
 }
 .container {
@@ -116,7 +144,7 @@ input {
     max-width: 100%;
     min-height: 523px;
     padding: 10px 10px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 .form-container {
