@@ -249,22 +249,24 @@ function chkSubmit2(){
 }
 </script>
 <script>
- $('#deleteTrigger').click(function(){
-	var formData = $('#menuInfo').serialize();
-	
-	console.log(formData );
-	$.ajax({
-		type : "POST",
-		url : "pos_mgmt_deleteOk.do",
-		cache : false,
-		data : formData,
-		success : onDeleteSuccess,
-		error : onDeleteError
-	})	
-}) 
+$('#deleteTrigger').click(function(){
+//    var formData = $('#menuInfo').serialize();
+   var formData2 = $('button.mi[aria-pressed="true"]').find('input[type="hidden"]').val();
+   console.log(formData2); // uid 값이 찍힘
+   var formData3 = "uid="+formData2;
+   console.log(formData3);
+   $.ajax({
+      type : "POST",
+      url : "pos_mgmt_deleteOk.do",
+      cache : false,
+      data : formData3,
+      success : onDeleteSuccess,
+      error : onDeleteError
+   })   
+})
 function onDeleteSuccess(json, status){
 //  alert($.trim(json));
-// alert("삭제 성공!"); 
+// alert("삭제 성공!");
 
  location.href="pos_mgmt_list.do";
 }
