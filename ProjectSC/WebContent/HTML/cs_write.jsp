@@ -56,7 +56,7 @@ function writeChk(){
   <header>
     <div class="logo">
       <img src="../images/logo.png" id="logoimg">
-      <span id="slogo" onclick="location.href='index.jsp'"><b>Asangbinsi</b></span>
+      <span id="slogo"><b>Asangbinsi</b></span>
     </div>
   </header>
   <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

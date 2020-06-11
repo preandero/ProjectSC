@@ -9,7 +9,6 @@
 <% // Controller 로부터 결과 데이터 받음
 	CS_WriteDTO [] arr = (CS_WriteDTO [])request.getAttribute("view");
 	String mem_id=arr[0].getMem_id();
-	int mem_uid=arr[0].getMem_uid();
 %>
 
 <%
@@ -81,7 +80,7 @@ function chkDelete(uid){
   <header>
     <div class="logo">
       <img src="../images/logo.png" id="logoimg">
-      <span id="slogo" onclick="location.href='index.jsp'"><b>Asangbinsi</b></span>
+      <span id="slogo"><b>Asangbinsi</b></span>
     </div>
   </header>
 
@@ -101,11 +100,19 @@ function chkDelete(uid){
 <div>
 <%= content %>
 </div>
+<form>
+<input type="hidden" id="mem_uid" name="mem_uid" value="<%= mem_id %>">
+<input type="hidden" id="chkuid" name="chkuid" value = "<%= chk_uid %>">
+</form>
 
+<script>
+if(($("#mem_id").val())!=($("#chk_uid").val())){
+	$("#udt").hide();
+	$("#dlt").hide();
+	$("#new").hide();
+}
 
-<input type="hidden" id="mem_uid" name="mem_uid" value="<%= mem_uid %>">
-<input type="hidden" id="chk_uid" name="chk_uid" value = "<%= chk_uid %>">
-
+</script>
 
 
 
@@ -117,14 +124,6 @@ function chkDelete(uid){
 
 </div>
 
-
-<%if(mem_uid!=chk_uid){%>
-<script>	
-	$("#udt").hide();
-	$("#dlt").hide();
-	$("#new").hide();
-</script>
-<%}%>
     </div>
   </div>
 </body>

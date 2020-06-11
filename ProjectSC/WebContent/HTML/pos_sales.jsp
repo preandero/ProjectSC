@@ -51,7 +51,7 @@
             </ul>
 
             <div class="btn-group">
-                <a class="nav-link h3 mr-2 text-white" href="#"> <i class="fas fa-home" onclick="location.href='index.jsp'"></i></a>
+                <a class="nav-link h3 mr-2 text-white" href="#"> <i class="fas fa-home"></i></a>
                 <button type="button" class="btn btn-secondary dropdown-toggle bg-dark border-dark"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Side Menu

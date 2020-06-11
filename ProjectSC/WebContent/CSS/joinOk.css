@@ -1,5 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway);
-* {font-family: Raleway;
+* {
 	box-sizing: border-box;
 }
 
@@ -28,20 +27,15 @@ label{
     font-size: 11px;
     cursor: default;
 }
-.container.right-panel-active .sign-up-container {
-	transform: translateX(100%);
-	opacity: 1;
-	z-index: 5;
-	animation: show 0.6s;
-}
+
 .container {
     margin-top: 100px;
 	background-color: #fff;
 	border-radius: 10px;
   	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
 			0 10px 10px rgba(8, 8, 8, 0.22);
-   width: 1188px;
-    height: 783px;
+    width: 908px;
+    height: 600px;
 	max-width: 100%;
 	min-height: 480px;
 	padding: 10px 10px;

@@ -15,11 +15,11 @@
 		<script>
 		 $(document).ready(function () {
 	            swal({
-	                title: 'Failed!',
-	                text: 'Failed Add Menu',
+	                title: '....ㅠㅠ',
+	                text: '안됬다리',
 	                icon: 'warning',
 	                button:{
-	                		text : 'back',
+	                		text : '돌아간다리..',
 	                		value : true,
 	                }
 	            }).then((result) => {
@@ -33,11 +33,11 @@
 		<script>
 		 $(document).ready(function () {
 	            swal({
-	                title: 'Success',
-	                text: 'Success Add Menu',
+	                title: '기모기모찌',
+	                text: '추가됬다리',
 	                icon: 'success',
 	                button:{
-	                		text : 'Go to List',
+	                		text : 'list출력한다리',
 	                		value : true,
 	                }
 	            }).then((result) => {
