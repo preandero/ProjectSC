@@ -44,12 +44,12 @@
 <body>
 	<!-- 포스 메뉴 화면 틀 시작-->
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-		<a class="navbar-brand h2" href="#">POS WEBAPP!</a>
+		<a class="navbar-brand h2" href="pos_index.jsp">POS WEBAPP!</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarsExampleDefault"
 			aria-controls="navbarsExampleDefault" aria-expanded="false"
 			aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
+			<span class="navbar-toggler-icon" href="pos_index.jsp"></span>
 		</button>
 
 		<div class="collapse navbar-collapse " id="navbarsExampleDefault">
@@ -62,7 +62,7 @@
 			</ul>
 
 		<div class="btn-group">
-			<a class="nav-link h3 mr-2 text-white" href="#"><i class="fas fa-home"></i></a>
+			<a class="nav-link h3 mr-2 text-white" ><i class="fas fa-home" onclick="location.href='index.jsp'"></i></a>
 				<button type="button"
 					class="btn btn-secondary dropdown-toggle bg-dark border-dark"
 					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

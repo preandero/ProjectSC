@@ -147,6 +147,7 @@ pre {
     font-size: 25px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     box-shadow: 5px 8px #888888;
+    cursor: pointer;
 }
 .register .right .menu-items ul li i {
     background: #236c9c;
@@ -174,7 +175,7 @@ pre {
     filter: hue-rotate(0deg);
     border-radius: 5px;
     margin-top: 2px;
-    
+    cursor: pointer;
 }
 .register .right .payment-keys ul li {
     border: black 1px solid;
