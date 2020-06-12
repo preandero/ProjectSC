@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.*;
+import pos.beans.AjaxPOSResult;
 
 @WebServlet("*.ajax")
 public class AjaxController extends HttpServlet {
@@ -65,6 +66,11 @@ public class AjaxController extends HttpServlet {
 		case "/HTML/cs_deleteOk.ajax":  //글 삭제 (메뉴)
 			new CSDeleteCommand().execute(request, response);
 			new AjaxResultCommand().execute(request, response);
+			break;
+			
+		case "/HTML/orderInsert.ajax":
+			new OrderInsertCommand().execute(request, response);
+			new AjaxResultCommand2().execute(request, response);
 			break;
 		}
 		

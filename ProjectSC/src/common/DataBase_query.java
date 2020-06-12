@@ -95,6 +95,38 @@ public class DataBase_query {
 	// -------       pos_mgmt_query     end ---------------
 	
 	
+
+	//---------------- POS 결제 후 ORDER TABLE에 저장 *시작점* ------------------
+	
+	// order table에 데이터 넣기
+	public static String SQL_ORDER_INSERT = 
+		"INSERT INTO order_tb (order_uid, order_regdate, order_totalprice, store_uid) " + 
+		"VALUES " + 
+		"(SEQ_order_uid.nextval, SYSDATE, ?, ?)";
+	
+	// order detail table 에 넣기
+	public static String SQL_ORDER_DETAIL_INSERT = 
+		"INSERT INTO order_detail_tb (order_uid, menu_uid, menu_quantity) " +
+		"VALUES " + 
+		"(?, ?, ?)";
+	
+	//---------------- POS 결제 후 ORDER TABLE에 저장 *끝점* ------------------
+	
+	//---------------- 매출 뽑기 -------------------------------
+	public static String SQL_REVENUE_SELECT = 
+		"SELECT SUM(order_totalprice) totalprice, " +
+		"to_char(order_regdate, 'YYYY-MM-DD') AS daily " +
+		"FROM " + 
+		"order_tb " +
+		"WHERE " +
+		"to_char(ORDER_REGDATE , 'YYYY-MM-DD') >= '2013-05-01' " +
+		"AND " +
+		"to_char(ORDER_REGDATE , 'YYYY-MM-DD') <= '2020-06-13'" +
+		"GROUP BY " +
+		"to_char(ORDER_REGDATE , 'YYYY-MM-DD')";
+		
+	//---------------- 매출 뽑기 -------------------------------
+
 	
 	// -------	cs_tb_query	 start ---------------
 

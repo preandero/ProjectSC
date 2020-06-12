@@ -115,6 +115,11 @@ public class MemberController extends HttpServlet {
 			command.execute(request, response);
 			viewPage="pos_mgmt_updateOk.jsp";
 			break;
+			
+		case "/HTML/pos_rev.do":
+			System.out.println("pos_rev.do 성공");
+			viewPage = "pos_rev.jsp";
+			break;
 		
 		case "/HTML/cs_list.do":
 			command = new CSListCommand();
