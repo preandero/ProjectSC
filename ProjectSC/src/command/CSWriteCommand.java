@@ -1,10 +1,21 @@
 package command;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
+
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.oreilly.servlet.multipart.FileRenamePolicy;
+
 import cs_board.beans.CS_WriteDAO;
+import pos_mgmt.beans.WriteDAO;
 
 public class CSWriteCommand implements Command {
 
@@ -15,17 +26,56 @@ public class CSWriteCommand implements Command {
 		CS_WriteDAO dao = new CS_WriteDAO();
 		HttpSession session = request.getSession();
 		//매개변수 받아오기  . 매개변수들은 이제 전부다 request에 있다
-		String subject = request.getParameter("subject");
-		String content = request.getParameter("content");
+//		String subject = request.getParameter("subject");
+//		String content = request.getParameter("content");
 		int mem_uid = (int) session.getAttribute("mem_uid");
-		String mem_id=request.getParameter("mem_id");
+//		String mem_id=request.getParameter("mem_id");
 		
 		
-		if(subject !=null 
-				&& subject.trim().length()>0) {
+//		int cnt = 0;
+		//업로드된 파일
+		ServletContext context = request.getServletContext();
+		String saveDirectory = context.getRealPath("upload");
+		int maxPostSize = 5 * 1024 * 1024 ; //POST 받을 최대 이미지의 크기는 5메가로 설정
+		String encoding = "utf-8";
+		FileRenamePolicy policy = new DefaultFileRenamePolicy(); 
+		
+		MultipartRequest multi = null;
+		
+		try {
+			multi = new MultipartRequest(request, saveDirectory, 
+					maxPostSize, encoding, policy);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		List<String> originalFileNames = new ArrayList<String>();
+		List<String> fileSystemNames = new ArrayList<String>();
+		Enumeration names = null;
+		names = multi.getFileNames();
+		while(names.hasMoreElements()) {
+			String name = (String)names.nextElement();
+			String originalFileName = multi.getOriginalFileName(name);
+			String fileSystemName = multi.getFilesystemName(name);
+
+			if(originalFileName != null && fileSystemName !=null) {
+				originalFileNames.add(originalFileName);
+				fileSystemNames.add(fileSystemName);
+				//리스트에 담는 과정 add를 이용
+			}//end if
+		}//end while
+		
+		//매개변수 받아오기  .   매개변수들은 이제 전부다 multi에 있다
+		String mem_id = multi.getParameter("mem_id");
+		String subject = multi.getParameter("subject");
+		String content = multi.getParameter("content");
+		
+		if(content != null && subject !=null 
+				&& content.trim().length()>0 && subject.trim().length()>0) {
 			
 			try {
-				cnt = dao.insert(subject,content,mem_uid);
+				//첨부파일 정보도 같이 insert 해준다.
+				cnt = dao.insert(subject, content, mem_uid, originalFileNames, fileSystemNames);
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -35,6 +85,8 @@ public class CSWriteCommand implements Command {
 		
 		request.setAttribute("result", cnt);
 		//result 로 담았으니 꺼낼때도 result
+		
+	
 		
 	}//end execute
 

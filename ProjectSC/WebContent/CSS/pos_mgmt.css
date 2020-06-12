@@ -14,7 +14,9 @@ body {
 .menu-items {
 	margin: 8px;
 }
-
+.nav-link h3 mr-2 text-white{
+	cursor: pointer;
+}
 hr {
 	border: 1px solid black;
 }
@@ -172,3 +174,5 @@ input {
 .product img {
   display: block;
 }
+
+

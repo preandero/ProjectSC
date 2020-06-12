@@ -10,9 +10,9 @@ import java.sql.Statement;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 import common.DataBase_query;
-import pos.beans.MemberDTO;
 
 
 public class CS_WriteDAO {
@@ -74,7 +74,54 @@ public class CS_WriteDAO {
 		return cnt;
 	}//end insert
 
+	//-------------------------------파일 첨부 게시글 -----------------------------
+//	<-- 첨부파일들
+public int insert(String subject, String content, int mem_uid, 
+	//이미 파일은 cos 라이브러리 덕분에 저장되어있다.
+	List<String> originalFileNames, List<String> fileSystemNames
+	) throws SQLException {
+
+		int cnt = 0;
+		int uid = 0;  //insert 된 글의 cs_uid 값
+
+try {
+	//자동 생성된 컬럼의 이름들이 담긴 배열 준비 (auto-generated keys)
+	String[] generatedCols = {"cs_uid"};
 	
+	//Statement 나 prepareStatement 생성시 두번째 매개변수로
+	//auto -generated keys 배열 넘겨줌
+	pstmt = conn.prepareStatement(DataBase_query.SQL_WRITE_INSERT, generatedCols);
+	pstmt.setString(1, subject);
+	pstmt.setString(2, content);
+	pstmt.setInt(3, mem_uid);
+	
+	cnt = pstmt.executeUpdate();
+	
+	
+	//auto-generated 값 뽑아오기
+	rs=pstmt.getGeneratedKeys();
+	if(rs.next()) {
+		uid = rs.getInt(1);	//첫번째 컬럼
+	}
+	pstmt.close();
+	//첨부파일 정보 테이블에 insert 하기
+	pstmt = conn.prepareStatement(DataBase_query.SQL_FILE_INSERT);
+	for(int i = 0; i<originalFileNames.size(); i++) {
+		pstmt.setString(1, originalFileNames.get(i));
+		pstmt.setString(2, fileSystemNames.get(i));
+		pstmt.setInt(3, uid);
+		pstmt.executeUpdate();
+	}//end for
+	
+} catch (Exception e) {
+	e.printStackTrace();
+} finally {
+	close();
+}
+return cnt;
+}//end insert
+	
+	//-------------------------------파일 첨부 게시글 -----------------------------
 	
 	// ResultSet --> DTO 배열로 return
 	public CS_WriteDTO[] createArray(ResultSet rs) throws SQLException {
@@ -346,7 +393,7 @@ public CS_WriteDTO[] createArrayView(ResultSet rs) throws SQLException {
 			return cnt;
 		}//end countAll
 		
-	
+		
 	
 	
 	

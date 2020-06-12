@@ -53,6 +53,15 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"
    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
    crossorigin="anonymous"></script>
+  <!-- include libraries(jQuery, bootstrap) -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+   
+   <!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+   
 </head>
 <script>
 function chkSubmit(){
@@ -79,17 +88,31 @@ function chkSubmit(){
     <div class="form-container sign-in-container">
 
 <form name="frm" action="cs_updateOk.do?uid=<%= uid %>" method="post" onsubmit="return chkSubmit()">
-<h1>수정</h1>
+<h1>Customer Service</h1>
 <input type="hidden" name="uid" value="<%= uid %>"/>
 작성자 : <%= mem_id %><br> <%-- 작성자 이름 변경 불가 --%>
 제목 : 
 <input type="text" name="subject" value="<%= subject %>"/><br>
 내용: <br>
-<textarea name="content"><%=content %></textarea>
+<textarea name="content" id="summernote"><%=content %></textarea>
+<script>
+        $('#summernote').summernote({
+            tabsize: 2,
+            height: 300
+          });            // set focus to editable area after initializing summernote
+           
+          /* $("p").each(function(){
+        	 if(!$(this).text().trim().length){
+        		 $(this).remove();
+        	 } 
+          }); */
+          
+          /* $("summernote").summernote('editor.insertText', '<text>'); */
+</script>
 <br>
 <input type="submit" value="수정하기" id="btn"/>
-<button onclick="history.back()">이전으로</button>
-<button onclick="location.href='cs_list.do'">목록보기</button>
+<button id="btn" onclick="history.back()">이전으로</button>
+<button id="btn" onclick="location.href='cs_list.do'">목록보기</button>
 </form>
 </div>
   </div>
