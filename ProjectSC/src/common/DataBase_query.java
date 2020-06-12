@@ -27,11 +27,7 @@ public class DataBase_query {
 	
 	// 로그인시 확인할 id & pw 확인하기
 	public static final String SQL_MEM_CHK = 
-			"SELECT s.store_uid, m.MEM_ID , s.MEM_UID , m.MEM_SUB_PERIOD " +
-			"FROM MEMBER_TB m, STOREINFO_TB s " +
-			"WHERE s.MEM_UID = " +
-			"(SELECT MEM_UID FROM MEMBER_TB WHERE MEM_ID =? AND MEM_PW = ?) " +
-			"AND m.MEM_UID = s.MEM_UID";
+			"SELECT * FROM member_tb WHERE mem_id = ? AND mem_pw = ?";
 	
 	public static final String SQL_PAYINFO_INSERT = 
 			"UPDATE member_tb SET "
@@ -40,10 +36,42 @@ public class DataBase_query {
 			+ "(SELECT SYSDATE, ?, ?, ? FROM DUAL) "
 			+ "where mem_uid = ?"
 			;
+	
+	public static final String SQL_ORDER_INSERT = "INSERT INTO order_tb"
+			+ "(order_uid, order_regdate, order_totalprice, store_uid)"
+			+ "VALUES"
+			+ "(SEQ_ORDER_UID.nextval, SYSDATE, ?, ?)";
+	
+	public static final String SQL_ORDER_DETAIL_INSERT = "INSERT INTO order_detail"
+			+ "(orderdetail_uid, orderdetail_price, order_menuname, orderdetail_quantity, ?, ?)"
+			+ "VALUES"
+			+ "(SEQ_ORDER_UID.nextval, SYSDATE, ?, ?)";
+	
+//	CREATE TABLE order_detail
+//	(
+//		orderdetail_uid number NOT NULL,
+//		orderdetail_price number NOT NULL,
+//		orderdetail_menuname varchar2(40) NOT NULL,
+//		orderdetail_quantity number NOT NULL,
+//		order_uid number NOT NULL,
+//		menu_uid number NOT NULL,
+//		PRIMARY KEY (orderdetail_uid)
+//	);
+//
+//
+//	CREATE TABLE order_tb
+//	(
+//		order_uid number NOT NULL,
+//		order_regdate date,
+//		order_totalprice number,
+//		store_uid number NOT NULL,
+//		PRIMARY KEY (order_uid)
+//	);
 
 	// -------       pos_mgmt_query    start ---------------
 	public static String SQL_MENU_INSERT = "insert into menu_tb values (SEQ_menu_uid.nextval, ?, ?, ?)";
 	
+//	public static String SQL_MENU_SELECT_ALL ="SELECT menu_name, menu_price FROM menu_tb WHERE store_uid = ?";
 	public static String SQL_MENU_SELECT_ALL ="select * from menu_tb WHERE store_uid = ?";
 	
 	public static String SQL_MENU_DELETE = "delete from menu_tb where menu_uid = ?";
@@ -57,23 +85,6 @@ public class DataBase_query {
 	// -------       pos_mgmt_query     end ---------------
 	
 	
-	//---------------- POS 결제 후 ORDER TABLE에 저장 *시작점* ------------------
-	
-	// order table에 데이터 넣기
-	public static String SQL_ORDER_INSERT = 
-		"INSERT INTO order_tb (order_uid, order_regdate, order_totalprice, store_uid) " + 
-		"VALUES " + 
-		"(SEQ_order_uid.nextval, SYSDATE, ?, ?)";
-	
-	// order detail table 에 넣기
-	public static String SQL_ORDER_DETAIL_INSERT = 
-		"INSERT INTO order_detail_tb (order_uid, menu_uid, menu_quantity) " +
-		"VALUES " + 
-		"(?, ?, ?)";
-	
-	
-	//---------------- POS 결제 후 ORDER TABLE에 저장 *끝점* ------------------
-	
 	
 	// -------	cs_tb_query	 start ---------------
 
@@ -84,7 +95,7 @@ public class DataBase_query {
 	
 	// 1명 게시글 읽어오기(R)
 	public static final String SQL_WRITE_SELECT_BY_UID = 
-			"SELECT c.cs_uid, c.cs_subject, c.cs_content, c.cs_regdate, m.mem_id,  m.mem_uid "+ 
+			"SELECT c.cs_uid, c.cs_subject, c.cs_content, c.cs_regdate, m.mem_id, m.mem_uid "+ 
 			"FROM cs_tb c , member_tb m " + 
 			"WHERE c.mem_uid = m.mem_uid AND c.cs_uid=?";
 	
@@ -95,9 +106,9 @@ public class DataBase_query {
 	//게시글 업데이트(U)
 	public static final String SQL_WRITE_UPDATE = 
 			"UPDATE (SELECT c.cs_uid, c.cs_subject, c.cs_content, c.cs_regdate, m.mem_id FROM cs_tb c , member_tb m WHERE c.mem_uid = m.mem_uid)"
-					+"SET cs_subject = ?, cs_content = ?"
-					+"WHERE cs_uid = ?";
-	
+			+"SET cs_subject = ?, cs_content = ?"
+			+"WHERE cs_uid = ?";
+
 	//게시글 삭제(D)
 	public static final String SQL_WRITE_DELETE_BY_UID =
 			"DELETE FROM cs_tb WHERE cs_uid = ?";
@@ -109,34 +120,34 @@ public class DataBase_query {
 			"WHERE c.mem_uid = m.mem_uid";
 	
 	// 모든 게시글 보여주기(R-2 테스트 - 상빈)
-		public static final String SQL_SELECT_UID2 =
-				"SELECT c.CS_UID, c.CS_SUBJECT, c.CS_CONTENT, m.MEM_ID, c.CS_REGDATE " + 
-						"FROM cs_tb c , member_tb m " + 
-						"WHERE c.mem_uid = m.mem_uid";
-		
-		String test = "SELECT c.CS_UID, c.CS_SUBJECT, c.CS_CONTENT, m.MEM_ID, c.CS_REGDATE " + 
-				"FROM cs_tb c , member_tb m " + 
-				"WHERE c.mem_uid = m.mem_uid";
-		
-		// -------------------- pagination ----------------------------
-		// 글 목록 전체 개수 가져오기
-			public static final String SQL_WRITE_COUNT_ALL = 
-					"SELECT count(*) FROM cs_tb";
-			
-			// fromRow 부터 pageRows 만큼 SELECT
-			// (몇번째) 부터 (몇개) 만큼
-			public static final String SQL_WRITE_SELECT_FROM_ROW =  
-					"SELECT * FROM " + 
-					"(SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM cs_tb ORDER BY cs_uid DESC) T) " + 
-					"WHERE RNUM >= ? AND RNUM < ?";
-			
-			public static final String SQL_WRITE_SELECT_FROM_ROW2 =  
-//							"SELECT * FROM "+
-							"SELECT c.CS_UID, c.CS_SUBJECT, c.CS_CONTENT, c.CS_REGDATE, c.MEM_UID, m.MEM_ID FROM cs_tb c, member_tb m WHERE c.mem_uid = m.mem_uid " + 
-							"AND c.CS_UID >= ? AND c.CS_UID < ? order by c.cs_uid ASC";
-			
-
+	public static final String SQL_SELECT_UID2 =
+			"SELECT c.CS_UID, c.CS_SUBJECT, c.CS_CONTENT, m.MEM_ID, c.CS_REGDATE " + 
+					"FROM cs_tb c , member_tb m " + 
+					"WHERE c.mem_uid = m.mem_uid";
 	
+	String test = "SELECT c.CS_UID, c.CS_SUBJECT, c.CS_CONTENT, m.MEM_ID, c.CS_REGDATE " + 
+			"FROM cs_tb c , member_tb m " + 
+			"WHERE c.mem_uid = m.mem_uid";
+	
+	// -------------------- pagination ----------------------------
+	// 글 목록 전체 개수 가져오기
+		public static final String SQL_WRITE_COUNT_ALL = 
+				"SELECT count(*) FROM cs_tb";
+		
+		// fromRow 부터 pageRows 만큼 SELECT
+		// (몇번째) 부터 (몇개) 만큼
+		public static final String SQL_WRITE_SELECT_FROM_ROW =  
+				"SELECT * FROM " + 
+				"(SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM cs_tb ORDER BY cs_uid DESC) T) " + 
+				"WHERE RNUM >= ? AND RNUM < ?";
+		
+		public static final String SQL_WRITE_SELECT_FROM_ROW2 =  
+//						"SELECT * FROM "+
+						"SELECT c.CS_UID, c.CS_SUBJECT, c.CS_CONTENT, c.CS_REGDATE, c.MEM_UID, m.MEM_ID FROM cs_tb c, member_tb m WHERE c.mem_uid = m.mem_uid " + 
+						"AND c.CS_UID >= ? AND c.CS_UID < ? order by c.cs_uid ASC";
+		
+		
+
 	
 	
 }
