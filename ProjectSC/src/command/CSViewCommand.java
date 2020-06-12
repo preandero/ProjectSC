@@ -58,7 +58,7 @@ public class CSViewCommand implements Command {
 
 				// 이미지 파일 여부 세팅
 				String realPath = "";
-				String saveFolder = "../upload";
+				String saveFolder = "upload";
 				ServletContext context = request.getServletContext();
 				realPath = context.getRealPath(saveFolder);
 

@@ -95,6 +95,7 @@ CREATE TABLE member_tb
 
 SELECT * FROM MEMBER_TB;
 
+
 /* Store Table */
 CREATE TABLE storeinfo_tb
 (
