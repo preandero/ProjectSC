@@ -22,6 +22,16 @@ public class DataBase_query {
 			+ "(SEQ_store_uid.nextval, ?, ?, ?, ?)"
 			;
 	
+	
+	public static final String SQL_UPDATE_MEM = "UPDATE MEMBER_TB SET mem_id= ? ,MEM_PW = ? , MEM_EMAIL = ?,MEM_PHONENUM = ? WHERE MEM_UID = ? ";
+			
+	public static final String SQL_UPDATE_STORE = "UPDATE storeinfo_tb "
+			+ "SET "
+			+ "store_name = ?,"
+			+ "store_loca = ?,"
+			+ "store_phonenum = ? "
+			+ "WHERE STORE_UID = ?";
+	
 	public static final String SQL_MEM_SELECT = 
 			"SELECT * FROM member_tb";
 	
@@ -147,6 +157,9 @@ public class DataBase_query {
 						"AND c.CS_UID >= ? AND c.CS_UID < ? order by c.cs_uid ASC";
 		
 		
+		public static final String SQL_GET_MEM_BY_UID = "SELECT * FROM MEMBER_TB WHERE MEM_UID = ?";
+		
+		public static final String SQL_GET_STORE_BY_UID = "SELECT * FROM STOREINFO_TB WHERE STORE_UID = ?";
 
 	
 	
