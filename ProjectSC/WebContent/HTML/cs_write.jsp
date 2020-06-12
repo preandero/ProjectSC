@@ -16,43 +16,16 @@ String mem_id=(String)session.getAttribute("mem_id");
 <link href="../CSS/cs_write.css" rel="stylesheet" type="text/css">
 
 <title>글작성</title>
-<!-- 부트스트랩과 제이쿼리 라이브러리를 사용하기 위한 선언 -->  
-	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
-	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
-	
-	<!--summernote의 스타일시트와 자바스크립트을 사용하기 위한 선언 -->  
-	<link href="./dist/summernote.css" rel="stylesheet">
-	<script src="./dist/summernote.js"></script>
+<!-- include libraries(jQuery, bootstrap) -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-
-
-<script type="text/javascript">
-        /* summernote에서 이미지 업로드시 실행할 함수 */
-	 	function sendFile(file, editor) {
-            // 파일 전송을 위한 폼생성
-	 		data = new FormData();
-	 	    data.append("uploadFile", file);
-	 	    $.ajax({ // ajax를 통해 파일 업로드 처리
-	 	        data : data,
-	 	        type : "POST",
-	 	        url : "./summernote_imageUpload.jsp",
-	 	        cache : false,
-	 	        contentType : false,
-	 	        processData : false,
-	 	        success : function(data) { // 처리가 성공할 경우
-                    // 에디터에 이미지 출력
-	 	        	$(editor).summernote('editor.insertImage', data.url);
-	 	        }
-	 	    });
-	 	}
-	</script>
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 </head>
-
-
-
 <script>
-
 function writeChk(){
    
    frm = document.forms["formwrite"];
@@ -89,8 +62,8 @@ function writeChk(){
   <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <div class="container" id="container">
 
-    <div class="form-container sign-in-container">
-      <form action="cs_writeOk.do" id="formwrite" method="POST" onsubmit="return writeChk();">
+    <div class="form-container sign-in-container" style="height : 800px; width:800px">
+      <form action="cs_writeOk.do" id="formwrite" method="POST" onsubmit="return writeChk();" enctype="Multipart/form-data" style="height : 800px; width:100%">
         <h1>Customer Service</h1>
        <br>
         <label class="label" for="name" id="txt">작성자</label>
@@ -101,30 +74,25 @@ function writeChk(){
         <input type="text" placeholder="" id="subject" name="subject" />
         <label class="label" for="content" id="txt">내용</label>
         <textarea name="content" id="summernote"></textarea>
+        <button type="button" id="btnAdd">추가</button>
+		<div id="files"></div>
         <script>
-        $(document).ready(function() {
-            $('#summernote').summernote({ // summernote를 사용하기 위한 선언
-                height: 300,
-				callbacks: { // 콜백을 사용
-                    // 이미지를 업로드할 경우 이벤트를 발생
-				    onImageUpload: function(files, editor, welEditable) {
-					    sendFile(files[0], this);
-					}
-				}
-			});
+        $('#summernote').summernote({
+            tabsize: 2,
+            height: 100
+          });            // set focus to editable area after initializing summernote
+           
+		</script>
+		
+<!-- 		절취선 -->
+		<script>
+		var i = 0;
+		$('#btnAdd').click(function(){
+			$('#files').append("<div><input type='file' name='upfile"+i+"'/>&nbsp;<button type='button' onclick='$(this).parent().remove()'>삭제 </button> </div>");
+			i++;
 		});
-
-
-
-        // set focus to editable area after initializing summernote
-         
-        /* $("#summernote").on("summernote.enter", function(we, e){
-        	$(this).summernote("pasteHTML", "<t><t>");
-        	e.preventDefault();
-        }); */
-        
-        
-</script>
+		</script>		
+<!-- 		절취선 -->
        <div id="btn">
         <button type="submit" class="ghost" id="signUp" onclick="writeChk();">등록</button>
         <button type="button" onclick="location.href='cs_list.do'" id="btn">목록</button>

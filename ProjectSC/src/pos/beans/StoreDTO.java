@@ -9,6 +9,12 @@ public class StoreDTO {
 	public StoreDTO() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	public StoreDTO(String name, String phonenum) {
+		super();
+		this.name = name;
+		this.phonenum = phonenum;
+	}
 
 	public StoreDTO(int uid, String name, String location, String phonenum) {
 		super();

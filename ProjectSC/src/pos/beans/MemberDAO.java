@@ -150,6 +150,31 @@ public class MemberDAO {
 
 	}
 	
+	public StoreDTO[] createArrayStore(ResultSet rs) throws SQLException {
+		StoreDTO[] arr = null; // DTO 배열
+
+		ArrayList<StoreDTO> list = new ArrayList<StoreDTO>();
+
+		while (rs.next()) {
+			String storePhone = rs.getString("store_phonenum");
+			String storeName = rs.getString("store_name");
+			
+
+			StoreDTO dto = new StoreDTO(storeName, storePhone);
+			list.add(dto);
+
+		} // while
+		int size = list.size();
+
+		if (size == 0)
+			return null;
+
+		arr = new StoreDTO[size];
+		list.toArray(arr); // List -> 배열
+		return arr;
+
+	}
+	
 	// session에 저장할 데이터들을 가져올 도우미 함수
 	public SessionDTO[] createSession(ResultSet rs) throws SQLException{
 		SessionDTO[] arr = null;
@@ -205,16 +230,92 @@ public class MemberDAO {
 		
 	}
 	
-	/*
-	 * public MemberDTO[] memTbSelectByUid(int uid) throws SQLException{ MemberDTO[]
-	 * arr =null; try { pstmt=conn.prepareStatement(DataBase_query.SQL_SELECT_UID);
-	 * pstmt.setInt(1, uid); rs=pstmt.executeQuery(); arr=createArray(rs);
-	 * 
-	 * }finally { close(); }
-	 * 
-	 * return arr;
-	 * 
-	 * }//end selectByUid
-	 */
+	
+	  public MemberDTO[] memTbSelectByUid(int uid) throws SQLException{ MemberDTO[]
+	  arr =null; try { pstmt=conn.prepareStatement(DataBase_query.SQL_SELECT_UID);
+	  pstmt.setInt(1, uid); rs=pstmt.executeQuery(); arr=createArray(rs);
+	  
+	  }finally { close(); }
+	  
+	  return arr;
+	  
+	  }//end selectByUid
+	  
+	  
+	  public int UpdateMember(String id, String pw, String email, String phoneNum,
+				String storeName, String location, String storePhone , int uid, int store_uid) throws SQLException {
+			int cnt = 0;
+			
+			try {
+				
+				// 자동 생성된 컬럼의 이름(들)이 담긴 배열 준비(auto-generated keys) 받아오기
+				
+				
+				// 회원가입 성공 이후 DB에 저장 member_tb
+				pstmt = conn.prepareStatement(DataBase_query.SQL_UPDATE_MEM);
+				pstmt.setString(1, id);
+				pstmt.setString(2, pw);
+				pstmt.setString(3, email);
+				pstmt.setString(4, phoneNum);
+				pstmt.setInt(5, uid);
+				
+				cnt = pstmt.executeUpdate();
+				
+				
+
+				// 회원가입이 성공적으로 들어갔을 경우, store info 저장
+				pstmt = conn.prepareStatement(DataBase_query.SQL_UPDATE_STORE);
+				pstmt.setString(1, storeName);
+				pstmt.setString(2, location);
+				pstmt.setString(3, storePhone);
+				pstmt.setInt(4, uid);
+				cnt = pstmt.executeUpdate();
+				
+			}finally {
+				close();
+			}
+			return cnt;
+		}
+	  
+	  public MemberDTO[] Mem_Select_By_Uid(int mem_uid) throws SQLException{
+			
+		  MemberDTO[] arr = null;
+			try {
+			pstmt = conn.prepareStatement(DataBase_query.SQL_GET_MEM_BY_UID);
+			pstmt.setInt(1, mem_uid);
+			
+			rs = pstmt.executeQuery();
+			
+			arr = createArray(rs);
+			
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			finally {
+				close();
+			}
+			return arr;
+			
+		}
+	  
+	  public StoreDTO[] Store_Select_By_Uid(int store_uid) throws SQLException{
+			
+		  StoreDTO[] arr = null;
+			try {
+			pstmt = conn.prepareStatement(DataBase_query.SQL_GET_STORE_BY_UID);
+			pstmt.setInt(1, store_uid);
+			rs = pstmt.executeQuery();
+			
+			arr = createArrayStore(rs);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			finally {
+				close();
+			}
+			return arr;
+			
+		}
+	 
 
 } // PaySuccessDAO{}
