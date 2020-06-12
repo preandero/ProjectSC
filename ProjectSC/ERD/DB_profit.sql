@@ -94,7 +94,7 @@ CREATE TABLE member_tb
 );
 
 SELECT * FROM MEMBER_TB;
-
+SELECT m.MEM_UID , m.MEM_ID , s.STORE_UID, m.MEM_SUB_PERIOD FROM member_tb m, storeinfo_tb s WHERE m.mem_id = 'suyeong1' AND m.mem_pw = 'sorktndud1'AND m.MEM_UID = s.MEM_UID ;
 
 /* Store Table */
 CREATE TABLE storeinfo_tb

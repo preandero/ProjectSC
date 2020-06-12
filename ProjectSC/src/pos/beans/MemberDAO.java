@@ -183,7 +183,7 @@ public class MemberDAO {
 		while (rs.next()) {
 			int mem_uid = rs.getInt("mem_uid");
 			String mem_id = rs.getString("mem_id");
-			int store_uid = rs.getInt("mem_uid");
+			int store_uid = rs.getInt("store_uid");
 			int period = rs.getInt("mem_sub_period");
 			
 			SessionDTO dto = new SessionDTO(mem_uid, mem_id, store_uid, period);
@@ -268,7 +268,7 @@ public class MemberDAO {
 				pstmt.setString(1, storeName);
 				pstmt.setString(2, location);
 				pstmt.setString(3, storePhone);
-				pstmt.setInt(4, uid);
+				pstmt.setInt(4, store_uid);
 				cnt = pstmt.executeUpdate();
 				
 			}finally {

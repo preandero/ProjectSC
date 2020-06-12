@@ -71,7 +71,7 @@ $(".menu-items li").on('mousedown', function() {
 
 $('#payment').click(function() {
 	var data = $('#insertorder').serialize();
-	alert(data);
+	
 
 	if (data.length <= 12) {
 		$(document).ready(function() {

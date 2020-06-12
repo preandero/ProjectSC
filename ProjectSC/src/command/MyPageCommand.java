@@ -22,10 +22,12 @@ public class MyPageCommand implements Command {
 		
 		HttpSession session = request.getSession();
 		int uid = (int)session.getAttribute("mem_uid");
+		int storeuid = (int)session.getAttribute("store_uid");
+				
 		
 		
 		try {
-			strarr = new MemberDAO().Store_Select_By_Uid(uid);
+			strarr = new MemberDAO().Store_Select_By_Uid(storeuid);
 			
 			memarr = new MemberDAO().Mem_Select_By_Uid(uid);
 			
