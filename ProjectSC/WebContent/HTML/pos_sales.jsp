@@ -43,7 +43,7 @@
                     <a class="nav-link bg-white text-dark h3 px-4" href="pos_sales.do">ORDER</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link h3 px-4" href="">SALES</a>
+                    <a class="nav-link h3 px-4" href="pos_rev.do">SALES</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link h3 px-2" href="pos_mgmt_list.do">MENU CUSTOM</a>

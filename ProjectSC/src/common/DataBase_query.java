@@ -71,9 +71,22 @@ public class DataBase_query {
 		"VALUES " + 
 		"(?, ?, ?)";
 	
-	
 	//---------------- POS 결제 후 ORDER TABLE에 저장 *끝점* ------------------
 	
+	//---------------- 매출 뽑기 -------------------------------
+	public static String SQL_REVENUE_SELECT = 
+		"SELECT SUM(order_totalprice) totalprice, " +
+		"to_char(order_regdate, 'YYYY-MM-DD') AS daily " +
+		"FROM " + 
+		"order_tb " +
+		"WHERE " +
+		"to_char(ORDER_REGDATE , 'YYYY-MM-DD') >= '2013-05-01' " +
+		"AND " +
+		"to_char(ORDER_REGDATE , 'YYYY-MM-DD') <= '2020-06-13'" +
+		"GROUP BY " +
+		"to_char(ORDER_REGDATE , 'YYYY-MM-DD')";
+		
+	//---------------- 매출 뽑기 -------------------------------
 	
 	// -------	cs_tb_query	 start ---------------
 
