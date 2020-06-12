@@ -16,8 +16,11 @@ import command.CSUpdateOkCommand;
 import command.CSViewCommand;
 import command.CSWriteCommand;
 import command.Command;
+import command.DownloadCommand;
 import command.JoinCommand;
 import command.LoginCommand;
+import command.MyPageCommand;
+import command.MyPageUpdateCommand;
 import command.PaySuccessCommand;
 import command.PosMgmtAddCommand;
 import command.PosMgmtDeleteCommand;
@@ -85,7 +88,6 @@ public class MemberController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "pos_mgmt_list.jsp";
 			break;
-			
 		case "/HTML/pos_mgmt_writeOk.do":
 			System.out.println("pos_mgmt.writeOk 성공");
 			command = new PosMgmtAddCommand();  
@@ -129,31 +131,44 @@ public class MemberController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "cs_writeOk.jsp";   //포워딩할 jsp 선택
 			break;
-			
 		case "/HTML/cs_view.do":
 			command = new CSViewCommand();
 			command.execute(request, response);
 			viewPage = "cs_view.jsp";
 			break;
-			
 		case "/HTML/cs_update.do":
 			command = new CSUpdateCommand();
 			command.execute(request, response);
 			viewPage = "cs_update.jsp";
 			break;
-			
 		case "/HTML/cs_updateOk.do":
 			command = new CSUpdateOkCommand();
 			command.execute(request, response);
 			viewPage = "cs_updateOk.jsp";
 			break;
-			
 		case "/HTML/cs_deleteOk.do":
 			command = new CSDeleteCommand();
 			command.execute(request, response);
 			viewPage = "cs_deleteOk.jsp";
 			break;
-		
+			
+			//---------------절취선--------------------
+		case "/HTML/download.do":
+			command = new DownloadCommand();
+			command.execute(request, response);
+			//view가 필요치 않다.
+			break;
+		case "/HTML/my_pageOk.do":
+			command = new MyPageUpdateCommand();
+			command.execute(request, response);
+			viewPage = "my_pageOk.jsp";
+			break;
+			
+		case "/HTML/my_page.do":
+			command = new MyPageCommand();
+			command.execute(request, response);
+			viewPage = "my_page.jsp";
+			break;
 
 		} // switch
 		

@@ -62,8 +62,8 @@ function writeChk(){
   <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <div class="container" id="container">
 
-    <div class="form-container sign-in-container">
-      <form action="cs_writeOk.do" id="formwrite" method="POST" onsubmit="return writeChk();">
+    <div class="form-container sign-in-container" style="height : 800px; width:800px">
+      <form action="cs_writeOk.do" id="formwrite" method="POST" onsubmit="return writeChk();" enctype="Multipart/form-data" style="height : 800px; width:100%">
         <h1>Customer Service</h1>
        <br>
         <label class="label" for="name" id="txt">작성자</label>
@@ -74,19 +74,25 @@ function writeChk(){
         <input type="text" placeholder="" id="subject" name="subject" />
         <label class="label" for="content" id="txt">내용</label>
         <textarea name="content" id="summernote"></textarea>
+        <button type="button" id="btnAdd">추가</button>
+		<div id="files"></div>
         <script>
         $('#summernote').summernote({
             tabsize: 2,
-            height: 300
+            height: 100
           });            // set focus to editable area after initializing summernote
+           
+		</script>
 		
-        /* $("#summernote").on("summernote.enter", function(we, e){
-        	$(this).summernote("pasteHTML", "<t><t>");
-        	e.preventDefault();
-        }); */
-        
-        
-</script>
+<!-- 		절취선 -->
+		<script>
+		var i = 0;
+		$('#btnAdd').click(function(){
+			$('#files').append("<div><input type='file' name='upfile"+i+"'/>&nbsp;<button type='button' onclick='$(this).parent().remove()'>삭제 </button> </div>");
+			i++;
+		});
+		</script>		
+<!-- 		절취선 -->
        <div id="btn">
         <button type="submit" class="ghost" id="signUp" onclick="writeChk();">등록</button>
         <button type="button" onclick="location.href='cs_list.do'" id="btn">목록</button>
