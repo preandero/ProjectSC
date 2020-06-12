@@ -11,6 +11,8 @@ SELECT c.CS_UID, c.CS_SUBJECT, c.CS_CONTENT, m.MEM_ID, c.CS_REGDATE FROM cs_tb c
 AND c.CS_UID >= 1 
 AND c.CS_UID < 5
 						;
+					
+CREATE SEQUENCE test_file_seq;
 
 					SELECT * FROM MEMBER_TB WHERE MEM_UID = 2;
 				SELECT * FROM STOREINFO_TB WHERE STORE_UID = 2;
@@ -92,6 +94,7 @@ CREATE TABLE member_tb
 );
 
 SELECT * FROM MEMBER_TB;
+
 
 /* Store Table */
 CREATE TABLE storeinfo_tb

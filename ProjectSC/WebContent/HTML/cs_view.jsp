@@ -6,6 +6,9 @@
    crossorigin="anonymous"></script>
 <%@ page import="cs_board.beans.*" %>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <% // Controller 로부터 결과 데이터 받음
 	CS_WriteDTO [] arr = (CS_WriteDTO [])request.getAttribute("view");
 	String mem_id=arr[0].getMem_id();
@@ -91,9 +94,9 @@ function chkDelete(uid){
   <div class="container" id="container">
 
     <div class="form-container sign-in-container">
-      <div  id="formwrite" method="POST">
+      <div  id="formwrite">
       
-<h1>Customer Service</h2>
+<h1>Customer Service</h1>
 <br>
 <h4>작성자  <br>
  <input type="text" value="<%= mem_id %>" readonly>  </h4>
@@ -109,9 +112,25 @@ function chkDelete(uid){
 <input type="hidden" id="mem_uid" name="mem_uid" value="<%= mem_uid %>">
 <input type="hidden" id="chk_uid" name="chk_uid" value = "<%= chk_uid %>">
 
-
-
-</div>
+<!-- 절취선 -->
+<!-- 첨부파일 및 다운로드 링크 -->
+	<c:if test="${fn:length(file) > 0 }">
+		<ul>
+			<c:forEach var = "element" items="${file }">
+				<li><a href="download.do?uid=${element.uid}">${element.source }</a></li>
+			</c:forEach>
+			<!-- 이미지인 경우 보여주기 -->
+			<c:forEach var = "element" items="${file }">
+				<c:if test="${element.image == true }">
+					<div style="width : 300px">
+						<img style="width:100%; height:auto;"
+						src="/ProjectSC/upload/${element.file }"/>
+					</div>
+				</c:if>
+			</c:forEach>
+		</ul>
+	</c:if>
+<!-- 절취선 -->
 <div id="buttons">
 <br>
 <button onclick="location.href='cs_update.do?uid=<%= uid%>'" id="udt">수정</button>

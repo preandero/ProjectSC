@@ -160,6 +160,42 @@ public class DataBase_query {
 		public static final String SQL_GET_MEM_BY_UID = "SELECT * FROM MEMBER_TB WHERE MEM_UID = ?";
 		
 		public static final String SQL_GET_STORE_BY_UID = "SELECT * FROM STOREINFO_TB WHERE STORE_UID = ?";
+		
+		//첨부파일용 쿼리
+		//특정 글 (wr_uid) 의 첨부파일 1개 insert
+		public static final String SQL_FILE_INSERT =
+				"insert into test_file"+"(bf_uid, bf_source, bf_file, cs_uid) "
+				+"values"
+				+"(test_file_seq.nextval, ?, ?, ?)"
+				;
+		
+		
+		//특정 글 (wr_uid) 의 첨부파일 들을 select  (0개일수도 여러개일 수 도 있음)
+		public static final String SQL_FILE_SELECT = 
+				"select bf_uid, bf_source, bf_file from test_file "
+				+"where cs_uid = ? "
+				+"order by bf_uid desc"
+				;
+		
+		
+		
+		//특정 첨부파일 (bf_uid) 을 select 
+		public static final String SQL_FILE_SELECT_BY_UID =
+				"select bf_uid, bf_source, bf_file from test_file "
+				+"where bf_uid = ?"
+			 	;
+		
+		
+		//특정 첨부파일 (bf_uid) 을 delete
+		public static final String SQL_FILE_DELETE_BY_UID =
+				"delete from test_file where bf_uid = ?"
+				;
+		
+		//특정 글 (wr_uid)의 첨부파일들을 delete
+		public static final String SQL_FILE_DELETE_BY_WRUID =
+				"delete from test_file where cs_uid = ?"
+				;
+		
 
 	
 	
