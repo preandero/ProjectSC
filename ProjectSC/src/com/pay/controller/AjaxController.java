@@ -41,10 +41,7 @@ public class AjaxController extends HttpServlet {
 
 		
 		switch (com) {
-		case "/HTML/orderInsert.ajax":
-			new OrderInsertCommand().execute(request, response);
-			new AjaxListCommand().execute(request, response);
-			break;
+		
 
 			
 		case "/HTML/cs_list.ajax":		//글 목록 (메뉴목록)

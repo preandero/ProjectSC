@@ -37,7 +37,7 @@ public class DataBase_query {
 	
 	// 로그인시 확인할 id & pw 확인하기
 	public static final String SQL_MEM_CHK = 
-			"SELECT * FROM member_tb WHERE mem_id = ? AND mem_pw = ?";
+			"SELECT m.MEM_UID , m.MEM_ID , s.STORE_UID, m.MEM_SUB_PERIOD FROM member_tb m, storeinfo_tb s WHERE m.mem_id = ? AND m.mem_pw = ? AND m.MEM_UID = s.MEM_UID" ;
 	
 	public static final String SQL_PAYINFO_INSERT = 
 			"UPDATE member_tb SET "
@@ -47,15 +47,7 @@ public class DataBase_query {
 			+ "where mem_uid = ?"
 			;
 	
-	public static final String SQL_ORDER_INSERT = "INSERT INTO order_tb"
-			+ "(order_uid, order_regdate, order_totalprice, store_uid)"
-			+ "VALUES"
-			+ "(SEQ_ORDER_UID.nextval, SYSDATE, ?, ?)";
 	
-	public static final String SQL_ORDER_DETAIL_INSERT = "INSERT INTO order_detail"
-			+ "(orderdetail_uid, orderdetail_price, order_menuname, orderdetail_quantity, ?, ?)"
-			+ "VALUES"
-			+ "(SEQ_ORDER_UID.nextval, SYSDATE, ?, ?)";
 	
 //	CREATE TABLE order_detail
 //	(
