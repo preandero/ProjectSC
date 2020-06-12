@@ -131,9 +131,9 @@ public class DataBase_query {
 					"WHERE RNUM >= ? AND RNUM < ?";
 			
 			public static final String SQL_WRITE_SELECT_FROM_ROW2 =  
-//							"SELECT * FROM "+
-							"SELECT c.CS_UID, c.CS_SUBJECT, c.CS_CONTENT, c.CS_REGDATE, c.MEM_UID, m.MEM_ID FROM cs_tb c, member_tb m WHERE c.mem_uid = m.mem_uid " + 
-							"AND c.CS_UID >= ? AND c.CS_UID < ? order by c.cs_uid ASC";
+							"SELECT * FROM "+
+							"(SELECT c.CS_UID, c.CS_SUBJECT, c.CS_CONTENT, c.CS_REGDATE, c.MEM_UID, m.MEM_ID FROM cs_tb c, member_tb m WHERE c.mem_uid = m.mem_uid " + 
+							"AND c.CS_UID >= ? AND c.CS_UID < ?) order by cs_uid ASC";
 			
 
 	
