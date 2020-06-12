@@ -4,6 +4,8 @@ SELECT c.CS_UID, c.CS_SUBJECT, c.CS_CONTENT, m.MEM_ID, c.CS_REGDATE FROM cs_tb c
 AND c.CS_UID >= 1 
 AND c.CS_UID < 5
 						;
+					
+CREATE SEQUENCE test_file_seq;
 
 /***************/
 /* Drop Tables */
