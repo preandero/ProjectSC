@@ -1,3 +1,10 @@
+UPDATE MEMBER_TB SET 
+mem_id= 'suyeong',
+MEM_PW = 'sorktndud1',
+MEM_EMAIL = 'dd@dd.cc',
+MEM_PHONENUM = 1234340395
+ WHERE MEM_UID = 2;
+
 
 
 SELECT c.CS_UID, c.CS_SUBJECT, c.CS_CONTENT, m.MEM_ID, c.CS_REGDATE FROM cs_tb c, member_tb m WHERE c.mem_uid = m.mem_uid  						
@@ -5,6 +12,8 @@ AND c.CS_UID >= 1
 AND c.CS_UID < 5
 						;
 
+					SELECT * FROM MEMBER_TB WHERE MEM_UID = 2;
+				SELECT * FROM STOREINFO_TB WHERE STORE_UID = 2;
 /***************/
 /* Drop Tables */
 /***************/

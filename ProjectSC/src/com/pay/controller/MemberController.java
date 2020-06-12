@@ -19,6 +19,8 @@ import command.Command;
 import command.DownloadCommand;
 import command.JoinCommand;
 import command.LoginCommand;
+import command.MyPageCommand;
+import command.MyPageUpdateCommand;
 import command.PaySuccessCommand;
 import command.PosMgmtAddCommand;
 import command.PosMgmtDeleteCommand;
@@ -155,6 +157,17 @@ public class MemberController extends HttpServlet {
 			command = new DownloadCommand();
 			command.execute(request, response);
 			//view가 필요치 않다.
+			break;
+		case "/HTML/my_pageOk.do":
+			command = new MyPageUpdateCommand();
+			command.execute(request, response);
+			viewPage = "my_pageOk.jsp";
+			break;
+			
+		case "/HTML/my_page.do":
+			command = new MyPageCommand();
+			command.execute(request, response);
+			viewPage = "my_page.jsp";
 			break;
 
 		} // switch
