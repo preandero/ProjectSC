@@ -367,7 +367,7 @@ public CS_WriteDTO[] createArrayView(ResultSet rs) throws SQLException {
 			CS_WriteDTO[] arr = null;
 			
 			try {
-				pstmt = conn.prepareStatement(DataBase_query.SQL_WRITE_SELECT_FROM_ROW2);
+				pstmt = conn.prepareStatement(DataBase_query.SQL_WRITE_SELECT_FROM_ROW3);
 				pstmt.setInt(1, from);
 				pstmt.setInt(2, from+rows);
 				rs= pstmt.executeQuery();

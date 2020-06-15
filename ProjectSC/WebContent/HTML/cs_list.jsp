@@ -52,6 +52,7 @@
 			<img src="../images/logo.png" id="logoimg"> <span id="slogo" onclick="location.href='index.jsp'"><b>Asangbinsi</b></span>
 		</div>
 	</header>
+			<button class="back" onclick="location.href='pos_index.jsp'">Back to POS</button>
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<div class="container" id="container">
 		<div class="form-container sign-in-container">

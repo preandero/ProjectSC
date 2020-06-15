@@ -129,7 +129,7 @@
                <label class="label" for="name">PRICE</label>
                <input type="number" placeholder="가격을 입력하세요" name="menu_price"/>
 	            <div class="modal-footer">
-	              <button type="submit" class="btn btn-primary ">Add</button>
+	              <button type="button" class="btn btn-primary" id="addTrigger">Add</button>
 	              <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
 	            </div>
             </form><!-- 폼 끝 -->            
@@ -345,6 +345,59 @@ $('button.mi').dblclick(function(){
 //  alert("error");
 // }
 </script>
+
+
+<script>
+
+$('#addTrigger').click(function(){
+//    var formData = $('#menuInfo').serialize();
+var addData = $('#formsignup').serialize();
+$.ajax({
+      type : "POST",
+      url : "pos_mgmt_writeOk.do",
+      cache : false,
+      data : addData,
+      success : onAddSuccess,
+      error : onAddError
+   })   
+})
+
+
+function onAddSuccess(json, status){
+//  alert($.trim(json));
+// alert("삭제 성공!");
+
+ //location.href="pos_mgmt_list.do";
+    $(document).ready(function () {
+         swal({
+             title: 'Success',
+             text: 'Success Add Menu',
+             icon: 'success',
+             button:{
+                   text : 'Go to List',
+                   value : true,
+             }
+         }).then((result) => {
+            if(result){
+               location.href='./pos_mgmt_list.do';
+            }
+         });
+   });
+}
+function onAddError(data, status){ 
+   swal({
+      title: 'Inappropriate action',
+        text: 'Please check out menu first',
+        icon: 'warning',
+        button:{
+         text : 'back',
+         value : true,
+     }
+    })
+}
+</script>
+
+
 </html>
 
 
