@@ -181,6 +181,13 @@ public class DataBase_query {
 						"AND c.CS_UID >= ? AND c.CS_UID < ? order by c.cs_uid ASC";
 		
 		
+		public static final String SQL_WRITE_SELECT_FROM_ROW3 =
+				"select * from "
+				+ "(select rownum as rnum, t.* "
+				+ "from (SELECT c.CS_UID, c.CS_SUBJECT, c.CS_CONTENT, c.CS_REGDATE, c.MEM_UID, m.MEM_ID FROM cs_tb c, member_tb m WHERE c.mem_uid = m.mem_uid ORDER BY cs_uid DESC) t) "
+				+ "where rnum >= ? and rnum < ?";
+		
+		
 		public static final String SQL_GET_MEM_BY_UID = "SELECT * FROM MEMBER_TB WHERE MEM_UID = ?";
 		
 		public static final String SQL_GET_STORE_BY_UID = "SELECT * FROM STOREINFO_TB WHERE STORE_UID = ?";

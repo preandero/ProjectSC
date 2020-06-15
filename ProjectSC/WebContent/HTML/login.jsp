@@ -86,7 +86,7 @@
 <div class="overlay-container">
     <div class="overlay">
     <div class="overlay-panel overlay-right">
-					<h1>Welcome Asangbinsi POS</h1>
+					<h1>Welcome to Asangbinsi POS</h1>
 					<br>
 					
 
