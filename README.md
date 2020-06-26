@@ -31,22 +31,22 @@
 
 ##### 4. Syllabus
   - JAVA Programming (120 hr)
-  기본문법, 객체지향 프로그래밍, 다형성, Collection, Exception, Inner class, Stream
+   -기본문법, 객체지향 프로그래밍, 다형성, Collection, Exception, Inner class, Stream
 
 
   - Oracle 및 JDBC(40 hr)
-   DML, DDL, DCL, 단일행/그룹함수, Join, SubQuery, View , JDBC, 트랜잭션 처리
+   - DML, DDL, DCL, 단일행/그룹함수, Join, SubQuery, View , JDBC, 트랜잭션 처리
 
 
   - 안드로이드 (50 hr)
-   뷰, 위젯, 이벤트 핸들링, 액티비티, 
-    Handler, Storage, 위치기반앱, 구글맵, 플레이스토어 
+   -뷰, 위젯, 이벤트 핸들링, 액티비티, 
+   -Handler, Storage, 위치기반앱, 구글맵, 플레이스토어 
 
 
   - 웹 프론트 엔드  (110 hr)
-   HTML 5 / CSS3 / JavaScript / jQuery
- 반응형웹 / BootStrap / AJAX
- JSON / XML / 각종 API
+   -HTML 5 / CSS3 / JavaScript / jQuery
+   - 반응형웹 / BootStrap / AJAX
+   - JSON / XML / 각종 API
 
 
   - JSP 기반 웹 프로그래밍 (100 hr)
