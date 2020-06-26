@@ -8,9 +8,9 @@
 ##### 1. Development Environment & Tools
   - Flow Chart : kakao oven , draw.io
   - Used Model : MVC model 2
-  - Backend
+  - Backend : 
    Java 1.8 , Tomcat 9, Oracle 11g, JDBC, DBeaver, ERMaster
-  - Frontend
+  - Frontend : 
   ajax, jstl, el, HTML5, CSS3, Jquery 3.4, JavaScript
 
 
